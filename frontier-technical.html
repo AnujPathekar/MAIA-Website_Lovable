@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Microsoft AI Accelerator for Frontier · Technical Questionnaire</title>
-<meta name="description" content="Microsoft AI Accelerator for Frontier: technical questionnaire for your Frontier Readiness Report.">
+<meta name="description" content="Microsoft AI Accelerator for Frontier: technical questionnaire for your MAIA Frontier Evaluation.">
 <meta name="robots" content="noindex">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2317223A'/%3E%3Ctext x='32' y='40' font-family='Segoe UI,Arial' font-size='19' font-weight='700' fill='%23F5F7FB' text-anchor='middle'%3EMAIA%3C/text%3E%3C/svg%3E">
 <style>
@@ -97,7 +97,7 @@ a{color:var(--c)}
 .dots{display:flex;flex-wrap:wrap;gap:5px;margin:0 0 24px}
 .dots button{width:26px;height:26px;border-radius:50%;border:1px solid var(--line2);background:var(--surface);color:var(--muted);font:600 11px var(--font);cursor:pointer;padding:0}
 .dots button:hover{border-color:var(--c);color:var(--c)}
-.dots button.done{background:var(--tint2);border-color:var(--tint2);color:var(--cd)}
+.dots button.done{background:var(--tint2);border-color:color-mix(in srgb,var(--cd) 40%,transparent);color:var(--cd)}
 .dots button.cur{background:var(--c);border-color:var(--c);color:#fff}
 .secnav{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 24px}
 .secnav button{font:600 12px var(--font);border:1px solid var(--line);background:var(--surface);color:var(--ink2);border-radius:999px;padding:6px 11px;cursor:pointer}
@@ -342,6 +342,7 @@ table.t th{border-bottom:1px solid var(--line)!important;font-family:'JetBrains 
 .btn-g{background:oklch(99.4% .003 250)!important;color:var(--ink)!important;border:1px solid var(--line2)!important;padding:12px 16px!important;box-shadow:0 3px 0 0 oklch(80% .016 254),0 6px 8px -4px oklch(21% .028 262/.28),inset 0 1px 0 #fff}.btn-g:disabled{visibility:hidden}
 .q .ql,.q-title{font-family:var(--font-d)!important;letter-spacing:-.01em}
 .company-strip{max-width:none}
+.key.p.tf{background:#7B45C2;border-color:#5B2F99;box-shadow:0 3px 0 0 #5B2F99,0 6px 8px -4px rgb(91 47 153/.45),inset 0 1px 0 rgb(255 255 255/.22)}.key.p.tc{background:#0B7C78;border-color:#075B58;box-shadow:0 3px 0 0 #075B58,0 6px 8px -4px rgb(7 91 88/.45),inset 0 1px 0 rgb(255 255 255/.22)}.key.p.ts{background:#0078D4;border-color:#005A9E;box-shadow:0 3px 0 0 #005A9E,0 6px 8px -4px rgb(0 90 158/.45),inset 0 1px 0 rgb(255 255 255/.22)}#motionBtn{right:16px!important;bottom:16px!important;min-height:36px!important;background:oklch(98.6% .005 250/.88)!important;backdrop-filter:blur(6px)}.nowrap{white-space:nowrap}
 </style>
 </head>
 <body class="t-frontier">
@@ -624,7 +625,7 @@ window.MAIN_WIDGETS = (function () {
 
   window.CFG = {
     key: 'frontier.technical', mode: 'sections', formLabel: 'Frontier · Technical questionnaire',
-    doneText: 'Together with your executive sponsor’s questionnaire, your answers build your Frontier Readiness Report.',
+    doneText: 'Together with your executive sponsor’s questionnaire, your answers build your MAIA Frontier Evaluation.',
     companyOf: A => A.t1 || '',
     fileName: A => (A.t1 || 'Customer') + '_Frontier_Technical_Answers',
     steps: [

@@ -97,7 +97,7 @@ a{color:var(--c)}
 .dots{display:flex;flex-wrap:wrap;gap:5px;margin:0 0 24px}
 .dots button{width:26px;height:26px;border-radius:50%;border:1px solid var(--line2);background:var(--surface);color:var(--muted);font:600 11px var(--font);cursor:pointer;padding:0}
 .dots button:hover{border-color:var(--c);color:var(--c)}
-.dots button.done{background:var(--tint2);border-color:var(--tint2);color:var(--cd)}
+.dots button.done{background:var(--tint2);border-color:color-mix(in srgb,var(--cd) 40%,transparent);color:var(--cd)}
 .dots button.cur{background:var(--c);border-color:var(--c);color:#fff}
 .secnav{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 24px}
 .secnav button{font:600 12px var(--font);border:1px solid var(--line);background:var(--surface);color:var(--ink2);border-radius:999px;padding:6px 11px;cursor:pointer}
@@ -436,6 +436,7 @@ table.t th{border-bottom:1px solid var(--line)!important;font-family:'JetBrains 
 :focus-visible{outline:2px solid var(--acc)!important;outline-offset:2px}
 @media(max-width:640px){.hide-s{display:none!important}}@media(max-width:480px){.hide-xs{display:none!important}}
 #nominate>.band:first-child{padding-top:clamp(28px,3.5vw,48px)!important}
+.key.p.tf{background:#7B45C2;border-color:#5B2F99;box-shadow:0 3px 0 0 #5B2F99,0 6px 8px -4px rgb(91 47 153/.45),inset 0 1px 0 rgb(255 255 255/.22)}.key.p.tc{background:#0B7C78;border-color:#075B58;box-shadow:0 3px 0 0 #075B58,0 6px 8px -4px rgb(7 91 88/.45),inset 0 1px 0 rgb(255 255 255/.22)}.key.p.ts{background:#0078D4;border-color:#005A9E;box-shadow:0 3px 0 0 #005A9E,0 6px 8px -4px rgb(0 90 158/.45),inset 0 1px 0 rgb(255 255 255/.22)}#motionBtn{right:16px!important;bottom:16px!important;min-height:36px!important;background:oklch(98.6% .005 250/.88)!important;backdrop-filter:blur(6px)}.nowrap{white-space:nowrap}
 </style>
 </head>
 <body class="t-main">
@@ -688,7 +689,7 @@ body:not([data-step="1"]) .stepper{margin-top:clamp(20px,3vw,32px)}
 <a href="index.html#home" data-keep style="display:inline-flex;align-items:center;gap:12px;text-decoration:none;color:oklch(21% .028 262);min-width:0"><span aria-hidden="true" style="height:32px;padding:0 10px;display:grid;place-items:center;flex-shrink:0;border-radius:8px 2px;background:oklch(21% .028 262);color:oklch(98.6% .005 250);font:600 14px/1 'Familjen Grotesk',system-ui,sans-serif;letter-spacing:.02em">MAIA</span><span style="font:600 20px/1.1 'Familjen Grotesk',system-ui,sans-serif;letter-spacing:-.01em;white-space:nowrap">Microsoft AI Accelerator</span></a>
 <nav aria-label="Site" style="display:flex;align-items:center;gap:28px"><a href="about.html" data-keep class="hide-s" style="font:500 15px/1 'Familjen Grotesk',system-ui,sans-serif;text-decoration:none;color:oklch(36% .022 260);">About</a><a href="nominate.html" data-keep class="hide-s" style="font:500 15px/1 'Familjen Grotesk',system-ui,sans-serif;text-decoration:none;color:oklch(21% .028 262);text-decoration:underline;text-decoration-color:oklch(48% .15 256);text-underline-offset:6px;">Nominate</a><a href="questionnaires.html" data-keep class="hide-s" style="font:500 15px/1 'Familjen Grotesk',system-ui,sans-serif;text-decoration:none;color:oklch(36% .022 260);">Questionnaires</a></nav>
 </header>
-<main class="has-bd"><section style="position:relative;isolation:isolate;border-bottom:1px solid oklch(90% .009 252)"><div class="dots" aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none"><canvas data-field="1" style="display:block;width:100%;height:100%;background:oklch(98.6% .005 250)"></canvas></div><div style="position:relative;z-index:2;max-width:1440px;margin:0 auto;padding:80px clamp(16px,4.4vw,64px) 88px;box-sizing:border-box"><div data-shield="0.12" style="display:grid;gap:18px;max-width:900px">
+<main class="has-bd"><section style="position:relative;isolation:isolate;border-bottom:1px solid oklch(90% .009 252)"><div class="dots" aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none"><canvas data-field="1" style="display:block;width:100%;height:100%;background:oklch(98.6% .005 250)"></canvas></div><div style="position:relative;z-index:2;max-width:1440px;margin:0 auto;padding:80px clamp(16px,4.4vw,64px) 88px;box-sizing:border-box"><div data-shield="0.03" style="display:grid;gap:18px;max-width:900px">
 <p style="margin:0;font:500 13px/1.3 'JetBrains Mono',ui-monospace,monospace;letter-spacing:.02em;text-transform:uppercase;color:oklch(48% .15 256)">Nominate</p>
 <h1 style="margin:0;font:600 clamp(40px,4vw + 16px,76px)/1.02 'Familjen Grotesk',system-ui,sans-serif;letter-spacing:-.028em;max-width:18ch;color:oklch(21% .028 262)">Nominate an account for ROI Insights</h1>
 <p style="margin:0;font-size:clamp(18px,.35vw + 16px,22px);line-height:1.45;color:oklch(36% .022 260);max-width:52ch">Only the required fields are needed; additional details help if time allows.</p>
@@ -801,7 +802,7 @@ body:not([data-step="1"]) .stepper{margin-top:clamp(20px,3vw,32px)}
       </div>
     </section>
       </div>
-      <div class="endnav"><a class="homebtn" href="index.html#home" data-keep><svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 11.2 12 4l9 7.2V20a1 1 0 0 1-1 1h-5.5v-6h-5v6H4a1 1 0 0 1-1-1z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><span>Back to Home</span></a></div>
+      <div class="endnav"><a class="homebtn" href="index.html#home" data-keep><svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 11.2 12 4l9 7.2V20a1 1 0 0 1-1 1h-5.5v-6h-5v6H4a1 1 0 0 1-1-1z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><span>Back to home</span></a></div>
     </div></section>
   </div>
 
@@ -1098,7 +1099,7 @@ class Component extends DCLogic {
       host.addEventListener('pointerleave', () => { f.pointer = null; });
       f.resize = () => { const r = canvas.getBoundingClientRect(), dpr = Math.min(window.devicePixelRatio||1, 2);
         f.w = r.width; f.h = r.height; canvas.width = Math.max(1, Math.round(r.width*dpr)); canvas.height = Math.max(1, Math.round(r.height*dpr)); ctx.setTransform(dpr,0,0,dpr,0,0);
-        f.shield = [].slice.call(host.querySelectorAll('[data-shield]')).map((el) => { const a = el.getBoundingClientRect(), k = parseFloat(el.getAttribute('data-shield')); const pad = k > 0 ? 24 : 8;
+        f.shield = [].slice.call(host.querySelectorAll('[data-shield]')).map((el) => { const a = el.getBoundingClientRect(), k = parseFloat(el.getAttribute('data-shield')); const pad = k > 0.2 ? 8 : 28;
           return { l:a.left-r.left-pad, t:a.top-r.top-pad, r:a.right-r.left+pad, b:a.bottom-r.top+pad, k: isNaN(k) ? 0.12 : k }; }); };
       return f; }).filter(Boolean);
     if (!fields.length) return;

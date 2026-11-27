@@ -97,7 +97,7 @@ a{color:var(--c)}
 .dots{display:flex;flex-wrap:wrap;gap:5px;margin:0 0 24px}
 .dots button{width:26px;height:26px;border-radius:50%;border:1px solid var(--line2);background:var(--surface);color:var(--muted);font:600 11px var(--font);cursor:pointer;padding:0}
 .dots button:hover{border-color:var(--c);color:var(--c)}
-.dots button.done{background:var(--tint2);border-color:var(--tint2);color:var(--cd)}
+.dots button.done{background:var(--tint2);border-color:color-mix(in srgb,var(--cd) 40%,transparent);color:var(--cd)}
 .dots button.cur{background:var(--c);border-color:var(--c);color:#fff}
 .secnav{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 24px}
 .secnav button{font:600 12px var(--font);border:1px solid var(--line);background:var(--surface);color:var(--ink2);border-radius:999px;padding:6px 11px;cursor:pointer}
@@ -342,6 +342,7 @@ table.t th{border-bottom:1px solid var(--line)!important;font-family:'JetBrains 
 .btn-g{background:oklch(99.4% .003 250)!important;color:var(--ink)!important;border:1px solid var(--line2)!important;padding:12px 16px!important;box-shadow:0 3px 0 0 oklch(80% .016 254),0 6px 8px -4px oklch(21% .028 262/.28),inset 0 1px 0 #fff}.btn-g:disabled{visibility:hidden}
 .q .ql,.q-title{font-family:var(--font-d)!important;letter-spacing:-.01em}
 .company-strip{max-width:none}
+.key.p.tf{background:#7B45C2;border-color:#5B2F99;box-shadow:0 3px 0 0 #5B2F99,0 6px 8px -4px rgb(91 47 153/.45),inset 0 1px 0 rgb(255 255 255/.22)}.key.p.tc{background:#0B7C78;border-color:#075B58;box-shadow:0 3px 0 0 #075B58,0 6px 8px -4px rgb(7 91 88/.45),inset 0 1px 0 rgb(255 255 255/.22)}.key.p.ts{background:#0078D4;border-color:#005A9E;box-shadow:0 3px 0 0 #005A9E,0 6px 8px -4px rgb(0 90 158/.45),inset 0 1px 0 rgb(255 255 255/.22)}#motionBtn{right:16px!important;bottom:16px!important;min-height:36px!important;background:oklch(98.6% .005 250/.88)!important;backdrop-filter:blur(6px)}.nowrap{white-space:nowrap}
 </style>
 </head>
 <body class="t-security">
@@ -643,7 +644,7 @@ window.SEC_SPEC = {"version": "MAIN for Security questionnaires v3 · Oct 2026",
   }
 
   const about = [
-    { id: 'CompanyName', type: 'text', label: 'Company name', ph: 'Enter your company name', ac: 'organization', short: 'Company', req: true, help: EXEC ? 'It appears on your Security evaluation report.' : 'Use the same name as on the Executive questionnaire, so the two are matched.' },
+    { id: 'CompanyName', type: 'text', label: 'Company name', ph: 'Enter your company name', ac: 'organization', short: 'Company', req: true, help: EXEC ? 'It appears on your MAIA Security Evaluation.' : 'Use the same name as on the Executive questionnaire, so the two are matched.' },
     { id: 'ContactName', type: 'text', label: 'Your name', ph: 'e.g. Jamie Nolan', ac: 'name', short: 'Your name', req: true },
     { id: 'ContactEmail', type: 'email', label: 'Work email', ph: 'you@company.com', ac: 'email', short: 'Work email', req: true, help: 'Please use your business email: its domain matches your answers with your colleague’s.' },
     { id: 'ContactRole', type: 'text', label: 'Your role', ph: EXEC ? 'e.g. Chief Financial Officer' : 'e.g. Chief Information Security Officer', ac: 'organization-title', short: 'Your role', req: true },
