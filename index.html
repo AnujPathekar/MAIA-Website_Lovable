@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Microsoft AI Accelerator · MAIA</title>
+<meta name="description" content="Welcome to Microsoft AI Accelerator: learn about the programme, nominate an account, or complete your Frontier, Copilot or Security questionnaires.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2317223A'/%3E%3Ctext x='32' y='40' font-family='Segoe UI,Arial' font-size='19' font-weight='700' fill='%23F5F7FB' text-anchor='middle'%3EMAIA%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;600&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:oklch(98.6% .005 250);color:oklch(21% .028 262);font:16px/1.55 'IBM Plex Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration-thickness:1px;text-underline-offset:.16em}a:hover{color:oklch(48% .15 256)}
+h1,h2,h3{margin:0;font-family:'Familjen Grotesk',system-ui,sans-serif;font-weight:600;letter-spacing:-.028em;line-height:1.05;text-wrap:balance}p{margin:0;text-wrap:pretty}
+.wrap{width:100%;max-width:1440px;margin:0 auto;padding:0 64px;box-sizing:border-box}@media(max-width:960px){.wrap{padding:0 24px}}@media(max-width:640px){.wrap{padding:0 16px}.hide-s{display:none!important}}
+.key{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 16px;border:1px solid oklch(83% .012 252);border-radius:6px;background:oklch(99.4% .003 250);color:oklch(21% .028 262);font:500 14px/1 'Familjen Grotesk',sans-serif;box-shadow:0 3px 0 0 oklch(80% .016 254),0 6px 8px -4px oklch(21% .028 262/.28),inset 0 1px 0 #fff;text-decoration:none;white-space:nowrap;cursor:pointer;transition:transform .12s}
+.key:hover{transform:translateY(-1px);color:oklch(21% .028 262)}.key:active{transform:translateY(3px);box-shadow:inset 0 1px 2px oklch(21% .028 262/.14)}
+.key.p{min-height:48px;padding:0 24px;font-size:16px;background:oklch(48% .15 256);border-color:oklch(36% .13 260);color:#fff;box-shadow:0 3px 0 0 oklch(36% .13 260),0 6px 8px -4px oklch(30% .12 260/.45),inset 0 1px 0 oklch(100% 0 0/.22)}.key.p:hover{color:#fff}
+.card{display:block;box-sizing:border-box;background:oklch(98.6% .005 250);border:1px solid oklch(90% .009 252);border-radius:16px 4px 16px 4px;box-shadow:0 1px 2px oklch(21% .028 262/.06);text-decoration:none;color:inherit;transition:border-color .22s}a.card:hover{border-color:oklch(72% .09 256);color:inherit}a.card:hover .key{transform:translateY(-1px)}
+.eb{font:500 13px/1.3 'JetBrains Mono',ui-monospace,monospace;letter-spacing:.02em;text-transform:uppercase;color:oklch(48% .15 256)}
+.dots{background-image:radial-gradient(circle,oklch(81% .045 255) 1px,transparent 1.4px);background-size:8px 16px}.dots-d{background-image:radial-gradient(circle,oklch(41% .05 260) 1px,transparent 1.4px);background-size:8px 16px}
+.inp{width:100%;box-sizing:border-box;min-height:44px;padding:10px 12px;border:1px solid oklch(83% .012 252);border-radius:6px;background:#fff;color:inherit;font:16px/1.4 'IBM Plex Sans',sans-serif}
+.opt{display:flex;gap:12px;align-items:flex-start;width:100%;box-sizing:border-box;text-align:left;padding:12px 14px;border:1px solid oklch(83% .012 252);border-radius:6px;background:#fff;color:inherit;font:16px/1.45 'IBM Plex Sans',sans-serif;cursor:pointer}.opt:hover{border-color:oklch(48% .15 256)}.opt.on{border-color:oklch(48% .15 256);background:oklch(95% .028 256);box-shadow:0 0 0 1px oklch(48% .15 256)}
+.tbl{width:100%;border-collapse:collapse;font-size:14px}.tbl th{text-align:left;font:500 12px/1.2 'JetBrains Mono',monospace;text-transform:uppercase;color:oklch(50% .018 258);padding:10px;border:0;border-bottom:1px solid oklch(90% .009 252);white-space:nowrap;background:oklch(98.6% .005 250)}.tbl td{padding:6px 10px;border:0;border-top:1px solid oklch(90% .009 252);vertical-align:middle}.tbl tbody tr:first-child td{border-top:0}.rc>div:first-child{border-top:0!important}.tbl .inp{min-height:38px;padding:7px 9px;font-size:14px}
+:focus-visible{outline:2px solid oklch(48% .15 256);outline-offset:2px}[hidden]{display:none!important}@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+.wrap{max-width:1680px}.hero-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(96px,1.6fr) minmax(0,6fr);column-gap:48px;align-items:center;min-height:880px;padding-top:96px;padding-bottom:128px;position:relative;z-index:2}
+.hero-grid>nav{grid-column:3;min-width:0}.doors{display:grid;gap:16px;margin:0;padding:0;list-style:none}.door{display:grid;grid-template-columns:44px minmax(0,1fr) auto;grid-template-areas:"n t k" "n d d";column-gap:16px;row-gap:8px;align-items:start;padding:24px;border-radius:8px!important}@supports (corner-shape:bevel){.door{border-radius:16px 4px 16px 4px!important;corner-shape:bevel round bevel round}}@media(max-width:1100px){.door{grid-template-areas:"n t" "n d" "n k";grid-template-columns:44px minmax(0,1fr)}.door .key{justify-self:start;margin-top:8px}}
+.appr{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);column-gap:64px}.row3{display:grid;grid-template-columns:64px minmax(0,5fr) minmax(0,6fr);column-gap:48px;align-items:baseline;padding:48px 0;border-top:1px solid oklch(90% .009 252)}
+.thead{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);column-gap:32px;align-items:end;margin-bottom:64px}.lanes{display:grid;grid-template-columns:minmax(0,8fr) minmax(0,4fr);column-gap:32px}
+@media(max-width:960px){.hero-grid>nav{grid-column:1}.hero-grid,.appr,.thead,.lanes{grid-template-columns:minmax(0,1fr);row-gap:40px;min-height:0;padding-top:56px;padding-bottom:72px}.row3{grid-template-columns:40px minmax(0,1fr);row-gap:8px}.row3 p{grid-column:2}}
+@media(max-width:640px){.door{grid-template-columns:40px minmax(0,1fr);padding:16px}.door>span:first-child{width:40px!important;height:40px!important}}
+</style>
+</head>
+<body>
+<div style="min-height:100vh;background:oklch(98.6% .005 250)">
+<header class="wrap" style="display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:72px;border-bottom:1px solid oklch(90% .009 252);background:oklch(98.6% .005 250);position:relative;z-index:10">
+<a href="index.html#home" data-keep style="display:inline-flex;align-items:center;gap:12px;text-decoration:none;color:oklch(21% .028 262);min-width:0"><span aria-hidden="true" style="height:32px;padding:0 10px;display:grid;place-items:center;flex-shrink:0;border-radius:8px 2px;background:oklch(21% .028 262);color:oklch(98.6% .005 250);font:600 14px/1 'Familjen Grotesk',system-ui,sans-serif;letter-spacing:.02em">MAIA</span><span style="font:600 20px/1.1 'Familjen Grotesk',system-ui,sans-serif;letter-spacing:-.01em;white-space:nowrap">Microsoft AI Accelerator</span></a>
+<p class="hide-s" style="font-size:14px;color:oklch(50% .018 258);white-space:nowrap">Delivered by SCC in partnership with Microsoft</p>
+</header>
+<main>
+<section aria-labelledby="hero-title" style="position:relative;isolation:isolate;border-bottom:1px solid oklch(90% .009 252)">
+<div class="dots" aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none"><canvas id="heroField" style="display:block;width:100%;height:100%;background:oklch(98.6% .005 250)"></canvas></div>
+<div class="wrap hero-grid">
+<div style="display:grid;gap:24px;align-content:center">
+<h1 id="hero-title" style="font-size:clamp(44px,5vw + 16px,84px);line-height:1.02;max-width:20ch">From AI ambition to <span style="color:oklch(48% .15 256)">business outcomes</span></h1>
+<p style="font-size:clamp(18px,.35vw + 16px,22px);line-height:1.45;color:oklch(36% .022 260);max-width:34ch">Learn how it works, nominate an account, or answer the questionnaires.</p>
+</div>
+<nav aria-label="Start here"><ol class="doors">
+<li><a class="card door" href="about.html" data-keep data-lane="about">
+<span aria-hidden="true" style="grid-area:n;width:44px;height:44px;display:grid;place-items:center;border-radius:8px 2px;background:oklch(95% .025 292);color:oklch(45% .16 292);font:600 25px/1 'Familjen Grotesk',system-ui,sans-serif">1</span>
+<h2 style="grid-area:t;align-self:center;font-size:clamp(20px,.75vw + 14px,26px);font-weight:600;line-height:1.15;max-width:none">About the programme</h2>
+<p style="grid-area:d;color:oklch(36% .022 260);max-width:48ch">How Microsoft AI Accelerator works, what each evaluation covers, and what you receive at the end.</p>
+<span class="key" style="grid-area:k;justify-self:start">Read the overview</span>
+</a></li>
+<li><a class="card door" href="nominate.html" data-keep data-lane="nominate">
+<span aria-hidden="true" style="grid-area:n;width:44px;height:44px;display:grid;place-items:center;border-radius:8px 2px;background:oklch(95% .028 256);color:oklch(48% .15 256);font:600 25px/1 'Familjen Grotesk',system-ui,sans-serif">2</span>
+<h2 style="grid-area:t;align-self:center;font-size:clamp(20px,.75vw + 14px,26px);font-weight:600;line-height:1.15;max-width:none">Nominate an account</h2>
+<p style="grid-area:d;color:oklch(36% .022 260);max-width:48ch">Put an organisation forward for an evaluation. It takes a few minutes: the account details and today’s licences.</p>
+<span class="key" style="grid-area:k;justify-self:start">Start a nomination</span>
+</a></li>
+<li><a class="card door" href="questionnaires.html" data-keep data-lane="questionnaires">
+<span aria-hidden="true" style="grid-area:n;width:44px;height:44px;display:grid;place-items:center;border-radius:8px 2px;background:oklch(95.5% .025 190);color:oklch(51% .09 190);font:600 25px/1 'Familjen Grotesk',system-ui,sans-serif">3</span>
+<h2 style="grid-area:t;align-self:center;font-size:clamp(20px,.75vw + 14px,26px);font-weight:600;line-height:1.15;max-width:none">Complete the questionnaires</h2>
+<p style="grid-area:d;color:oklch(36% .022 260);max-width:48ch">Invited to an evaluation? Choose Frontier, Copilot or Security and answer at your own pace. Your answers save as you go.</p>
+<span class="key" style="grid-area:k;justify-self:start">Choose a track</span>
+</a></li>
+</ol></nav>
+</div>
+<button type="button" id="motionBtn" aria-pressed="false" style="position:absolute;right:24px;bottom:16px;z-index:3;min-height:44px;padding:0 12px;border:1px solid oklch(90% .009 252);border-radius:6px;background:oklch(98.6% .005 250);color:oklch(50% .018 258);font:500 13px/1 'IBM Plex Sans',sans-serif;cursor:pointer">Pause motion</button>
+</section>
+<section aria-labelledby="approach-title" style="padding:clamp(96px,11vw,176px) 0 clamp(72px,9vw,144px)">
+<div class="wrap appr">
+<h2 id="approach-title" style="font-size:clamp(32px,2.5vw + 16px,56px);max-width:12ch;margin-bottom:40px">Three evaluations, one approach</h2>
+<ol style="margin:0;padding:0;list-style:none;border-bottom:1px solid oklch(90% .009 252)">
+<li class="row3" style="border-top-color:oklch(21% .028 262)"><span style="font:600 25px/1 'Familjen Grotesk',system-ui,sans-serif;color:oklch(48% .15 256)">1</span><h3 style="font-size:clamp(20px,.75vw + 14px,26px);line-height:1.2">Your ROI Insights report</h3><p style="font-size:clamp(18px,.35vw + 16px,22px);line-height:1.45;color:oklch(36% .022 260)">Shows what the investment is worth.</p></li>
+<li class="row3"><span style="font:600 25px/1 'Familjen Grotesk',system-ui,sans-serif;color:oklch(48% .15 256)">2</span><h3 style="font-size:clamp(20px,.75vw + 14px,26px);line-height:1.2">A short questionnaire</h3><p style="font-size:clamp(18px,.35vw + 16px,22px);line-height:1.45;color:oklch(36% .022 260)">Shows how ready you are to capture it.</p></li>
+<li class="row3"><span style="font:600 25px/1 'Familjen Grotesk',system-ui,sans-serif;color:oklch(48% .15 256)">3</span><h3 style="font-size:clamp(20px,.75vw + 14px,26px);line-height:1.2">Your evaluation report</h3><p style="font-size:clamp(18px,.35vw + 16px,22px);line-height:1.45;color:oklch(36% .022 260)">Turns both into a clear plan.</p></li>
+</ol>
+</div>
+</section>
+<section aria-labelledby="tracks-title" style="background:oklch(21% .024 262);color:oklch(93% .01 250);padding:clamp(80px,9vw,144px) 0">
+<div class="wrap">
+<div class="thead">
+<h2 id="tracks-title" style="font-size:clamp(32px,2.5vw + 16px,56px)">Frontier, Copilot or Security</h2>
+<p style="font-size:clamp(18px,.35vw + 16px,22px);line-height:1.45;color:oklch(72% .022 256)">Choose yours when you open the questionnaires, and answer at your own pace.</p>
+</div>
+<figure class="lanes" style="margin:0">
+<div style="position:relative;min-height:420px;border-top:1px solid oklch(26.5% .026 262);border-bottom:1px solid oklch(26.5% .026 262)"><div class="dots-d" role="img" aria-label="Diagram: unsorted signal resolving into three lanes, one for each evaluation track" style="position:absolute;inset:0"><canvas id="trackField" style="display:block;width:100%;height:100%;background:oklch(21% .024 262)"></canvas></div></div>
+<ul style="margin:0;padding:0;list-style:none;display:grid;grid-template-rows:repeat(3,minmax(88px,1fr));border-top:1px solid oklch(26.5% .026 262);border-bottom:1px solid oklch(26.5% .026 262);font:600 clamp(32px,2.5vw + 16px,56px)/1 'Familjen Grotesk',system-ui,sans-serif;letter-spacing:-.028em">
+<li data-lane="frontier" style="display:flex;align-items:center;color:oklch(76% .12 300)">Frontier</li>
+<li data-lane="copilot" style="display:flex;align-items:center;color:oklch(78% .1 185);border-top:1px solid oklch(26.5% .026 262)">Copilot</li>
+<li data-lane="security" style="display:flex;align-items:center;color:oklch(76% .12 248);border-top:1px solid oklch(26.5% .026 262)">Security</li>
+</ul>
+</figure>
+<div style="display:flex;flex-wrap:wrap;align-items:center;gap:24px;margin-top:64px">
+<a class="key p" href="questionnaires.html" data-keep>Complete the questionnaires</a>
+<p style="color:oklch(72% .022 256)">Your answers save as you go.</p>
+</div>
+</div>
+</section>
+</main>
+<footer class="wrap" style="padding-top:96px;padding-bottom:64px">
+<p style="font:600 clamp(32px,3.4vw,56px)/1 'Familjen Grotesk',system-ui,sans-serif;letter-spacing:-.028em;margin:0 0 40px">Microsoft AI Accelerator</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px 32px;padding-top:24px;border-top:1px solid oklch(90% .009 252);font-size:14px;color:oklch(50% .018 258)">
+<p>Delivered by SCC in partnership with Microsoft</p>
+<p><a href="terms.html" data-keep style="color:oklch(36% .022 260);font-weight:500">Terms of Use &amp; Privacy Statement</a></p>
+<p>Questions? <a href="mailto:hello@sourcecodecontrol.com" style="color:oklch(36% .022 260);font-weight:500">hello@sourcecodecontrol.com</a></p>
+</div>
+</footer>
+</div>
+<script>
+/* earlier links to this page: ?track= opens that track; invitation links and old #sections open the right page */
+(function(){try{
+  var p=new URLSearchParams(location.search),t=(p.get('track')||'').toLowerCase(),m={frontier:'frontier.html',copilot:'copilot.html',security:'security.html'};
+  if(m[t]){p.delete('track');var q=p.toString();location.replace(m[t]+(q?'?'+q:''));return;}
+  var h=location.hash.slice(1),go=null,qs=location.search;
+  if(/^(learn|how|roi|questionnaires|report)$/.test(h))go='about.html'+qs+(h==='learn'?'':'#'+h);
+  else if(h==='nominate')go='nominate.html'+qs;
+  else if(/^(start-questionnaires|choose)$/.test(h)||(!h&&/[?&](project|invite|company|domain)=/.test(qs)))go='questionnaires.html'+qs;
+  if(go)location.replace(go);
+}catch(e){}})();
+</script><script>
+/* carry the invitation parameters (?project=…, ?invite=…, ?company=…, ?domain=…) to the next page */
+(function(){try{var q=location.search;if(!q)return;document.querySelectorAll('a[data-keep]').forEach(function(a){var h=a.getAttribute('href');if(!h||h.indexOf('?')>=0||h.indexOf('#')===0)return;var i=h.indexOf('#');a.setAttribute('href',i<0?h+q:h.slice(0,i)+q+h.slice(i));});}catch(e){}})();
+</script>
+<script>
+/* motion background: the character field (pause button bottom right; still for reduced motion) */
+class DCLogic{constructor(){this.state={};}setState(p,cb){Object.assign(this.state,p);var b=document.getElementById('motionBtn');if(b){b.setAttribute('aria-pressed',String(!!this.state.paused));b.textContent=this.state.paused?'Play motion':'Pause motion';}if(cb)cb();}}
+class Component extends DCLogic {
+  state = { paused: false };
+  setRoot = (el) => { this.rootEl = el; };
+  componentDidMount() { this.startField(); }
+  componentWillUnmount() { this.dead = true; if (this.onResize) window.removeEventListener('resize', this.onResize); }
+  startField() {
+    const root = this.rootEl; if (!root || !root.querySelector) return;
+    const self = this, CW = 8, CH = 16, RAMP = ' .:-=+*#%@';
+    const reduce = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)').matches : false;
+    const C = { g1:'oklch(89% .025 254)', g2:'oklch(81% .045 255)', g3:'oklch(70% .085 256)', g4:'oklch(60% .13 257)', deep:'oklch(41% .16 260)',
+      d1:'oklch(33% .03 262)', d2:'oklch(41% .05 260)', d3:'oklch(53% .1 258)', d4:'oklch(62% .11 258)',
+      about:'oklch(45% .16 292)', nominate:'oklch(48% .15 256)', questionnaires:'oklch(51% .09 190)', frontier:'oklch(76% .12 300)', copilot:'oklch(78% .1 185)', security:'oklch(76% .12 248)' };
+    const clamp = (v,a,b) => v<a?a:v>b?b:v;
+    const noise = (c,r,t) => (Math.sin(c*0.09+t*0.5)+Math.sin(r*0.21-t*0.35)+Math.sin((c*0.6+r)*0.11+t*0.27)+Math.sin(c*0.023-r*0.13+t*0.15+Math.sin(r*0.05+t*0.1))+4)/8;
+    const rel = (el,b) => { const a = el.getBoundingClientRect(); return { l:a.left-b.left, t:a.top-b.top, r:a.right-b.left, b:a.bottom-b.top }; };
+    const fields = [];
+    function Field(canvas, cfg) {
+      const ctx = canvas.getContext && canvas.getContext('2d'); if (!ctx) return null;
+      const f = { c:canvas, ctx, cfg, w:0, h:0, origin:null, lanes:[], shield:[], pointer:null };
+      f.resize = () => { const r = canvas.getBoundingClientRect(), dpr = Math.min(window.devicePixelRatio||1, 2);
+        f.w = r.width; f.h = r.height; canvas.width = Math.max(1, Math.round(r.width*dpr)); canvas.height = Math.max(1, Math.round(r.height*dpr));
+        ctx.setTransform(dpr,0,0,dpr,0,0); cfg.layout(f, r); };
+      const host = cfg.host;
+      host.addEventListener('pointermove', (e) => { const r = canvas.getBoundingClientRect(); f.pointer = { x:e.clientX-r.left, y:e.clientY-r.top }; });
+      host.addEventListener('pointerleave', () => { f.pointer = null; });
+      return f;
+    }
+    function draw(f, t) {
+      const ctx = f.ctx, cols = Math.ceil(f.w/CW), rows = Math.ceil(f.h/CH), O = f.origin; let last = null;
+      ctx.clearRect(0,0,f.w,f.h); ctx.font = "500 12px 'JetBrains Mono', monospace"; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      for (let r = 0; r < rows; r++) { const y = r*CH+CH/2;
+        for (let c = 0; c < cols; c++) { const x = c*CW+CW/2; let d, col = null, chr = null, alpha = 1; const n = noise(c,r,t); let reach, spread;
+          if (O) { reach = x<=O.x ? 0.35+0.65*Math.pow(x/O.x,1.4) : Math.max(0,1-(x-O.x)/90); spread = 1-Math.min(1,Math.abs(y-O.y)/(f.h*0.62)); } else { reach = 0.55; spread = 0.7; }
+          let e = clamp((n-0.34)/0.5,0,1); e = e*e*(3-2*e); d = e*reach*(0.4+0.6*spread)*f.cfg.gain;
+          if (f.pointer) { const px = x-f.pointer.x, py = y-f.pointer.y, pd = Math.sqrt(px*px+py*py); if (pd < 130) d += 0.4*(1-pd/130)*n; }
+          for (let s = 0; s < f.shield.length; s++) { const S = f.shield[s]; if (x>S.l && x<S.r && y>S.t && y<S.b) { d *= S.k; break; } }
+          if (O) { for (let i = 0; i < f.lanes.length; i++) { const L = f.lanes[i]; if (x<O.x || x>L.tx) continue;
+              const p = (x-O.x)/(L.tx-O.x), sm = p*p*(3-2*p), ly = O.y+(L.ty-O.y)*sm, dist = Math.abs(y-ly);
+              if (dist < CH*0.55) { let q = (p-t*0.16+L.phase)%1; if (q<0) q += 1; const pk = q<0.07 ? 1-q/0.07 : 0; d = 0.55+0.45*pk; col = L.color; chr = pk>0.35 ? '#' : (p>0.92 ? '>' : '='); break; }
+              else if (dist < CH*1.6) { d = Math.max(d, 0.3+0.2*n); col = L.color; chr = (c%2) ? '-' : '.'; alpha = 0.4*(1-p*0.5); break; } } }
+          if (d < 0.1) continue;
+          if (!chr) chr = RAMP[clamp(Math.floor(d*10),1,9)];
+          if (!col) { const lv = d<0.3?0:d<0.48?1:d<0.66?2:d<0.85?3:4; col = f.cfg.pal[Math.min(lv, f.cfg.pal.length-1)]; }
+          if (col !== last) { ctx.fillStyle = col; last = col; }
+          if (alpha !== 1) { ctx.globalAlpha = alpha; ctx.fillText(chr,x,y); ctx.globalAlpha = 1; } else ctx.fillText(chr,x,y);
+        } }
+    }
+    const heroC = root.querySelector('#heroField');
+    if (heroC) { const hero = heroC.closest('section');
+      const hf = Field(heroC, { host:hero, gain:1.4, pal:[C.g1,C.g2,C.g3,C.g4,C.deep], layout(f, base) {
+        const text = hero.querySelector('h1').parentElement, doors = [].slice.call(hero.querySelectorAll('.door')); const tr = rel(text, base), pad = 24;
+        f.shield = [{ l:tr.l-pad, t:tr.t-pad, r:tr.r+pad, b:tr.b+pad, k:0.12 }];
+        doors.forEach((a) => { const d = rel(a, base); f.shield.push({ l:d.l-8, t:d.t-8, r:d.r+8, b:d.b+8, k:0 }); });
+        f.lanes = []; f.origin = null; if (f.w < 960 || !doors.length) return;
+        const first = rel(doors[0], base), lastD = rel(doors[doors.length-1], base);
+        f.origin = { x:tr.r+pad+16, y:(first.t+lastD.b)/2 };
+        doors.forEach((a, i) => { const d = rel(a, base); f.lanes.push({ tx:d.l-10, ty:(d.t+d.b)/2, color:C[a.getAttribute('data-lane')], phase:i*0.31 }); });
+      } }); if (hf) fields.push(hf); }
+    const trackC = root.querySelector('#trackField');
+    if (trackC) { const fig = trackC.closest('figure');
+      const tf = Field(trackC, { host:fig, gain:1.1, pal:[C.d1,C.d2,C.d3,C.d4], layout(f, base) {
+        const items = [].slice.call(fig.querySelectorAll('li')); f.shield = []; f.lanes = [];
+        const stacked = f.w >= fig.getBoundingClientRect().width*0.9; f.origin = { x:f.w*0.45, y:f.h/2 };
+        items.forEach((li, i) => { const d = rel(li, base); const ty = stacked ? (f.h*(i+1)/(items.length+1)) : (d.t+d.b)/2;
+          f.lanes.push({ tx:f.w-6, ty, color:C[li.getAttribute('data-lane')], phase:i*0.29 }); });
+      } }); if (tf) fields.push(tf); }
+    if (!fields.length) return;
+    const resizeAll = () => fields.forEach((f) => f.resize());
+    resizeAll(); this.onResize = () => { resizeAll(); if (reduce || self.state.paused) fields.forEach((f) => draw(f, 2.4)); };
+    window.addEventListener('resize', this.onResize);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { if (!self.dead) self.onResize(); });
+    this.drawStill = () => fields.forEach((f) => draw(f, 2.4));
+    let t0 = performance.now(), last = 0;
+    const frame = (now) => { if (self.dead) return; if (!self.state.paused && now-last >= 33) { last = now; fields.forEach((f) => draw(f, (now-t0)/1000)); } requestAnimationFrame(frame); };
+    if (reduce) this.drawStill(); else requestAnimationFrame(frame);
+  }
+  renderVals() {
+    return { setRoot: this.setRoot, paused: this.state.paused, motionLabel: this.state.paused ? 'Play motion' : 'Pause motion',
+      toggleMotion: () => this.setState({ paused: !this.state.paused }) };
+  }
+}
+(function(){try{var c=new Component();c.rootEl=document.body;if(c.componentDidMount)c.componentDidMount();var b=document.getElementById('motionBtn');if(b)b.onclick=function(){c.setState({paused:!c.state.paused});};}catch(e){}})();
+</script>
+</body>
+</html>

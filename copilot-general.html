@@ -1,0 +1,1199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Microsoft AI Accelerator for Copilot · Value Evaluation Questionnaire</title>
+<meta name="description" content="Microsoft AI Accelerator for Copilot: one questionnaire for your Copilot Value Evaluation.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2317223A'/%3E%3Ctext x='32' y='40' font-family='Segoe UI,Arial' font-size='19' font-weight='700' fill='%23F5F7FB' text-anchor='middle'%3EMAIA%3C/text%3E%3C/svg%3E">
+<style>
+/* Microsoft AI Accelerator · questionnaire engine styles (shared by every track) */
+:root{
+  --ink:#0B1F3A;--ink2:#3D4A5C;--muted:#6B7686;--line:#D8E2EA;--line2:#B9C7D2;--surface:#FFFFFF;
+  --ok:#107C10;--okT:#E9F6E8;--err:#A4262C;--errT:#FDF0F0;--radius:14px;
+  --shadow:0 1px 2px rgba(11,31,58,.05),0 8px 28px rgba(11,31,58,.07);
+  --font:'Segoe UI Variable Text','Segoe UI',-apple-system,BlinkMacSystemFont,Roboto,'Helvetica Neue',Arial,sans-serif;
+  --font-d:'Segoe UI Variable Display','Segoe UI',-apple-system,BlinkMacSystemFont,Roboto,'Helvetica Neue',Arial,sans-serif;
+}
+/* track themes */
+body.t-frontier{--c:#7B45C2;--cd:#3B1366;--c2:#9B6BDA;--c3:#DCCBF4;--tint:#F4EEFC;--tint2:#E9DDF8;--bg:#F9F7FC;--glow1:rgba(123,69,194,.16);--glow2:rgba(244,150,120,.14)}
+body.t-copilot{--c:#0B7C78;--cd:#073B3F;--c2:#1F9A90;--c3:#8FD3C9;--tint:#F1FAF8;--tint2:#E0F4F1;--bg:#F6FBFA;--glow1:rgba(11,124,120,.14);--glow2:rgba(120,200,255,.14)}
+body.t-security{--c:#0078D4;--cd:#033870;--c2:#085493;--c3:#C5E6FF;--tint:#EEF6FD;--tint2:#DCEBFA;--bg:#F5F9FE;--glow1:rgba(0,120,212,.13);--glow2:rgba(20,200,170,.10)}
+body.t-main{--c:#0B5CAD;--cd:#0B1F3A;--c2:#2B6CB0;--c3:#C9DAF0;--tint:#F2F6FB;--tint2:#E3ECF7;--bg:#F7F8FB;--glow1:rgba(123,69,194,.10);--glow2:rgba(11,124,120,.10)}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;min-height:100vh;font-family:var(--font);color:var(--ink);background:var(--bg);display:flex;flex-direction:column;
+  background-image:radial-gradient(1100px 520px at 105% -10%,var(--glow1),transparent 60%),radial-gradient(900px 480px at -10% 110%,var(--glow2),transparent 60%);background-attachment:fixed}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+a{color:var(--c)}
+.accent{height:4px;background:linear-gradient(90deg,var(--cd),var(--c),var(--c3));flex-shrink:0}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px clamp(16px,4vw,48px);background:rgba(255,255,255,.82);backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);min-width:0}
+.brand .mk{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--cd),var(--c));display:grid;place-items:center;color:#fff;font-weight:700;font-size:13px;letter-spacing:.02em;flex-shrink:0}
+.brand .bt{font-weight:600;font-size:15px;line-height:1.15;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.brand .bt b{color:var(--c);font-weight:600}
+.brand .bs{display:block;font-size:11.5px;font-weight:500;color:var(--muted);letter-spacing:.02em}
+.topbar .right{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.pill{font-size:12.5px;color:var(--ink2);background:var(--surface);border:1px solid var(--line);padding:6px 11px;border-radius:999px;white-space:nowrap}
+.toplink{font-size:13px;font-weight:600;color:var(--ink2);text-decoration:none;padding:6px 4px}
+.toplink:hover{color:var(--c)}
+@media(max-width:620px){.pill.hide-s,.toplink.hide-s{display:none}}
+
+.company-strip{display:none;align-items:center;gap:12px;background:var(--tint2);border-bottom:1px solid var(--line);padding:10px clamp(16px,4vw,48px);font-size:13.5px;color:var(--cd)}
+.company-strip.show{display:flex}
+.badge{width:34px;height:34px;border-radius:9px;background:var(--c);color:#fff;font-weight:700;display:grid;place-items:center;flex-shrink:0;font-size:13px}
+
+/* ---------- hero (landing of every page) ---------- */
+.hero{flex:1;display:flex;align-items:center;justify-content:center;padding:clamp(24px,5vw,64px) clamp(16px,4vw,48px)}
+.hero-in{width:100%;max-width:1120px;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(24px,5vw,64px);align-items:center}
+.eyebrow{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--c);font-weight:600;margin:0 0 14px}
+.h-title{font-family:var(--font-d);font-weight:600;font-size:clamp(38px,6vw,64px);line-height:1.02;letter-spacing:-.02em;margin:0 0 6px;color:var(--c)}
+.h-title span{display:block;color:var(--ink)}
+.h-sub{font-size:clamp(17px,2vw,20px);font-weight:600;color:var(--ink);margin:18px 0 10px;line-height:1.35}
+.lead{font-size:16px;line-height:1.65;color:var(--ink2);margin:0 0 22px;max-width:60ch}
+.meta{display:flex;flex-wrap:wrap;gap:8px 18px;margin:0 0 18px;font-size:14px;color:var(--ink2)}
+.meta strong{color:var(--ink)}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 24px}
+.chip{font-size:12.5px;font-weight:600;color:var(--cd);background:var(--tint2);border:1px solid var(--line);padding:5px 11px;border-radius:999px}
+.note{font-size:13.5px;color:var(--ink2);line-height:1.55;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--c);border-radius:10px;padding:12px 14px;margin:0 0 18px;max-width:62ch}
+.note b{color:var(--ink)}
+.terms-note{font-size:13px;color:var(--muted);line-height:1.5;margin:14px 0 0;max-width:60ch}
+.terms-note a{font-weight:600}
+.cover{position:relative;justify-self:center;width:100%;max-width:420px}
+.cover img{display:block;width:100%;height:auto;border-radius:22px;box-shadow:0 30px 60px -20px rgba(11,31,58,.35),0 10px 24px -12px rgba(11,31,58,.25)}
+.cover .tag{position:absolute;left:-18px;bottom:28px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 16px;box-shadow:var(--shadow);font-size:13px;color:var(--ink2);max-width:240px}
+.cover .tag b{display:block;font-size:20px;color:var(--c);font-weight:700;line-height:1.1;margin-bottom:2px}
+@media(max-width:860px){.hero-in{grid-template-columns:1fr}.cover{order:-1;max-width:260px}.cover .tag{left:auto;right:-8px;bottom:14px}}
+@media(max-width:480px){.cover{max-width:170px}.cover img{border-radius:16px}.cover .tag{display:none}}
+
+/* buttons */
+.btn{font-family:inherit;font-weight:600;font-size:15px;padding:12px 22px;border-radius:10px;border:1px solid transparent;cursor:pointer;display:inline-flex;align-items:center;gap:8px;text-decoration:none;transition:background .15s,border-color .15s,color .15s,transform .05s;line-height:1.2}
+.btn:active{transform:translateY(1px)}
+.btn-p{background:var(--c);color:#fff}
+.btn-p:hover{background:var(--cd)}
+.btn-p:disabled{opacity:.5;cursor:not-allowed}
+.btn-o{background:var(--surface);color:var(--c);border-color:var(--c)}
+.btn-o:hover{background:var(--tint)}
+.btn-g{background:transparent;color:var(--ink2);padding:12px 8px}
+.btn-g:hover{color:var(--c)}
+.btn-g:disabled{visibility:hidden}
+.btn-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.resume{margin:0 0 18px;background:var(--tint);border:1px solid var(--c3);border-radius:12px;padding:12px 14px;font-size:14px;color:var(--cd);display:none;max-width:62ch}
+.resume.show{display:block}
+.resume .btn-row{margin-top:8px}
+.resume .btn{padding:8px 14px;font-size:13.5px}
+
+/* ---------- form shell ---------- */
+.shell{flex:1;display:none;justify-content:center;padding:26px clamp(12px,4vw,48px) 40px}
+.shell.show{display:flex}
+.stage{width:100%;max-width:760px;background:var(--surface);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:clamp(20px,4vw,40px)}
+.stage.wide{max-width:980px}
+.prog{display:flex;align-items:center;gap:14px;margin:0 0 10px}
+.bar{flex:1;height:6px;background:var(--tint2);border-radius:99px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--c),var(--c2));border-radius:99px;transition:width .35s}
+.prog-l{font-size:13px;color:var(--ink2);white-space:nowrap}
+.dots{display:flex;flex-wrap:wrap;gap:5px;margin:0 0 24px}
+.dots button{width:26px;height:26px;border-radius:50%;border:1px solid var(--line2);background:var(--surface);color:var(--muted);font:600 11px var(--font);cursor:pointer;padding:0}
+.dots button:hover{border-color:var(--c);color:var(--c)}
+.dots button.done{background:var(--tint2);border-color:var(--tint2);color:var(--cd)}
+.dots button.cur{background:var(--c);border-color:var(--c);color:#fff}
+.secnav{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 24px}
+.secnav button{font:600 12px var(--font);border:1px solid var(--line);background:var(--surface);color:var(--ink2);border-radius:999px;padding:6px 11px;cursor:pointer}
+.secnav button.done{background:var(--tint2);border-color:var(--tint2);color:var(--cd)}
+.secnav button.cur{background:var(--c);border-color:var(--c);color:#fff}
+.step{animation:rise .3s cubic-bezier(.2,.7,.3,1)}
+@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.shake{animation:shake .35s}
+@keyframes shake{0%,100%{transform:none}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+.q-eyebrow{font-size:11.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--c);margin:0 0 10px}
+.opt-tag{font-size:10.5px;font-weight:700;letter-spacing:.05em;color:var(--muted);background:var(--bg);border:1px solid var(--line);padding:2px 8px;border-radius:99px;margin-left:8px;vertical-align:1px}
+.q-title{font-family:var(--font-d);font-weight:600;font-size:clamp(20px,3vw,25px);line-height:1.3;margin:0 0 10px}
+.q-ctx{font-size:14px;color:var(--ink2);margin:0 0 20px;line-height:1.55}
+.sec-intro{font-size:14.5px;color:var(--ink2);margin:-2px 0 22px;line-height:1.55}
+.q{margin:0 0 26px}
+.q:last-child{margin-bottom:6px}
+.q .ql{font-weight:600;font-size:16px;line-height:1.4;margin:0 0 6px}
+.q .qh{font-size:13.5px;color:var(--ink2);margin:0 0 12px;line-height:1.5}
+.req{color:var(--c);margin-left:3px}
+.q.missing .ql{color:var(--err)}
+.q.missing .opts,.q.missing input,.q.missing textarea,.q.missing select{border-color:var(--err)}
+.opts{display:flex;flex-direction:column;gap:8px}
+.opts.cols{display:grid;grid-template-columns:1fr 1fr}
+@media(max-width:600px){.opts.cols{grid-template-columns:1fr}}
+.opt{position:relative;display:flex;align-items:flex-start;gap:12px;padding:12px 14px;border:1px solid var(--line2);border-radius:10px;background:var(--surface);cursor:pointer;font-size:15px;line-height:1.45;transition:border-color .12s,background .12s}
+.opt:hover{border-color:var(--c);background:var(--tint)}
+.opt input{position:absolute;opacity:0;pointer-events:none}
+.ck{width:18px;height:18px;border-radius:50%;border:1.6px solid var(--line2);flex-shrink:0;margin-top:2px;position:relative;background:#fff}
+.opt.multi .ck{border-radius:5px}
+.opt.on{border-color:var(--c);background:var(--tint)}
+.opt.on .ck{border-color:var(--c);background:var(--c)}
+.opt.on .ck::after{content:'';position:absolute;inset:4.5px;border-radius:50%;background:#fff}
+.opt.multi.on .ck::after{inset:2px 5px 5px 5px;border-radius:0;background:none;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg)}
+.opt:focus-within{outline:2px solid var(--c);outline-offset:2px}
+.opt .lv{font:700 11.5px var(--font);color:var(--c);background:var(--tint2);border-radius:6px;padding:2px 6px;margin-top:1px;flex-shrink:0}
+.opt .od{display:block;font-size:13px;color:var(--muted);margin-top:2px}
+.opt.blocked{animation:shake .35s}
+.limit{font-size:12.5px;color:var(--muted);margin:8px 0 0}
+.limit.hit{color:var(--err);font-weight:600}
+input[type=text],input[type=email],input[type=number],input[type=month],input[type=date],select,textarea{font-family:inherit;font-size:15px;padding:11px 13px;border:1px solid var(--line2);border-radius:9px;background:#fff;color:var(--ink);width:100%}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--c);box-shadow:0 0 0 3px var(--tint2)}
+textarea{min-height:110px;resize:vertical;line-height:1.5}
+.lbl{display:block;font-size:12.5px;font-weight:600;color:var(--ink2);margin:0 0 6px}
+.field{margin:0 0 14px}
+.unit{display:flex;align-items:center;gap:10px}
+.unit input{max-width:220px;font-weight:600}
+.unit span{font-size:14px;color:var(--ink2)}
+.other{margin-top:10px;display:none}
+.other.show{display:block}
+.ferr{display:none;color:var(--err);font-size:12.5px;font-weight:600;margin-top:6px}
+.ferr.show{display:block}
+.sug{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;margin-top:10px;font-size:13px;color:var(--muted)}
+.sug .use{font:600 12.5px var(--font);color:var(--c);background:var(--tint);border:1px solid var(--c3);border-radius:999px;padding:5px 11px;cursor:pointer}
+.sug .use:hover{background:var(--tint2)}
+.sug .ex b{color:var(--ink2);font-weight:600}
+.consent{display:flex;gap:12px;align-items:flex-start;padding:14px;border:1px solid var(--line2);border-radius:10px;cursor:pointer;font-size:14.5px;line-height:1.5}
+.consent.on{border-color:var(--c);background:var(--tint)}
+.consent input{margin-top:4px;width:18px;height:18px;accent-color:var(--c);flex-shrink:0}
+
+/* tables (estate, inventory, matrix, costs, workflows, ROI tables) */
+.tblwrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;-webkit-overflow-scrolling:touch}
+table.t{width:100%;border-collapse:collapse;font-size:13.5px;min-width:560px}
+table.t th{text-align:left;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:700;padding:10px;background:var(--bg);border-bottom:1px solid var(--line);white-space:nowrap}
+table.t td{padding:8px 10px;border-top:1px solid var(--line);vertical-align:middle}
+table.t td input,table.t td select{padding:8px 9px;font-size:13.5px}
+table.t td.c{text-align:center}
+table.ptbl td input{min-width:64px}
+table.ptbl td input[data-f=name]{min-width:170px}
+table.ptbl td input[data-f=salary]{min-width:96px}
+table.t td.n{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+table.t td.v{font-weight:700;color:var(--c)}
+table.t tr.off td{opacity:.55}
+table.t .cat b{display:block;font-size:13.5px}
+table.t .cat span{font-size:12px;color:var(--muted)}
+table.t input[type=radio]{width:18px;height:18px;accent-color:var(--c)}
+.mx-cards{display:none}
+.fp-cat{border:1px solid var(--line);border-radius:12px;padding:12px;margin:0 0 10px;background:var(--surface)}
+.fp-head{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between}
+.fp-title{font-weight:600;font-size:14.5px;display:flex;align-items:center;gap:8px}
+.fp-tag{font:700 11px var(--font);color:var(--c);background:var(--tint2);border-radius:6px;padding:2px 6px}
+.fp-head select{max-width:280px;font-size:14px;padding:9px 10px}
+.fp-row{display:grid;grid-template-columns:1fr 170px 34px;gap:8px;align-items:center;margin-top:8px}
+.fp-row .nm{font-size:14px;font-weight:600}
+.fp-row input{padding:8px 10px;font-size:14px}
+.fp-x{border:1px solid var(--line);background:var(--surface);border-radius:8px;height:34px;cursor:pointer;color:var(--muted);font-size:16px}
+.fp-x:hover{color:var(--err);border-color:var(--err)}
+.fp-add{margin-top:8px;font:600 12.5px var(--font);color:var(--c);background:none;border:none;cursor:pointer;padding:4px 0}
+@media(max-width:560px){.fp-row{grid-template-columns:1fr 120px 34px}}
+.wf{border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:0 0 10px;background:var(--tint)}
+.wf h4{margin:0 0 8px;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--c)}
+.wf-g{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.wf-g .full{grid-column:1/-1}
+.wf-g label{font-size:11.5px;font-weight:600;color:var(--ink2);display:block;margin-bottom:4px}
+.wf-g input,.wf-g select{font-size:14px;padding:9px 10px}
+@media(max-width:600px){.wf-g{grid-template-columns:1fr 1fr}}
+.roi-note{font-size:13px;color:var(--cd);background:var(--tint2);border-radius:10px;padding:10px 12px;margin:0 0 14px}
+.pt-steps{list-style:none;display:flex;flex-wrap:wrap;gap:8px 20px;margin:0 0 16px;padding:0}
+.pt-steps li{display:flex;align-items:center;gap:8px;font-size:13.5px;color:var(--ink2)}
+.pt-steps b{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:var(--c);color:#fff;font-size:12px}
+.pt-setup{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:0 0 16px;padding:14px;border:1px solid var(--line);border-radius:12px;background:var(--bg)}
+.pt-setup label{font-size:12px;font-weight:600;color:var(--ink2);display:flex;flex-direction:column;gap:4px}
+.pt-setup input,.pt-setup select{font-size:14px;padding:9px 10px}
+.pt-setup small{font-weight:400;color:var(--muted);font-size:11.5px}
+.pt-setup .pt-key input{border-color:var(--c);box-shadow:0 0 0 1px var(--c3)}
+.pt-setup .req{color:var(--c);margin-left:2px}
+.pt-suf{position:relative;display:block}
+.pt-suf input{padding-right:30px!important;width:100%}
+.ptbl input[type=number],.pt-setup input[type=number]{-moz-appearance:textfield;appearance:textfield}
+.ptbl input[type=number]::-webkit-inner-spin-button,.ptbl input[type=number]::-webkit-outer-spin-button,.pt-setup input[type=number]::-webkit-inner-spin-button,.pt-setup input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
+.pt-suf i{position:absolute;right:9px;top:50%;transform:translateY(-50%);font-style:normal;font-size:11.5px;color:var(--muted);pointer-events:none}
+table.ptbl{min-width:880px;table-layout:fixed}
+table.ptbl th{text-transform:none;letter-spacing:0;font-size:12px;vertical-align:bottom;white-space:normal;padding:8px 6px}
+table.ptbl th.pt-grp{text-align:center;border-bottom:1px solid var(--line);color:var(--cd);background:var(--tint)}
+table.ptbl th.pt-sub{background:var(--tint);color:var(--ink2);font-weight:600}
+table.ptbl td input{min-width:0;width:100%}
+table.ptbl td{padding:8px 6px}
+table.ptbl col.c-role{width:auto}table.ptbl col.c-pct{width:78px}table.ptbl col.c-ppl{width:58px}table.ptbl col.c-sal{width:96px}table.ptbl col.c-min{width:80px}table.ptbl col.c-tot{width:64px}table.ptbl col.c-val{width:132px}table.ptbl col.c-del{width:32px}
+table.ptbl td.auto{background:var(--bg);color:var(--ink2)}
+table.ptbl td.v small{display:block;font-weight:400;color:var(--muted);font-size:11px}
+table.ptbl tbody tr:hover td{background:var(--tint)}
+.pt-sum{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+.pt-sum div{padding:14px 16px;border-radius:12px;background:var(--tint);display:flex;flex-direction:column;gap:4px}
+.pt-sum span{font-size:12.5px;color:var(--ink2)}
+.pt-sum b{font-size:22px;color:var(--c);font-variant-numeric:tabular-nums}
+.pt-foot{font-size:12px;color:var(--muted);margin:10px 0 0}
+.pt-glob{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:0 0 12px}
+.pt-glob label{font-size:11.5px;font-weight:600;color:var(--ink2)}
+.pt-glob input,.pt-glob select{margin-top:4px;font-size:14px;padding:9px 10px}
+@media(max-width:700px){.pt-glob{grid-template-columns:1fr 1fr}}
+.rt-total{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-top:10px;padding:12px 14px;background:var(--tint);border-radius:10px;font-size:14px;color:var(--ink2)}
+.rt-total b{font-size:18px;color:var(--c)}
+.addrow{margin-top:8px;font:600 13px var(--font);color:var(--c);background:var(--surface);border:1px dashed var(--c3);border-radius:9px;padding:8px 12px;cursor:pointer}
+.del{border:none;background:none;color:var(--muted);cursor:pointer;font-size:15px}
+.del:hover{color:var(--err)}
+.kt-stage{font:700 11px var(--font);border-radius:6px;padding:2px 7px;white-space:nowrap}
+.kt-stage.s2{background:var(--tint2);color:var(--cd)}
+.kt-stage.s3{background:var(--cd);color:#fff}
+.kt-kpi b{display:block}
+.kt-kpi span,.kt-src{font-size:12px;color:var(--muted)}
+.kt-calc{font-size:12.5px;line-height:1.7}
+.kt-calc input{width:110px;display:inline-block;padding:5px 7px!important}
+.kt-calc em{font-style:normal;color:var(--muted)}
+.pc{font-weight:700;color:var(--cd)}
+
+.nav{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:28px;padding-top:18px;border-top:1px solid var(--line)}
+.save-hint{font-size:12px;color:var(--muted);text-align:center;margin-top:10px}
+
+/* review & done */
+.done-badge{display:flex;align-items:center;gap:10px;background:var(--okT);border:1px solid #C3EEC0;color:var(--ok);border-radius:10px;padding:11px 14px;font-size:14px;font-weight:600;margin:14px 0 18px}
+.warn-box{background:var(--errT);border:1px solid #F1C4C6;color:var(--err);border-radius:10px;padding:12px 14px;font-size:14px;margin:12px 0}
+.recap{border:1px solid var(--line);border-radius:12px;overflow:hidden;margin:0 0 18px}
+.recap h3{margin:0;padding:10px 16px;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--c);background:var(--tint);border-top:1px solid var(--line)}
+.recap h3:first-child{border-top:none}
+.rr{display:grid;grid-template-columns:38% 1fr auto;gap:12px;padding:10px 16px;font-size:13.5px;border-top:1px solid var(--line);align-items:start}
+.rr:nth-child(even){background:#FBFCFD}
+.rr .rq{color:var(--ink2)}
+.rr .ra{font-weight:600;word-break:break-word}
+.rr .ra.na{color:var(--muted);font-weight:500}
+.rr button{font:600 12px var(--font);color:var(--c);background:none;border:none;cursor:pointer;padding:0}
+@media(max-width:600px){.rr{grid-template-columns:1fr auto}.rr .rq{grid-column:1/-1}}
+
+footer.foot{text-align:center;padding:18px clamp(16px,4vw,48px) 22px;font-size:12.5px;color:var(--muted);line-height:1.7}
+footer.foot a{color:var(--ink2);font-weight:600;text-decoration:none}
+footer.foot a:hover{color:var(--c);text-decoration:underline}
+
+/* ---------- MAIN landing & track pages ---------- */
+.wrap{width:100%;max-width:1160px;margin:0 auto;padding:0 clamp(16px,4vw,48px)}
+.mhero{padding:clamp(36px,7vw,84px) 0 clamp(22px,4vw,40px);text-align:center}
+.mhero .h-title{color:var(--ink);font-size:clamp(36px,6.4vw,68px)}
+.mhero .h-title em{font-style:normal;background:linear-gradient(90deg,#7B45C2,#0B7C78 55%,#0078D4);-webkit-background-clip:text;background-clip:text;color:transparent}
+.mhero .lead{margin:16px auto 0;text-align:center;font-size:17px}
+.tracks{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,2vw,24px);margin:clamp(26px,4vw,44px) 0}
+@media(max-width:940px){.tracks{grid-template-columns:1fr;max-width:560px;margin-left:auto;margin-right:auto}}
+.track{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:var(--shadow);text-decoration:none;color:var(--ink);transition:transform .2s,box-shadow .2s}
+.track:hover{transform:translateY(-4px);box-shadow:0 2px 4px rgba(11,31,58,.06),0 18px 40px rgba(11,31,58,.12)}
+.track .img{height:190px;background-size:cover;background-position:center 30%;position:relative}
+.track .img .lbl2{position:absolute;left:16px;bottom:14px;background:rgba(255,255,255,.92);border-radius:999px;padding:5px 11px;font:700 11.5px var(--font);letter-spacing:.08em;text-transform:uppercase}
+.track .bd{padding:20px 22px 22px;display:flex;flex-direction:column;flex:1}
+.track h2{font-family:var(--font-d);font-size:26px;font-weight:600;margin:0 0 4px;letter-spacing:-.01em}
+.track .for{font-size:13px;font-weight:600;margin:0 0 10px}
+.track p{font-size:14.5px;line-height:1.55;color:var(--ink2);margin:0 0 14px}
+.track ul{list-style:none;margin:0 0 18px;padding:0;font-size:13.5px;color:var(--ink2)}
+.track li{display:flex;gap:8px;padding:5px 0;border-top:1px dashed var(--line)}
+.track li:first-child{border-top:none}
+.track li b{color:var(--ink);font-weight:600}
+.track .go{margin-top:auto;display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:15px;color:#fff;border-radius:10px;padding:11px 18px;align-self:flex-start}
+.tr-f .for,.tr-f .lbl2{color:#7B45C2}.tr-f .go{background:#7B45C2}.tr-f:hover .go{background:#3B1366}
+.tr-c .for,.tr-c .lbl2{color:#0B7C78}.tr-c .go{background:#0B7C78}.tr-c:hover .go{background:#073B3F}
+.tr-s .for,.tr-s .lbl2{color:#0078D4}.tr-s .go{background:#0078D4}.tr-s:hover .go{background:#033870}
+.how{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:0 0 clamp(24px,4vw,40px)}
+@media(max-width:760px){.how{grid-template-columns:1fr}}
+.how div{background:rgba(255,255,255,.7);border:1px solid var(--line);border-radius:16px;padding:18px 18px 16px}
+.how .n{width:30px;height:30px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-weight:700;font-size:13px;margin-bottom:10px}
+.how b{display:block;font-size:15.5px;margin-bottom:4px}
+.how span{font-size:13.5px;color:var(--ink2);line-height:1.5}
+.sect-h{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:700;text-align:center;margin:0 0 14px}
+.banner{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 18px;font-size:14px;line-height:1.6;color:var(--ink2);margin:0 0 clamp(26px,4vw,44px)}
+.banner b{color:var(--ink)}
+.qcards{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:0 0 18px}
+@media(max-width:700px){.qcards{grid-template-columns:1fr}}
+.qcard{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px 22px;box-shadow:var(--shadow);display:flex;flex-direction:column}
+.qcard .hd{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 0 10px}
+.qcard .tg{font:700 11.5px var(--font);letter-spacing:.08em;text-transform:uppercase;color:var(--c);background:var(--tint2);border-radius:999px;padding:4px 10px}
+.qcard .mt{font-size:12.5px;color:var(--muted)}
+.qcard h3{font-family:var(--font-d);font-size:22px;font-weight:600;margin:0 0 6px}
+.qcard p{font-size:14px;color:var(--ink2);line-height:1.55;margin:0 0 12px}
+.qcard .chips{margin-bottom:16px}
+.qcard .btn{margin-top:auto;align-self:flex-start}
+
+/* terms */
+.doc{max-width:860px;margin:0 auto;padding:clamp(24px,5vw,56px) clamp(16px,4vw,32px)}
+.doc h1{font-family:var(--font-d);font-size:clamp(30px,4.6vw,44px);font-weight:600;margin:0 0 10px;letter-spacing:-.01em}
+.doc .lead{max-width:none}
+.doc .vmeta{font-size:13px;color:var(--muted);margin:0 0 22px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 22px;margin:0 0 12px}
+.card h2{font-size:17px;margin:0 0 8px}
+.card p,.card li{font-size:14.5px;line-height:1.65;color:var(--ink2)}
+.card p{margin:0 0 8px}
+.card p:last-child{margin-bottom:0}
+.card ul{margin:0;padding-left:20px}
+.card.sum{border-left:4px solid var(--c);background:linear-gradient(0deg,var(--surface),var(--surface)),var(--tint)}
+.toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:var(--ink);color:#fff;border-radius:10px;padding:10px 16px;font-size:14px;display:none;z-index:50;max-width:90vw}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+@media print{.topbar,.nav,.dots,.secnav,footer.foot{display:none}.stage{box-shadow:none;border:none}}
+
+</style>
+<style>.homebtn{display:inline-flex;align-items:center;gap:7px;font-size:13.5px;font-weight:600;color:var(--ink);text-decoration:none;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:7px 14px 7px 12px}.homebtn:hover{border-color:var(--line2)}@media(max-width:560px){.homebtn span{display:none}.homebtn{padding:8px}}</style>
+<style>.pglow{position:absolute;left:0;right:0;top:0;height:720px;z-index:-1;pointer-events:none;overflow:hidden;-webkit-mask-image:linear-gradient(#000 40%,transparent);mask-image:linear-gradient(#000 40%,transparent)}.pglow span{position:absolute;width:46%;height:460px;border-radius:50%;filter:blur(80px);opacity:.17}</style>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;600&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet">
+<style id="maia-base">.wrap{width:100%;max-width:1440px;margin:0 auto;padding:0 64px;box-sizing:border-box}@media(max-width:960px){.wrap{padding:0 24px}}@media(max-width:640px){.wrap{padding:0 16px}.hide-s{display:none!important}}
+header.wrap h1,header.wrap p,footer.wrap p{margin:0}footer.wrap a{color:inherit;text-underline-offset:.16em}footer.wrap{font-family:'IBM Plex Sans',system-ui,sans-serif}
+.eb{font:500 13px/1.3 'JetBrains Mono',ui-monospace,monospace;letter-spacing:.02em;text-transform:uppercase;color:oklch(48% .15 256)}
+[hidden]{display:none!important}</style>
+<style id="maia-theme">
+:root{--ink:oklch(21% .028 262);--ink2:oklch(36% .022 260);--muted:oklch(50% .018 258);--line:oklch(90% .009 252);--line2:oklch(83% .012 252);--surface:#fff;--radius:8px;--shadow:0 1px 2px oklch(21% .028 262/.06);
+ --font:'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',sans-serif;--font-d:'Familjen Grotesk',system-ui,'Segoe UI',sans-serif;--acc:oklch(48% .15 256);--accw:oklch(95% .028 256)}
+body.t-frontier,body.t-copilot,body.t-security,body.t-main{--bg:oklch(98.6% .005 250);--glow1:transparent;--glow2:transparent;background:var(--bg)!important;background-image:none!important;-webkit-font-smoothing:antialiased;font-family:var(--font)}
+body.t-frontier{--c:#7B45C2;--cd:#3B1366;--c2:#9B6BDA;--c3:#DCCBF4;--tint:oklch(97.5% .012 292);--tint2:oklch(95% .025 292)}
+body.t-copilot{--c:#0B7C78;--cd:#073B3F;--c2:#1F9A90;--c3:#A8DDD6;--tint:oklch(97.5% .012 190);--tint2:oklch(95.5% .025 190)}
+body.t-security{--c:#0078D4;--cd:#033870;--c2:#3A96DD;--c3:#C5E1F7;--tint:oklch(97.5% .014 256);--tint2:oklch(95% .028 256)}
+body.t-main{--c:oklch(48% .15 256);--cd:oklch(36% .13 260);--c2:oklch(55% .14 256);--c3:oklch(85% .05 256);--tint:oklch(97.5% .014 256);--tint2:oklch(95% .028 256)}
+.accent,.pglow,.backdrop{display:none!important}
+h1,h2,h3,.h-title,.q-title,.welcome{font-family:var(--font-d);letter-spacing:-.028em;font-weight:600}
+main.hero{background:var(--tint);border-bottom:1px solid var(--line)}
+.h-title{color:var(--ink)}.h-title span{color:var(--ink2)}
+.eyebrow,.q-eyebrow,.tg,.opt-tag,.blk-t,.recap h3,.pill,.prog-l,.rt-total{font-family:'JetBrains Mono',ui-monospace,monospace!important;font-weight:500!important;letter-spacing:.02em!important}
+.eyebrow,.q-eyebrow,.tg,.blk-t,.recap h3{text-transform:uppercase;color:var(--c)!important}
+.btn{border-radius:6px!important;font-family:var(--font-d)!important;font-weight:500!important;transition:transform .12s!important}
+.btn-p{background:var(--acc)!important;border-color:oklch(36% .13 260)!important;color:#fff!important;box-shadow:0 3px 0 0 oklch(36% .13 260),0 6px 8px -4px oklch(30% .12 260/.45),inset 0 1px 0 oklch(100% 0 0/.22)}
+.btn-p:hover{transform:translateY(-1px)}.btn-p:active{transform:translateY(3px);box-shadow:inset 0 1px 2px oklch(21% .028 262/.14)}
+.btn-o{background:oklch(99.4% .003 250)!important;color:var(--ink)!important;border-color:var(--line2)!important;box-shadow:0 3px 0 0 oklch(80% .016 254),0 6px 8px -4px oklch(21% .028 262/.28),inset 0 1px 0 #fff}.btn-o:hover{transform:translateY(-1px)}
+.stage,.qcard{border-radius:16px 4px 16px 4px!important;box-shadow:0 1px 2px oklch(21% .028 262/.06)!important;border:1px solid var(--line)!important}
+.cover{max-width:300px!important}.cover img{border-radius:16px 4px 16px 4px!important;box-shadow:none!important;border:1px solid var(--line);opacity:.92}.cover .tag{border-radius:8px 2px!important;box-shadow:0 1px 2px oklch(21% .028 262/.06)!important}
+.opt,.consent,input,select,textarea,.resume,.note,.roi-note,.warn-box,.done-badge,.rt-total,.wf,.fp-cat,.tblwrap,.recap{border-radius:6px!important}
+.note{border-left-width:1px!important;border-left-color:var(--line)!important}
+.opt.on,.consent.on{border-color:var(--acc)!important;background:var(--accw)!important;box-shadow:0 0 0 1px var(--acc)}.opt.on .ck{border-color:var(--acc)!important;background:var(--acc)!important}.opt:hover{border-color:var(--acc)!important}
+input:focus,select:focus,textarea:focus{border-color:var(--acc)!important;box-shadow:0 0 0 3px var(--accw)!important}
+.chip{font-family:'JetBrains Mono',ui-monospace,monospace;font-weight:500;text-transform:uppercase;font-size:12px!important;border-radius:4px!important;background:var(--tint2)!important;border:0!important;color:var(--ink)!important}
+.dots button.cur,.secnav button.cur{background:var(--ink)!important;border-color:var(--ink)!important;color:#fff!important}
+.bar i{background:var(--c)!important}
+table.t th{border-bottom:1px solid var(--line)!important;font-family:'JetBrains Mono',ui-monospace,monospace}table.t td{border-top:1px solid var(--line)!important}table.t tbody tr:first-child td{border-top:0!important}
+.company-strip{background:var(--tint2)}.badge{border-radius:8px 2px!important}
+:focus-visible{outline:2px solid var(--acc)!important;outline-offset:2px}
+@media(max-width:640px){.hide-s{display:none!important}}@media(max-width:480px){.hide-xs{display:none!important}}
+#nominate>.band:first-child{padding-top:clamp(28px,3.5vw,48px)!important}
+
+#landing{display:none!important}
+.shell{padding:40px clamp(16px,4vw,48px)!important}.stage{max-width:880px!important;background:#fff!important;padding:clamp(20px,3vw,40px)!important}
+#qband-prog .prog{margin:0!important}#qband-prog .bar{background:#fff!important}#qband-prog .dots,#qband-prog .secnav{margin:0!important}
+.dots button,.secnav button{font-family:'IBM Plex Sans',sans-serif!important;background:#fff}
+.btn-g{background:oklch(99.4% .003 250)!important;color:var(--ink)!important;border:1px solid var(--line2)!important;padding:12px 16px!important;box-shadow:0 3px 0 0 oklch(80% .016 254),0 6px 8px -4px oklch(21% .028 262/.28),inset 0 1px 0 #fff}.btn-g:disabled{visibility:hidden}
+.q .ql,.q-title{font-family:var(--font-d)!important;letter-spacing:-.01em}
+.company-strip{max-width:none}
+</style>
+</head>
+<body class="t-copilot">
+<header class="wrap" style="max-width:none;display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:72px;border-bottom:1px solid oklch(90% .009 252);background:oklch(98.6% .005 250);position:relative;z-index:10">
+<a href="index.html#home" data-keep style="display:inline-flex;align-items:center;gap:12px;text-decoration:none;color:oklch(21% .028 262);min-width:0"><span aria-hidden="true" style="height:32px;padding:0 10px;display:grid;place-items:center;flex-shrink:0;border-radius:8px 2px;background:oklch(21% .028 262);color:oklch(98.6% .005 250);font:600 14px/1 'Familjen Grotesk',system-ui,sans-serif;letter-spacing:.02em">MAIA</span><span style="font:600 20px/1.1 'Familjen Grotesk',system-ui,sans-serif;letter-spacing:-.01em;white-space:nowrap">Microsoft AI Accelerator</span></a>
+<nav aria-label="Site" style="display:flex;align-items:center;gap:28px"><a href="about.html" data-keep class="hide-s" style="font:500 15px/1 'Familjen Grotesk',system-ui,sans-serif;text-decoration:none;color:oklch(36% .022 260);">About</a><a href="nominate.html" data-keep class="hide-s" style="font:500 15px/1 'Familjen Grotesk',system-ui,sans-serif;text-decoration:none;color:oklch(36% .022 260);">Nominate</a><a href="questionnaires.html" data-keep class="hide-s" style="font:500 15px/1 'Familjen Grotesk',system-ui,sans-serif;text-decoration:none;color:oklch(21% .028 262);text-decoration:underline;text-decoration-color:oklch(48% .15 256);text-underline-offset:6px;">Questionnaires</a></nav>
+</header><section style="background:oklch(95.5% .025 190);border-bottom:1px solid oklch(90% .009 252)"><div style="max-width:880px;margin:0 auto;padding:28px clamp(16px,4vw,24px) 28px;display:grid;gap:10px">
+<a href="copilot.html" data-keep style="font-size:14px;color:oklch(36% .022 260);text-decoration:none">← Copilot questionnaire</a>
+<div style="display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 24px"><h1 style="margin:0;font:600 clamp(26px,1.6vw + 16px,40px)/1.05 'Familjen Grotesk',system-ui,sans-serif;letter-spacing:-.028em;color:oklch(21% .028 262)">Copilot · Value Evaluation questionnaire</h1><p style="margin:0;font:500 13px/1.3 'JetBrains Mono',ui-monospace,monospace;letter-spacing:.02em;text-transform:uppercase;color:#0B7C78">About 25–35 minutes · saves as you go</p></div>
+<div id="qband-prog" style="display:grid;gap:10px"></div>
+</div></section>
+<div class="company-strip" id="companyStrip"><div class="badge" id="companyBadge"></div><span>Preparing the Copilot Value Evaluation for <strong id="companyStripName"></strong></span></div>
+
+<main class="hero" id="landing">
+  <div class="hero-in">
+    <div>
+      <p class="eyebrow">Microsoft AI Accelerator · Copilot</p>
+      <h1 class="h-title">Copilot<span>Value Evaluation questionnaire</span></h1>
+      <p class="h-sub">How ready are you to capture the value of Copilot?</p>
+      <p class="lead">One questionnaire for the person leading AI transformation. Everyday use, work handed to Copilot Cowork and agents, and how Copilot spend is managed: your answers become one Value Score, three pillars and a 90-day plan, built on your ROI Insights report.</p>
+      <div class="meta"><span><strong>About 25–35 minutes</strong></span><span><strong>23 questions</strong></span><span>Optional ROI check, about 10 minutes</span><span>Saves as you go</span></div>
+      <div class="chips"><span class="chip">Everyday AI</span><span class="chip">Advanced AI</span><span class="chip">AI FinOps</span><span class="chip">Measuring value</span></div>
+      <p class="note"><b>One person, one questionnaire.</b> Best answered by whoever leads AI transformation, with the Copilot Dashboard to hand. Where you’re not sure, say so: it is never scored against you.</p>
+      <div class="resume" id="resumeBox"><b>Welcome back.</b> Your answers are saved in this browser<span id="resumeWhen"></span>.
+        <div class="btn-row"><button type="button" class="btn btn-p" id="resumeBtn">Continue where I left off →</button><button type="button" class="btn btn-o" id="restartBtn">Start again</button></div></div>
+      <div class="btn-row"><button type="button" class="btn btn-p" id="startBtn">Start questionnaire →</button></div>
+      <p class="terms-note">Answering is voluntary. By submitting, you agree to our <a href="terms.html" target="_blank" rel="noopener">Terms of Use &amp; Privacy Statement</a>, including Microsoft’s access to your completed report.</p>
+    </div>
+    <div class="cover"><img src="data:image/webp;base64,UklGRnJlAABXRUJQVlA4WAoAAAAQAAAAWwMA0gMAQUxQSA8EAAABylHatgGT/v/4YkURkRTkgG7NSI5s26qt7HPvdyByJ6ULTu6auUPstIAicnfoBEUDLHV3d9cn957k+89YyFr7RIQjt20kyaoN6KBvs88DIhBB/v+HJCKCPSdkIo2cOG2mn4k1/dbHxWkzfaKRgZlofU+jkeTq/XuKCAPo+1e3f0j2cUKW29Bx2x7ejZJq7gC4RHeXpPRw27ihlvdlQWgwcsPNKKmsihhYOn8M3txgZAp9lEQOWH1RKsqCggNkWUi+eoAx9cl9ZK1zXkZVCsECVqSXqdUyhV6OSG49F1XWBQ0SpXNbjcx6NTkHznoaVRFAoOSzkuW9WWbDrkQVdUGEROnKMOu1qkAbdSvWSsEEum4lC70zspwnogpBBUonzLPe+cb/eCwpsEAqGRt6YS57F+sCDEnv2OPRxIURM1NKEq2ph3N5rBYRNLAal/doNHBxLAUcqMWWejCXdjgD55i6PdyXxxp0domu5bl3d6vEQuCBqnT7D1ZHftUjfEi/jjAL3ShqPt3+jJ+jN3ddk3MkhqZEuXVVk3HolQqKUrmSLOu8yAdfi3WBiKRrg52d7poXa4IRLmbqdLG3RYmjsHhrnS0NXP/TI5DwtJ4dbxjS8IvCUnSRqcMx5QtUEZSgPG+/BdrLIoIJvrTQbnOujniKVpuTZOOAG2UdTUm84Y1GNtqa+q8IJ1J9DRstZGMvlQWewtLHZkE2IgJqStQIy4JtLzAVugXmH1G1fPRAu4mq3LRg677XSkSF/j0ZT8ZqhBTVeJLcgaskTv1ULzEVpk9TZ0YXqHCRJa7CmeORtaSzKlAVygUt6n9pTem///Hff//9999///3333///ffff//9999///3333///ffff//9999///3333///ffff//9999///3333///ffff//9999///3333///ffff//9999///3333///ffff//9999///3333///ffff//9999///3333///ffff//9999///3333///ffff//9999///3333///ffff//9999///3333///ffff//9999///3333///ffff//9999///3333///ffff//9999///3333///ffff//9999///3333///ffff//9B2zSX1pTwlZfno6t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" alt="" width="860" height="979"><div class="tag"><b>One Value Score</b>Three pillars and a 90-day plan</div></div>
+  </div>
+</main>
+
+<div class="shell" id="formShell">
+  <div class="stage">
+    <div class="prog" id="prog"><div class="bar"><i id="barFill"></i></div><div class="prog-l" id="progLabel"></div></div>
+    <div id="dots" class="dots"></div>
+    <div id="stepHost" aria-live="polite"></div>
+    <div class="nav" id="navRow"><button type="button" class="btn btn-g" id="backBtn">← Back</button><button type="button" class="btn btn-p" id="nextBtn">Continue →</button></div>
+    <div class="save-hint" id="saveHint">Your answers are saved in this browser as you go, so you can come back later.</div>
+  </div>
+</div>
+<footer class="wrap" style="padding-top:96px;padding-bottom:64px">
+<p style="font:600 clamp(32px,3.4vw,56px)/1 'Familjen Grotesk',system-ui,sans-serif;letter-spacing:-.028em;margin:0 0 40px">Microsoft AI Accelerator</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px 32px;padding-top:24px;border-top:1px solid oklch(90% .009 252);font-size:14px;color:oklch(50% .018 258)">
+<p>Delivered by SCC in partnership with Microsoft</p>
+<p><a href="terms.html" data-keep style="color:oklch(36% .022 260);font-weight:500">Terms of Use &amp; Privacy Statement</a></p>
+<p>Questions? <a href="mailto:hello@sourcecodecontrol.com" style="color:oklch(36% .022 260);font-weight:500">hello@sourcecodecontrol.com</a></p>
+</div>
+</footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+/* Power Automate HTTP trigger for this questionnaire. Leave empty to skip the upload: answers are then downloaded as a file. */
+const POWER_AUTOMATE_URL = 'https://default68487dbf91104a20b18f5edea26151.c3.environment.api.powerplatform.com:443/powerautomate/automations/direct/cu/25/workflows/69d4634e84b94766bfe68a1a138021fb/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=m8mze9AFD20nwKX23ExnpnpYKY72afRuCLNVAIBpQ0c';
+/* set by the questionnaire-links page when it creates a project copy */
+const EMBEDDED_PROJECT_ID = "";
+</script>
+<script>
+/* Table widgets for the questionnaire engine. Each: html(q,A,H) · mount(q,A,H,changed) · valid(q,A,H) · recap(q,A,H) · wide */
+window.MAIN_WIDGETS = (function () {
+  const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const W = {};
+
+  /* ---- Frontier executive: tools paid for separately, by category (mirrors ROI Insights footprint) ---- */
+  const OTHER_V = '__other__';
+  W.costs = {
+    wide: true,
+    html(q, A) {
+      const cur = A.costCurrency || q.currencies[0].v;
+      return `<div class="field" style="max-width:220px"><label class="lbl" for="costCurrency">Currency</label><select id="costCurrency">${q.currencies.map(c => `<option value="${esc(c.v)}" data-symbol="${esc(c.s)}" ${c.v === cur ? 'selected' : ''}>${esc(c.l)}</option>`).join('')}</select></div><div id="fpCategories"></div>`;
+    },
+    mount(q, A, H, changed) {
+      if (!A.costCurrency) A.costCurrency = q.currencies[0].v;
+      if (!Array.isArray(A.vendorTools)) A.vendorTools = [];
+      const hostEl = document.getElementById('fpCategories');
+      const sym = () => { const c = q.currencies.find(x => x.v === A.costCurrency); return c && c.s ? c.s : ''; };
+      const ph = () => sym() ? `~${sym()}_____ /yr` : '~_____ /yr';
+      function draw() {
+        hostEl.innerHTML = q.categories.map((cat, ci) => {
+          const rows = A.vendorTools.map((r, ri) => ({ r, ri })).filter(x => x.r.category === cat.title);
+          const used = new Set(rows.map(x => x.r.vendor));
+          return `<div class="fp-cat" data-ci="${ci}"><div class="fp-head"><span class="fp-title"><span class="fp-tag">${esc(cat.tag)}</span>${esc(cat.title)}</span>
+            <select data-fpsel="${ci}" aria-label="Add a ${esc(cat.title)} tool"><option value="">${cat.vendors.length ? 'Select a tool…' : 'Add a tool…'}</option>${cat.vendors.map(v => `<option value="${esc(v)}" ${used.has(v) ? 'disabled' : ''}>${esc(v)}</option>`).join('')}<option value="${OTHER_V}">Other…</option></select></div>
+            ${rows.map(x => `<div class="fp-row">${x.r.vendor === OTHER_V ? `<input type="text" data-fpname="${x.ri}" value="${esc(x.r.name || '')}" placeholder="Tool name" aria-label="Tool name">` : `<span class="nm">${esc(x.r.vendor)}</span>`}
+              <input type="text" inputmode="decimal" data-fpcost="${x.ri}" value="${esc(x.r.cost || '')}" placeholder="${esc(ph())}" aria-label="Annual cost"><button type="button" class="fp-x" data-fpdel="${x.ri}" title="Remove" aria-label="Remove">×</button></div>`).join('')}
+            <button type="button" class="fp-add" data-fpman="${ci}">+ Add a tool manually</button></div>`;
+        }).join('');
+      }
+      draw();
+      const cs = document.getElementById('costCurrency');
+      cs.addEventListener('change', () => { A.costCurrency = cs.value; changed(); draw(); });
+      hostEl.addEventListener('change', e => {
+        const s = e.target.closest('[data-fpsel]'); if (!s || !s.value) return;
+        const cat = q.categories[+s.dataset.fpsel];
+        A.vendorTools.push({ category: cat.title, vendor: s.value, name: '', cost: '' }); changed(); draw();
+        const inputs = hostEl.querySelectorAll(`[data-ci="${s.dataset.fpsel}"] .fp-row input`); const last = inputs[inputs.length - 1]; last && last.focus();
+      });
+      hostEl.addEventListener('input', e => {
+        const t = e.target;
+        if (t.dataset.fpcost != null) { A.vendorTools[+t.dataset.fpcost].cost = t.value; changed(); }
+        if (t.dataset.fpname != null) { A.vendorTools[+t.dataset.fpname].name = t.value; changed(); }
+      });
+      hostEl.addEventListener('click', e => {
+        const d = e.target.closest('[data-fpdel]'), m = e.target.closest('[data-fpman]');
+        if (d) { A.vendorTools.splice(+d.dataset.fpdel, 1); changed(); draw(); }
+        if (m) { const cat = q.categories[+m.dataset.fpman]; A.vendorTools.push({ category: cat.title, vendor: OTHER_V, name: '', cost: '' }); changed(); draw(); const n = hostEl.querySelectorAll(`[data-ci="${m.dataset.fpman}"] [data-fpname]`); n.length && n[n.length - 1].focus(); }
+      });
+    },
+    valid: () => true,
+    recap(q, A) {
+      const t = (A.vendorTools || []).filter(r => (r.vendor === OTHER_V ? r.name : r.vendor) || r.cost);
+      if (!t.length) return 'None provided';
+      return t.map(r => (r.vendor === OTHER_V ? (r.name || 'Unnamed tool') : r.vendor) + (r.cost ? ' (' + r.cost + ')' : '')).join(', ') + (A.costCurrency ? ' · ' + A.costCurrency : '');
+    }
+  };
+
+  /* ---- Frontier technical: agent inventory (T24) ---- */
+  W.inventory = {
+    wide: true,
+    html(q, A) {
+      return `<div class="tblwrap"><table class="t"><thead><tr><th>#</th>${q.fields.map(f => `<th>${esc(f.l)}</th>`).join('')}</tr></thead><tbody>` +
+        Array.from({ length: q.rows }, (_, i) => `<tr><td class="c">${i + 1}</td>${q.fields.map(f => { const k = `${q.prefix}_${f.k}_${i + 1}`; return `<td><input type="text" data-inv="${k}" value="${esc(A[k] || '')}" placeholder="${esc(f.ph || '')}" aria-label="${esc(f.l)} ${i + 1}"></td>`; }).join('')}</tr>`).join('') +
+        `</tbody></table></div><p class="limit">List at least one agent. Complete every column for each agent you list.</p>`;
+    },
+    mount(q, A, H, changed) { document.querySelectorAll('[data-inv]').forEach(i => i.addEventListener('input', () => { A[i.dataset.inv] = i.value; changed(); })); },
+    rows(q, A) {
+      const out = [];
+      for (let i = 1; i <= q.rows; i++) {
+        const g = f => String(A[`${q.prefix}_${f}_${i}`] || '').trim();
+        const r = { namePurpose: g('agent_name'), owner: g('owner'), dataScope: g('data_scope'), lastReviewed: g('last_reviewed') };
+        if (r.namePurpose || r.owner || r.dataScope || r.lastReviewed) out.push(r);
+      }
+      return out;
+    },
+    valid(q, A) { const r = W.inventory.rows(q, A); return r.length > 0 && r.every(x => x.namePurpose && x.owner && x.dataScope && x.lastReviewed); },
+    recap(q, A) { const r = W.inventory.rows(q, A); return r.length ? r.map(x => `${x.namePurpose} (owner ${x.owner}, ${x.dataScope}, reviewed ${x.lastReviewed})`).join('; ') : ''; }
+  };
+
+  /* ---- Frontier technical: data readiness matrix (T26) ---- */
+  W.matrix = {
+    wide: true,
+    html(q, A) {
+      return `<div class="tblwrap"><table class="t"><thead><tr><th>${esc(q.rowHead || '')}</th>${q.cols.map(c => `<th style="text-align:center">${esc(c)}</th>`).join('')}</tr></thead><tbody>` +
+        q.rows.map(r => `<tr><td><b>${esc(r.l)}</b></td>${q.cols.map(c => `<td class="c"><input type="radio" name="${esc(r.k)}" data-mx="${esc(r.k)}" value="${esc(c)}" ${A[r.k] === c ? 'checked' : ''} aria-label="${esc(r.l)}: ${esc(c)}"></td>`).join('')}</tr>`).join('') +
+        `</tbody></table></div><p class="limit">One answer per row.</p>`;
+    },
+    mount(q, A, H, changed) { document.querySelectorAll('[data-mx]').forEach(i => i.addEventListener('change', () => { A[i.dataset.mx] = i.value; changed(); })); },
+    valid: (q, A) => q.rows.every(r => !!A[r.k]),
+    recap: (q, A) => q.rows.filter(r => A[r.k]).map(r => `${r.l}: ${A[r.k]}`).join('; ')
+  };
+
+  /* ---- Security technical: third-party tool estate (S5) ---- */
+  W.estate = {
+    wide: true,
+    html(q, A) {
+      const sel = (k, opts) => `<select data-est="${k}" aria-label="${k}">${[''].concat(opts).map(o => `<option value="${esc(o)}" ${(A[k] || '') === o ? 'selected' : ''}>${o ? esc(o) : '—'}</option>`).join('')}</select>`;
+      return `<div class="tblwrap"><table class="t" style="min-width:780px"><thead><tr><th style="width:24%">Capability</th><th style="width:26%">Product you use</th><th>Annual spend</th><th>Renews in next 12 months?</th><th>Open to replacing?</th></tr></thead><tbody>` +
+        q.rows.map(r => { const k = 'S5_' + r.key + '_'; return `<tr><td class="cat"><b>${esc(r.capability)}</b><span>Microsoft: ${esc(r.ms)}</span></td>
+          <td><input type="text" data-est="${k}Product" value="${esc(A[k + 'Product'] || '')}" placeholder="${esc(r.suggest ? 'e.g. ' + r.suggest : 'product name')}" aria-label="${esc(r.capability)} product"></td>
+          <td>${sel(k + 'SpendBand', q.bands)}</td><td>${sel(k + 'Renew12', ['Yes', 'No', 'Not sure'])}</td><td>${sel(k + 'Replace', ['Yes', 'Maybe', 'No'])}</td></tr>`; }).join('') +
+        `</tbody></table></div>`;
+    },
+    mount(q, A, H, changed) { document.querySelectorAll('[data-est]').forEach(i => i.addEventListener(i.tagName === 'SELECT' ? 'change' : 'input', () => { A[i.dataset.est] = i.value; changed(); })); },
+    valid: () => true,
+    recap(q, A) { const u = q.rows.filter(r => A['S5_' + r.key + '_Product']); return u.length ? u.map(r => A['S5_' + r.key + '_Product'] + (A['S5_' + r.key + '_SpendBand'] ? ' (' + A['S5_' + r.key + '_SpendBand'] + ')' : '')).join(', ') : 'None listed'; }
+  };
+
+  /* ---- Copilot: workflows to hand over ---- */
+  W.workflows = {
+    wide: false,
+    html(q, A) {
+      const rows = Array.isArray(A[q.id]) ? A[q.id] : [];
+      const ph = ['e.g. Month-end close pack', 'e.g. Case follow-up emails', 'e.g. RFP first drafts'];
+      return Array.from({ length: 3 }, (_, i) => { const r = rows[i] || {}; return `<div class="wf"><h4>Workflow ${i + 1}</h4><div class="wf-g">
+        <div class="full"><label>Workflow</label><input type="text" data-wf="${i}" data-f="name" value="${esc(r.name || '')}" placeholder="${ph[i]}"></div>
+        <div><label>Team</label><select data-wf="${i}" data-f="team"><option value="">Choose…</option>${q.teams.map(t => `<option ${r.team === t ? 'selected' : ''}>${esc(t)}</option>`).join('')}</select></div>
+        <div><label>Times a month</label><input type="number" min="0" data-wf="${i}" data-f="runs" value="${esc(r.runs == null ? '' : r.runs)}" placeholder="e.g. 40"></div>
+        <div><label>Minutes each time today</label><input type="number" min="0" data-wf="${i}" data-f="minutes" value="${esc(r.minutes == null ? '' : r.minutes)}" placeholder="e.g. 90"></div>
+        <div class="full"><label>How much of it could Copilot or an agent take over?</label><select data-wf="${i}" data-f="share"><option value="">Choose…</option>${[['25', 'About a quarter'], ['50', 'About half'], ['75', 'Most of it'], ['100', 'All of it, end to end']].map(o => `<option value="${o[0]}" ${String(r.share) === o[0] ? 'selected' : ''}>${o[1]}</option>`).join('')}</select></div>
+      </div></div>`; }).join('');
+    },
+    mount(q, A, H, changed) {
+      document.querySelectorAll('[data-wf]').forEach(el => el.addEventListener(el.tagName === 'SELECT' ? 'change' : 'input', () => {
+        const rows = Array.isArray(A[q.id]) ? A[q.id] : []; const i = +el.dataset.wf; rows[i] = rows[i] || {};
+        rows[i][el.dataset.f] = ['runs', 'minutes', 'share'].includes(el.dataset.f) ? (el.value === '' ? '' : Number(el.value)) : el.value;
+        A[q.id] = rows; changed();
+      }));
+    },
+    list(q, A) { return (Array.isArray(A[q.id]) ? A[q.id] : []).filter(r => r && String(r.name || '').trim()).map(r => ({ name: String(r.name).trim(), team: r.team || '', runs: Number(r.runs) || 0, minutes: Number(r.minutes) || 0, share: r.share === '' || r.share == null ? '' : Number(r.share) })); },
+    valid: (q, A) => W.workflows.list(q, A).length > 0,
+    recap: (q, A) => W.workflows.list(q, A).map(w => `${w.name} (${w.team || 'team not set'}, ${w.runs} a month, ${w.minutes} min${w.share !== '' ? ', ' + w.share + '% could be handed over' : ''})`).join('; ')
+  };
+
+  /* ---- Copilot: ROI Insights Stage 1 table (same formula as the ROI Insights tool) ---- */
+  /* Full currency list (ISO 4217). 'Other' lets the customer type their own currency code. */
+  const CURRENCIES = [['USD','$','US dollar'],['EUR','€','Euro'],['GBP','£','British pound'],['CAD','C$','Canadian dollar'],['AUD','A$','Australian dollar'],['NZD','NZ$','New Zealand dollar'],['CHF','CHF ','Swiss franc'],['SEK','kr ','Swedish krona'],['NOK','kr ','Norwegian krone'],['DKK','kr ','Danish krone'],['PLN','zł ','Polish złoty'],['CZK','Kč ','Czech koruna'],['HUF','Ft ','Hungarian forint'],['RON','lei ','Romanian leu'],['BGN','лв ','Bulgarian lev'],['TRY','₺','Turkish lira'],['ILS','₪','Israeli shekel'],['AED','AED ','UAE dirham'],['SAR','SAR ','Saudi riyal'],['QAR','QAR ','Qatari riyal'],['KWD','KWD ','Kuwaiti dinar'],['BHD','BHD ','Bahraini dinar'],['OMR','OMR ','Omani rial'],['EGP','E£','Egyptian pound'],['MAD','MAD ','Moroccan dirham'],['TND','TND ','Tunisian dinar'],['DZD','DZD ','Algerian dinar'],['ZAR','R','South African rand'],['NGN','₦','Nigerian naira'],['KES','KSh ','Kenyan shilling'],['GHS','GH₵','Ghanaian cedi'],['INR','₹','Indian rupee'],['PKR','Rs ','Pakistani rupee'],['JPY','¥','Japanese yen'],['CNY','CN¥','Chinese yuan'],['HKD','HK$','Hong Kong dollar'],['SGD','S$','Singapore dollar'],['KRW','₩','South Korean won'],['TWD','NT$','New Taiwan dollar'],['THB','฿','Thai baht'],['MYR','RM ','Malaysian ringgit'],['IDR','Rp ','Indonesian rupiah'],['PHP','₱','Philippine peso'],['VND','₫','Vietnamese dong'],['MXN','MX$','Mexican peso'],['BRL','R$','Brazilian real'],['ARS','AR$','Argentine peso'],['CLP','CL$','Chilean peso'],['COP','CO$','Colombian peso'],['PEN','S/ ','Peruvian sol']];
+  const CUR = Object.fromEntries(CURRENCIES.map(c => [c[0], c[1]]));
+  const num = v => Number(v) || 0;
+  function ptState(q, A) { if (!A.pt) A.pt = { currency: 'USD', currencyOther: '', users: '', salary: 85000, pct: 50, roles: JSON.parse(JSON.stringify(q.roles)) }; return A.pt; }
+  const curCode = P => P.currency === 'Other' ? (String(P.currencyOther || '').trim().toUpperCase() || 'Other') : P.currency;
+  const curSym = P => { if (!P) return '$'; if (P.currency === 'Other') { const o = String(P.currencyOther || '').trim().toUpperCase(); return o ? o + ' ' : ''; } return CUR[P.currency] != null ? CUR[P.currency] : '$'; };
+  const money = (A, v) => curSym(A.pt) + Math.round(v || 0).toLocaleString('en-US');
+  /* Time saved is entered in minutes per day and stored in hours (same unit as the ROI Insights tool). */
+  const MIN_F = ['meetMin', 'searchMin', 'createMin'];
+  const toMin = h => Math.round(num(h) * 60 * 10) / 10;
+  function ptCalc(P, r) { const users = num(P.users) * num(r.pctUsers) / 100, daily = num(r.meetMin) + num(r.searchMin) + num(r.createMin); const perUser = daily * num(P.pct) / 100 * 260 * num(r.salary) / 2080; return { users, daily, perUser, total: perUser * users }; }
+  W.prodtable = {
+    wide: true,
+    html(q, A) {
+      const P = ptState(q, A);
+      const curOpts = CURRENCIES.map(c => `<option value="${c[0]}" ${P.currency === c[0] ? 'selected' : ''}>${c[0]} · ${esc(c[2])}</option>`).join('') + `<option value="Other" ${P.currency === 'Other' ? 'selected' : ''}>Other (type it)</option>`;
+      return `<ol class="pt-steps"><li><b>1</b><span>Enter how many Copilot licences you have</span></li><li><b>2</b><span>Check the roles and salaries</span></li><li><b>3</b><span>Keep our minutes, or use your own</span></li></ol>
+        <div class="pt-setup">
+          <label class="pt-key"><span>Number of Copilot licences<span class="req">*</span></span><input type="number" min="0" data-ptg="users" value="${esc(P.users)}" placeholder="e.g. 280"></label>
+          <label>Currency<select data-ptg="currency">${curOpts}</select></label>
+          <label id="ptCurOtherWrap" ${P.currency === 'Other' ? '' : 'hidden'}>Your currency<input type="text" maxlength="12" data-ptg="currencyOther" value="${esc(P.currencyOther || '')}" placeholder="e.g. UGX"></label>
+          <label>Time used for useful work<span class="pt-suf"><input type="number" min="0" max="100" data-ptg="pct" value="${esc(P.pct)}"><i>%</i></span><small>50% is a cautious standard</small></label>
+          <label>Salary for new roles<input type="number" min="0" data-ptg="salary" value="${esc(P.salary)}"><small>Used when you add a role</small></label>
+        </div>
+        <div class="tblwrap"><table class="t ptbl"><colgroup><col class="c-role"><col class="c-pct"><col class="c-ppl"><col class="c-sal"><col class="c-min"><col class="c-min"><col class="c-min"><col class="c-tot"><col class="c-val"><col class="c-del"></colgroup><thead>
+          <tr><th rowspan="2">Role</th><th rowspan="2" title="Share of your Copilot licences held by people in this role">Share of licences</th><th rowspan="2" class="n">People</th><th rowspan="2">Average salary</th><th colspan="3" class="pt-grp">Minutes saved per person, per day</th><th rowspan="2" class="n">Total</th><th rowspan="2" class="n">Value per year</th><th rowspan="2"></th></tr>
+          <tr><th class="pt-sub">Meetings</th><th class="pt-sub">Finding info</th><th class="pt-sub">Writing</th></tr>
+        </thead><tbody id="ptBody"></tbody></table></div>
+        <button type="button" class="addrow" id="ptAdd">+ Add a role</button>
+        <p class="pt-foot">Grey cells are worked out for you. Value per year = minutes saved × time used for useful work × 260 working days × hourly salary (salary ÷ 2,080). ${esc(q.note)}</p>`;
+    },
+    mount(q, A, H, changed) {
+      const P = ptState(q, A), body = document.getElementById('ptBody');
+      const suf = (inner, u) => `<span class="pt-suf">${inner}<i>${u}</i></span>`;
+      function draw() {
+        body.innerHTML = P.roles.map((r, i) => `<tr data-i="${i}"><td><input type="text" data-f="name" value="${esc(r.name)}" aria-label="Role"></td>
+          <td>${suf(`<input type="number" min="0" step="any" data-f="pctUsers" value="${r.pctUsers}" aria-label="Share of licences">`, '%')}</td><td class="n auto" data-o="users"></td>
+          <td><input type="number" min="0" data-f="salary" value="${r.salary}" aria-label="Average salary"></td>
+          ${MIN_F.map((f, k) => `<td>${suf(`<input type="number" min="0" step="1" data-f="${f}" value="${Math.round(toMin(r[f]))}" aria-label="${['Meetings', 'Finding info', 'Writing'][k]} minutes per day">`, 'min')}</td>`).join('')}
+          <td class="n auto" data-o="daily"></td><td class="n v" data-o="total"></td><td><button type="button" class="del" data-del="${i}" aria-label="Delete role" title="Delete role">✕</button></td></tr>`).join('');
+        upd();
+      }
+      function upd() {
+        let tot = 0, hrs = 0;
+        body.querySelectorAll('tr').forEach(tr => { const c = ptCalc(P, P.roles[+tr.dataset.i]); tot += c.total; hrs += c.users * c.daily;
+          tr.querySelector('[data-o="users"]').textContent = Math.round(c.users).toLocaleString('en-US');
+          tr.querySelector('[data-o="daily"]').textContent = Math.round(c.daily * 60) + ' min';
+          tr.querySelector('[data-o="total"]').innerHTML = `${esc(money(A, c.total))}<small>${esc(money(A, c.perUser))} per person</small>`; });
+        return tot;
+      }
+      document.querySelectorAll('[data-ptg]').forEach(el => el.addEventListener(el.tagName === 'SELECT' ? 'change' : 'input', () => { const k = el.dataset.ptg; P[k] = (k === 'currency' || k === 'currencyOther') ? el.value : (el.value === '' ? '' : Number(el.value));
+        if (k === 'currency') { const w = document.getElementById('ptCurOtherWrap'); if (w) w.hidden = el.value !== 'Other'; }
+        changed(); upd(); }));
+      body.addEventListener('input', e => { const tr = e.target.closest('tr'); if (!tr) return; const f = e.target.dataset.f; P.roles[+tr.dataset.i][f] = f === 'name' ? e.target.value : (MIN_F.includes(f) ? num(e.target.value) / 60 : num(e.target.value)); changed(); upd(); });
+      body.addEventListener('click', e => { const d = e.target.closest('[data-del]'); if (!d) return; P.roles.splice(+d.dataset.del, 1); changed(); draw(); });
+      document.getElementById('ptAdd').addEventListener('click', () => { P.roles.push({ name: 'New role', pctUsers: 0, meetMin: 0.2, searchMin: 0.1, createMin: 0.1, salary: num(P.salary) || 85000 }); changed(); draw(); const n = body.querySelectorAll('[data-f="name"]'); n.length && n[n.length - 1].select(); });
+      draw();
+    },
+    curCode, toMin,
+    total(q, A) { const P = ptState(q, A); return P.roles.reduce((t, r) => t + ptCalc(P, r).total, 0); },
+    valid: (q, A) => !!(A.pt && String(A.pt.users).trim() !== ''),
+    recap: (q, A) => (A.pt && String(A.pt.users).trim() !== '') ? `${A.pt.users} users · ${A.pt.roles.length} roles · ${money(A, W.prodtable.total(q, A))} a year` : ''
+  };
+
+  /* ---- Copilot: ROI Insights KPI library (Stages 2 and 3) ---- */
+  function ktState(q, A) { if (!Array.isArray(A.kt)) A.kt = JSON.parse(JSON.stringify(q.kpis)); return A.kt; }
+  const ktRaw = r => r.factors.reduce((p, f) => p * (f.pct ? num(f.value) / 100 : num(f.value)), 1);
+  const ktValue = r => ktRaw(r) * (1 - num(r.risk) / 100);
+  /* A KPI the customer adds themselves: % improvement × annual base value, minus Year-1 risk. */
+  const newCustomKpi = () => ({ custom: true, dept: '', kpi: '', include: true, stage: 2, confidence: 'Customer', org: 'Your organisation', risk: 20, source: 'Customer-provided KPI', url: '', useCases: '',
+    factors: [{ label: '% improvement expected', value: 0, pct: true }, { label: 'Annual base value (revenue, cost or payroll)', value: 0, pct: false }] });
+  W.kpitable = {
+    wide: true,
+    html(q) {
+      return `<div class="roi-note">${esc(q.note)}</div><div class="tblwrap"><table class="t" style="min-width:860px"><thead><tr><th>Include</th><th>Stage</th><th style="width:24%">Department · KPI</th><th style="width:36%">How it is calculated</th><th>Source</th><th class="n">Year-1 value</th></tr></thead><tbody id="ktBody"></tbody></table></div>
+        <button type="button" class="addrow" id="ktAdd">+ Add your own KPI</button>
+        <div class="rt-total"><span id="ktCount">0 benefits selected</span><b id="ktTotal">0</b></div>`;
+    },
+    mount(q, A, H, changed) {
+      const K = ktState(q, A), body = document.getElementById('ktBody');
+      function draw() {
+        const order = K.map((r, i) => i).sort((a, c) => (!!K[a].custom - !!K[c].custom) || (K[a].stage - K[c].stage) || (K[c].include - K[a].include));
+        body.innerHTML = order.map(i => { const r = K[i];
+          const calc = r.factors.map((f, j) => (f.pct && !r.custom) ? `<span class="pc" title="benchmark">${f.value}%</span> <em>${esc(f.label.replace(/^%\s*/, ''))}</em>` : `<input type="number" min="0" step="any" data-k="${i}" data-j="${j}" value="${f.value}" aria-label="${esc(f.label)}"> <em>${esc(f.label)}</em>`).join('<br>× ');
+          const stage = r.custom ? `<select data-cstage="${i}" aria-label="Stage" style="min-width:96px">${[2, 3].map(s => `<option value="${s}" ${r.stage === s ? 'selected' : ''}>Stage ${s}</option>`).join('')}</select>` : `<span class="kt-stage s${r.stage}">Stage ${r.stage}</span>`;
+          const kpiCell = r.custom ? `<input type="text" data-cf="kpi" data-ci="${i}" value="${esc(r.kpi)}" placeholder="Your KPI, e.g. Faster invoice processing" aria-label="KPI name"><input type="text" data-cf="dept" data-ci="${i}" value="${esc(r.dept)}" placeholder="Department, e.g. Finance" aria-label="Department" style="margin-top:6px">` : `<b>${esc(r.kpi)}</b><span>${esc(r.dept)} · ${esc(r.useCases)}</span>`;
+          const src = r.custom ? `${esc(r.source)}<br><button type="button" class="del" data-cdel="${i}" aria-label="Delete KPI">✕ Remove</button>` : `${r.url ? `<a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.org)}</a>` : esc(r.org)}<br>${esc(r.source)}`;
+          return `<tr data-i="${i}" class="${r.include ? '' : 'off'}"><td class="c"><input type="checkbox" data-inc="${i}" ${r.include ? 'checked' : ''} aria-label="Include ${esc(r.kpi || 'KPI')}" style="width:18px;height:18px;accent-color:var(--c)"></td>
+            <td>${stage}</td><td class="kt-kpi">${kpiCell}</td>
+            <td class="kt-calc">${calc}<br><em>minus ${r.risk}% risk in Year 1</em></td><td class="kt-src">${src}</td><td class="n v" data-o="kv"></td></tr>`; }).join('');
+        upd();
+      }
+      function upd() { let tot = 0, n = 0; body.querySelectorAll('tr').forEach(tr => { const r = K[+tr.dataset.i], v = ktValue(r); tr.querySelector('[data-o="kv"]').textContent = money(A, v); tr.classList.toggle('off', !r.include); if (r.include) { tot += v; n++; } });
+        document.getElementById('ktTotal').textContent = money(A, tot); document.getElementById('ktCount').textContent = n + ' benefit' + (n === 1 ? '' : 's') + ' selected · Year-1 value, after risk'; }
+      body.addEventListener('change', e => { const t = e.target;
+        if (t.dataset.inc != null) { K[+t.dataset.inc].include = t.checked; changed(); upd(); }
+        if (t.dataset.cstage != null) { K[+t.dataset.cstage].stage = Number(t.value); changed(); } });
+      body.addEventListener('input', e => { const t = e.target;
+        if (t.dataset.k != null) { K[+t.dataset.k].factors[+t.dataset.j].value = num(t.value); changed(); upd(); }
+        if (t.dataset.cf) { K[+t.dataset.ci][t.dataset.cf] = t.value; changed(); } });
+      body.addEventListener('click', e => { const d = e.target.closest('[data-cdel]'); if (!d) return; K.splice(+d.dataset.cdel, 1); changed(); draw(); });
+      document.getElementById('ktAdd').addEventListener('click', () => { K.push(newCustomKpi()); changed(); draw(); const n = body.querySelectorAll('[data-cf="kpi"]'); n.length && n[n.length - 1].focus(); });
+      draw();
+    },
+    value: ktValue,
+    total(q, A) { return ktState(q, A).filter(r => r.include).reduce((t, r) => t + ktValue(r), 0); },
+    valid: (q, A) => ktState(q, A).some(r => r.include),
+    recap(q, A) { const K = ktState(q, A).filter(r => r.include); return K.length ? `${K.length} selected (${K.map(r => r.kpi || 'Custom KPI').join(', ')}) · ${money(A, W.kpitable.total(q, A))} Year 1` : ''; }
+  };
+  return W;
+})();
+
+</script>
+<script>
+window.COPILOT_ROI = {"prodRoles": [{"name": "Finance", "pctUsers": 4, "meetMin": 0.27, "searchMin": 0.1, "createMin": 0.1, "salary": 85000}, {"name": "Procurement", "pctUsers": 1, "meetMin": 0.27, "searchMin": 0.1, "createMin": 0.1, "salary": 85000}, {"name": "HR", "pctUsers": 1, "meetMin": 0.56, "searchMin": 0.2, "createMin": 0.1, "salary": 85000}, {"name": "Legal, Risk and Compliance", "pctUsers": 1, "meetMin": 0.13, "searchMin": 0.13, "createMin": 0.1, "salary": 85000}, {"name": "Secretaries and Personal Assistants", "pctUsers": 1, "meetMin": 0.34, "searchMin": 0.34, "createMin": 0.1, "salary": 85000}, {"name": "Strategy and Planning", "pctUsers": 1, "meetMin": 0.34, "searchMin": 0.34, "createMin": 0.1, "salary": 85000}], "kpis": [{"dept": "Sales", "kpi": "Increased qualified sales opportunities", "include": true, "stage": 3, "confidence": "High", "org": "Forrester", "risk": 15, "source": "Forrester TEI of Microsoft 365 Copilot", "url": "https://tei.forrester.com/go/microsoft/M365Copilot/", "useCases": "AI-generated proposals, CRM-integrated lead qualification, personalized outreach", "factors": [{"label": "% increase in qualified opportunities", "value": 2.7, "pct": true}, {"label": "Annual sales pipeline revenue ($)", "value": 50000000, "pct": false}, {"label": "Margin (%)", "value": 30, "pct": true}]}, {"dept": "Sales", "kpi": "Improved win rates", "include": true, "stage": 3, "confidence": "High", "org": "Forrester", "risk": 15, "source": "Forrester TEI of Microsoft 365 Copilot", "url": "https://tei.forrester.com/go/microsoft/M365Copilot/", "useCases": "Higher-quality proposals, faster RFP response, deal-stage coaching", "factors": [{"label": "% improvement in win rate", "value": 2.5, "pct": true}, {"label": "Annual sales pipeline revenue ($)", "value": 50000000, "pct": false}, {"label": "Margin (%)", "value": 30, "pct": true}]}, {"dept": "Sales", "kpi": "Improved customer retention", "include": true, "stage": 3, "confidence": "Medium", "org": "Forrester", "risk": 20, "source": "Forrester TEI of Microsoft 365 Copilot", "url": "https://tei.forrester.com/go/microsoft/M365Copilot/", "useCases": "Sentiment analysis on customer interactions, personalized account communications", "factors": [{"label": "% increase in customer retention", "value": 1, "pct": true}, {"label": "Annual renewal/recurring revenue ($)", "value": 20000000, "pct": false}, {"label": "Margin (%)", "value": 30, "pct": true}]}, {"dept": "Legal", "kpi": "Faster contract review", "include": true, "stage": 2, "confidence": "Medium", "org": "Forrester", "risk": 25, "source": "Forrester TEI of Microsoft 365 Copilot for SMB", "url": "https://www.microsoft.com/en-us/microsoft-365/blog/2024/10/17/microsoft-365-copilot-drove-up-to-353-roi-for-small-and-medium-businesses-new-study/", "useCases": "Contract summarization, clause extraction, redline drafting", "factors": [{"label": "% reduction in contract review time", "value": 50, "pct": true}, {"label": "Legal staff hours on contract review/year", "value": 4000, "pct": false}, {"label": "Fully burdened hourly rate ($)", "value": 75, "pct": false}]}, {"dept": "HR", "kpi": "Faster new-hire onboarding", "include": true, "stage": 2, "confidence": "High", "org": "Forrester", "risk": 20, "source": "Forrester TEI of Microsoft 365 Copilot", "url": "https://tei.forrester.com/go/microsoft/M365Copilot/", "useCases": "Self-service onboarding agents, policy Q&A, training material generation", "factors": [{"label": "% faster onboarding", "value": 25, "pct": true}, {"label": "New hires per year", "value": 200, "pct": false}, {"label": "Cost of a new hire ($)", "value": 4700, "pct": false}]}, {"dept": "HR", "kpi": "Reduced employee churn", "include": true, "stage": 2, "confidence": "Medium", "org": "Forrester", "risk": 25, "source": "Forrester TEI of Microsoft 365 Copilot for SMB", "url": "https://www.microsoft.com/en-us/microsoft-365/blog/2024/10/17/microsoft-365-copilot-drove-up-to-353-roi-for-small-and-medium-businesses-new-study/", "useCases": "Reduced mundane workload, higher reported job satisfaction", "factors": [{"label": "% reduction in employee churn", "value": 15, "pct": true}, {"label": "Employees at risk of turnover/year", "value": 150, "pct": false}, {"label": "Cost to replace an employee ($)", "value": 20000, "pct": false}]}, {"dept": "IT / Operations", "kpi": "Lower total operating expenditure", "include": true, "stage": 3, "confidence": "Medium", "org": "Forrester", "risk": 20, "source": "Forrester TEI of Microsoft 365 Copilot", "url": "https://tei.forrester.com/go/microsoft/M365Copilot/", "useCases": "Automated reporting, streamlined operational workflows, less manual data wrangling", "factors": [{"label": "% decrease in total operating expenditure", "value": 0.24, "pct": true}, {"label": "Total annual operating expenditure ($)", "value": 100000000, "pct": false}]}, {"dept": "Procurement / Supply Chain", "kpi": "Lower supply chain costs", "include": true, "stage": 3, "confidence": "Low", "org": "Forrester", "risk": 30, "source": "Forrester TEI of Microsoft 365 Copilot for SMB (51% of businesses reported 1-10% reduction)", "url": "https://www.microsoft.com/en-us/microsoft-365/blog/2024/10/17/microsoft-365-copilot-drove-up-to-353-roi-for-small-and-medium-businesses-new-study/", "useCases": "Demand forecasting support, supplier communications, procurement report generation", "factors": [{"label": "% reduction in supply chain costs", "value": 5, "pct": true}, {"label": "Annual supply chain spend ($)", "value": 40000000, "pct": false}]}, {"dept": "Customer Service / IT", "kpi": "Automated ticket deflection", "include": true, "stage": 2, "confidence": "Medium", "org": "Forrester", "risk": 20, "source": "Microsoft/Forrester TEI of Copilot Studio (Power Virtual Agents)", "url": "https://www.microsoft.com/en-us/microsoft-copilot/blog/copilot-studio/the-total-economic-impact-of-microsofts-power-virtual-agents/", "useCases": "AI agents for tier-1 support, automated triage and routing", "factors": [{"label": "% reduction in manually-handled tickets", "value": 58, "pct": true}, {"label": "Tickets handled per year", "value": 80000, "pct": false}, {"label": "Average cost per ticket ($)", "value": 15, "pct": false}]}, {"dept": "Finance, Legal, HR, IT & Procurement", "kpi": "Specialized application efficiency (composite)", "include": true, "stage": 2, "confidence": "High", "org": "Forrester", "risk": 15, "source": "Forrester TEI of Microsoft 365 Copilot ($18.8M composite productivity benefit)", "url": "https://tei.forrester.com/go/microsoft/M365Copilot/", "useCases": "Financial report generation, HR case handling, IT documentation, procurement analysis", "factors": [{"label": "Employees using Copilot in these functions", "value": 1200, "pct": false}, {"label": "Hours saved per user per month", "value": 9, "pct": false}, {"label": "Fully burdened hourly rate ($)", "value": 38, "pct": false}, {"label": "% of saved time recaptured to productive work", "value": 50, "pct": true}]}, {"dept": "IT", "kpi": "Reduced help desk / device management effort", "include": false, "stage": 2, "confidence": "Low", "org": "Forrester", "risk": 30, "source": "Forrester TEI of Microsoft Copilot+ PCs", "url": "https://tei.forrester.com/go/Microsoft/CopilotPlusPCs/?lang=en-us", "useCases": "Self-healing devices, streamlined provisioning, faster issue triage (Copilot+ PCs)", "factors": [{"label": "% reduction in help desk effort", "value": 30, "pct": true}, {"label": "Help desk FTEs supporting devices", "value": 4, "pct": false}, {"label": "Fully burdened hourly rate ($)", "value": 54, "pct": false}]}, {"dept": "Marketing / Revenue", "kpi": "New AI-enabled revenue streams", "include": false, "stage": 3, "confidence": "Low", "org": "Forrester", "risk": 35, "source": "Forrester TEI of Microsoft Copilot for Microsoft 365 (351 decision-makers survey)", "url": "https://tei.forrester.com/go/microsoft/365Copilot/?lang=en-us", "useCases": "AI-assisted product development, campaign content generation, market analysis", "factors": [{"label": "% of total revenue from new AI-enabled products/streams", "value": 4.3, "pct": true}, {"label": "Annual top-line revenue ($)", "value": 100000000, "pct": false}]}, {"dept": "Legal", "kpi": "AI-driven time savings on legal & tax work", "include": false, "stage": 2, "confidence": "Low", "org": "Thomson Reuters", "risk": 35, "source": "Thomson Reuters (2025) - general AI in legal & tax functions, adapted here to Copilot-assisted drafting and research", "url": "https://toolfountain.com/ai-productivity-statistics/", "useCases": "Contract drafting, legal research, tax document review", "factors": [{"label": "Hours saved per professional/year", "value": 240, "pct": false}, {"label": "Legal/tax professionals", "value": 10, "pct": false}, {"label": "Hourly rate ($)", "value": 79, "pct": false}]}, {"dept": "Finance", "kpi": "AI-driven productivity gain in financial services", "include": false, "stage": 2, "confidence": "Low", "org": "Bain & Company", "risk": 35, "source": "Bain & Company survey, cited in industry AI research roundups (2025) - general financial-services AI productivity gain, adapted here to Copilot use in Finance", "url": "https://www.fullview.io/blog/ai-statistics", "useCases": "Financial analysis, reporting, reconciliation, variance analysis", "factors": [{"label": "% productivity gain", "value": 20, "pct": true}, {"label": "Finance team payroll ($/yr)", "value": 2000000, "pct": false}]}, {"dept": "IT", "kpi": "Agentic AI cost savings & productivity gain (early adopters)", "include": false, "stage": 3, "confidence": "Low", "org": "Gartner", "risk": 35, "source": "Gartner 2025 survey of early agentic AI adopters, as reported in industry roundups - general agentic AI research, adapted here to Copilot Studio / Microsoft 365 Copilot agents", "url": "https://www.sequencr.ai/insights/key-generative-ai-statistics-and-trends-for-2025", "useCases": "Agent-assisted ticket triage, automated reporting, workflow orchestration", "factors": [{"label": "% cost savings from agentic AI", "value": 15.2, "pct": true}, {"label": "IT operating budget ($/yr)", "value": 2000000, "pct": false}]}, {"dept": "Public Sector / Government", "kpi": "Time saved per employee (UK government deployment)", "include": false, "stage": 2, "confidence": "Medium", "org": "UK Government", "risk": 20, "source": "UK Department for Work and Pensions six-month M365 Copilot evaluation (3,549 staff), published January 2026", "url": "https://www.calanceus.com/blog/microsoft-365-copilot-roi-2026-adoption-data", "useCases": "Drafting correspondence, summarizing meetings, case-note preparation", "factors": [{"label": "Minutes saved per employee per day", "value": 19, "pct": false}, {"label": "Employees in scope", "value": 500, "pct": false}, {"label": "Fully burdened hourly rate ($)", "value": 45, "pct": false}]}, {"dept": "Research & Content Production", "kpi": "Productivity gain on research & content tasks (India enterprise deployment)", "include": false, "stage": 2, "confidence": "Medium", "org": "Microsoft WTI", "risk": 25, "source": "Microsoft Work Trend Index 2026, India findings - large IT-services enterprises (Sept 2026)", "url": "https://news.microsoft.com/source/asia/2026/09/03/indias-ai-advantage-is-human-microsoft-work-trend-index-2026-finds-india-among-the-worlds-leading-frontier-workforces/", "useCases": "Research synthesis, report drafting, content production", "factors": [{"label": "% productivity improvement", "value": 22.5, "pct": true}, {"label": "Team payroll doing this work ($/yr)", "value": 1500000, "pct": false}]}, {"dept": "Cross-functional", "kpi": "Early-adopter productivity gain (global cross-industry study)", "include": false, "stage": 3, "confidence": "Low", "org": "BCG", "risk": 40, "source": "Boston Consulting Group study of 500+ global firms, as reported in industry coverage (August 2026) - general AI productivity gains, not Copilot-specific", "url": "https://aiconference.london/news/microsoft-copilot-in-2026-where-productivity-ai-is-heading-august-2026-20260815-07", "useCases": "Enterprise-wide AI-assisted workflows across functions", "factors": [{"label": "% productivity increase", "value": 15, "pct": true}, {"label": "Total workforce payroll in scope ($/yr)", "value": 5000000, "pct": false}]}], "personas": ["Executives", "Finance", "Sales", "Marketing", "HR", "IT", "Legal & compliance", "Customer service", "Operations"]};
+</script>
+<script>
+/* Copilot · one questionnaire for the person leading AI transformation.
+   Linda's executive + technical questions merged. IDs and option order are kept, so <id>_index is unchanged;
+   <id>_points carries the score (null = not scored, e.g. "Don't know" or "not using credits yet").
+   Scored per pillar (CFG.scoring): Everyday AI, Advanced AI, AI FinOps. */
+(function () {
+  const D = window.COPILOT_ROI;
+  const ch = (id, section, label, opts, x) => ({ section, qs: [Object.assign({ id, type: 'choice', label, opts: opts.map(o => typeof o === 'string' ? { v: o, l: o } : o) }, x || {})] });
+  const ladder = n => Array.from({ length: n }, (_, i) => i);
+
+  const scoring = {
+    pillars: {
+      'Everyday AI': ['ce9', 'ce_tasks', 'ce8', 'ct14'],
+      'Advanced AI': ['ce6', 'ce10', 'ct12', 'ct15', 'ct19', 'ce5'],
+      'AI FinOps': ['ct10', 'ct16', 'ct17', 'ce11', 'ct18']
+    },
+    points: {
+      ce9: [null, 1, 2, 3, 4], ce8: ladder(5), ct14: ladder(5), ce6: ladder(5), ce10: ladder(5), ct12: ladder(5), ct15: ladder(5), ce5: ladder(5),
+      ct19: [0, 1, 2, 3, 4, null], ct10: [0, 1, 2, 3, 4, null], ct16: [0, 1, 2, 3, 4, null], ct17: [0, 1, 2, 3, 4, null], ce11: [0, 1, 2, 3, 4, null], ct18: [0, 1, 2, 3, 4, null]
+    },
+    note: 'Pillar = points ÷ (scored answers × 4) × 100; answers with null points are left out of the pillar. ce_tasks = tasks ÷ 7 × 4. Value Score = average of the three pillars.'
+  };
+
+  const NOT_CREDITS = 'Not using Copilot Credits yet';
+  window.CFG = {
+    key: 'copilot.evaluation', mode: 'questions', formLabel: 'Copilot · Value Evaluation questionnaire',
+    doneText: 'Your answers are combined with your ROI Insights report to build your Copilot Value Evaluation: one score, three pillars and a 90-day plan.',
+    companyOf: A => A.companyName || '',
+    fileName: A => (A.companyName || 'Customer') + '_Copilot_Value_Evaluation_Answers',
+    scoring,
+    steps: [
+      { section: 'Getting started', qs: [{ id: 'companyName', type: 'text', label: 'What’s your company name?', help: 'It appears on your Copilot Value Evaluation report.', ph: 'Enter your company name', ac: 'organization', short: 'Company' }] },
+      { section: 'Getting started', title: 'About you', ctx: 'So we know who answered, and who to follow up with.', qs: [
+        { id: 'contactName', type: 'text', label: 'Full name', ph: 'e.g. Jamie Nolan', ac: 'name', short: 'Contact name' },
+        { id: 'contactEmail', type: 'email', label: 'Work email', ph: 'you@company.com', ac: 'email', short: 'Contact email', help: 'Please use your business email.' },
+        { id: 'contactRole', type: 'text', label: 'Your role', ph: 'e.g. Head of AI Transformation', ac: 'organization-title', short: 'Role', opt: true }] },
+
+      ch('ce9', 'Copilot today', 'How many licensed users use Copilot at least 4 days a month?', ["Don't know", 'Under 25%', '25–50%', '50–75%', 'Over 75%'],
+        { help: 'As a share of licensed users. The Copilot Dashboard (Microsoft 365 admin centre or Viva Insights) shows active users. If you don’t know, choose “Don’t know”: we can pull your active-user figures for you, and it is not scored against you.', short: 'Regular use' }),
+      ch('ct14', 'Copilot today', 'Which Copilot features can your licensed users use today?', ['Copilot Chat only', 'Copilot in some Microsoft 365 apps', 'Copilot in all Microsoft 365 apps (Word, Excel, PowerPoint, Outlook, Teams)', 'All apps, plus meeting recaps in Teams', 'All of the above, plus Researcher and Analyst'],
+        { help: 'Pick the option that best matches what is switched on today. If meeting transcription is off for policy reasons (for example a works council agreement), answer as if it were on: it is not held against you.', short: 'Copilot turned on' }),
+      { section: 'Copilot today', qs: [{ id: 'ce_tasks', type: 'multi', label: 'What do people already use Copilot for?', help: 'Tick everything people use Copilot for at least once a week.', short: 'Everyday tasks', cols: false,
+        opts: [{ v: 'Meetings', l: 'Meetings (recaps and action items)' }, { v: 'Email', l: 'Email (writing replies, summarising long threads)' }, { v: 'Content creation', l: 'Writing documents and presentations (Word, PowerPoint)' }, { v: 'Analysis', l: 'Working with numbers (Excel, Analyst)' }, { v: 'Research', l: 'Research (Researcher)' }, { v: 'Search', l: 'Finding files and answers' }, { v: 'Collaboration', l: 'Teamwork (Teams chats, shared drafts)' }] }] },
+      { section: 'Part 1 · ROI Insights check', optional: true, wide: true, title: 'Time saved daily: how much time does Copilot save each role?', ctx: 'We have filled this in with typical figures from Forrester and Microsoft. You only need to add your number of licences; change anything else only if you know better. Prefer to do it with your consultant? Skip this page.',
+        qs: [{ id: 'roi_prod', type: 'prodtable', label: 'Time saved daily', short: 'Time saved daily', opt: true, roles: D.prodRoles, note: 'Not scored. This updates your ROI Insights report, using the same table and formula as the ROI Insights tool.' }] },
+      { section: 'Part 1 · ROI Insights check', optional: true, wide: true, title: 'Which business benefits should we include in your business case?', ctx: 'These are the department and business benefits from the ROI Insights library. Tick the ones that apply to you and untick the rest. The numbers in boxes are typical values: replace them with your own if you know them. If none of the benefits fit, add your own KPI at the bottom.',
+        qs: [{ id: 'roi_kpis', type: 'kpitable', label: 'KPI benefits selected', short: 'KPI benefits selected', opt: true, kpis: D.kpis, note: 'Not scored. This updates your ROI Insights report, using the same KPI library and formulas as the ROI Insights tool.' }] },
+      ch('ce8', 'Part 2 · Everyday AI', 'How many managers use Copilot themselves and show their teams how?', ['Very few', 'A few', 'About half', 'Most', 'Almost all'],
+        { help: 'Teams adopt Copilot faster when their manager uses it openly.', short: 'Managers' }),
+      ch('ct12', 'Part 2 · Advanced AI', 'Is Copilot Cowork in use in your organisation?', ['Not turned on', 'Looking into it', 'Approved, not started yet', 'Pilot running', 'Rolling out more widely'], { short: 'Copilot Cowork' }),
+      ch('ce6', 'Part 2 · Advanced AI', 'Have you handed any whole tasks or processes to Copilot Cowork or an agent?', ['Not yet', 'We have listed the processes we could hand over', 'We have chosen 3–5 processes, each with an owner', 'Some processes now run end to end, with their own budget', 'We measure the results in the team’s budget (P&L)'],
+        { help: 'For example: an agent that prepares the month-end report from start to finish.', short: 'Handing work over' }),
+      ch('ce10', 'Part 2 · Advanced AI', 'How many of your key teams have at least one process fully run by Copilot Cowork or an agent?', ['None', 'Only pilots so far', '1 team', '2–3 teams', 'All key teams'],
+        { help: 'Only count a team if the process now runs without someone doing it by hand.', short: 'Teams with work handed over' }),
+      ch('ct15', 'Part 2 · Advanced AI', 'How many agents do people use for real work?', ['None', 'Only test or personal agents', '1–5 agents', '6–20 agents', 'More than 20'],
+        { help: 'Agents built with Agent Builder or Copilot Studio. Don’t count tests.', short: 'Agents in production' }),
+      ch('ct19', 'Part 2 · Advanced AI', 'How do you keep track of your agents?', ['No list and no owners', 'A manual list; some agents have an owner', 'Every agent has an owner and a review date', 'Managed centrally (for example in Copilot controls or Agent 365)', 'Managed centrally, with regular access reviews and usage reports', 'Not applicable: no agents yet'],
+        { help: 'Knowing who owns each agent keeps agents safe as their number grows.', short: 'Agent governance' }),
+      ch('ce5', 'Part 2 · Advanced AI', 'Do your departments measure a business result that Copilot should improve?', ['No', 'We have ideas, nothing agreed', 'Yes, in 1–2 departments', 'Yes, in most key departments', 'Yes, in all key departments, with a starting figure to compare against'],
+        { help: 'For example: sales win rate, time to close a support case, or time to process an invoice. A starting figure is what lets you prove the value later.', short: 'Department KPIs' }),
+      ch('ct18', 'Part 2 · AI FinOps', 'What happens to Copilot licences that people don’t use?', ['We don’t track this', 'We track it, but unused licences stay where they are', 'We review them every quarter and move some', 'We review them every month and move unused ones', 'We assign them by role and move them automatically', "Don't know"],
+        { help: 'Licences are usually the biggest Copilot cost, so moving unused ones to people who need them is the quickest saving.', short: 'Licence use' }),
+      ch('ct10', 'Part 2 · AI FinOps', 'How do you control spending on Copilot Credits?', ['Not set up', 'Billing is set up, but there are no limits', 'Limits and spending alerts are set', 'We track credit use and value by team', 'Teams get budget based on the value they deliver', NOT_CREDITS],
+        { help: 'Copilot Credits are the pay-as-you-go charges for Cowork and agents. If you don’t use them yet, choose the last option: the next two questions are then skipped.', short: 'Copilot Credits' }),
+      Object.assign(ch('ct16', 'Part 2 · AI FinOps', 'Can you see who uses Copilot Credits?', ['No', 'Only the total bill', 'By agent or environment', 'By team', 'By team and person, reported every month', NOT_CREDITS], { short: 'Credit visibility' }), { show: A => A.ct10 !== NOT_CREDITS }),
+      Object.assign(ch('ct17', 'Part 2 · AI FinOps', 'Do you forecast spending on Copilot Credits?', ['No forecast', 'We only look after the bill arrives', 'A monthly budget per environment', 'A forecast per team and process', 'A forecast linked to the value of each process, updated monthly', NOT_CREDITS], { help: 'A forecast makes pay-as-you-go spending predictable.', short: 'Credit forecasting' }), { show: A => A.ct10 !== NOT_CREDITS }),
+      ch('ce11', 'Part 2 · AI FinOps', 'Who pays for Copilot (licences and credits), and who sees the costs?', ['Nobody yet', 'Central IT pays; teams don’t see their costs', 'Central IT pays; each team sees its own costs', 'Each team has its own budget', 'Each team has its own budget and reinvests what it saves', 'Not decided yet'],
+        { help: 'In smaller organisations, a central budget where each team sees its own costs is a strong answer.', short: 'Budget owner' }),
+      ch('ct13', 'Part 3 · Measuring value', 'Do you use Copilot Analytics to track usage and results?', ['Not turned on', 'Planned', 'Turned on, but nobody reviews it', 'Reviewed every month', 'Reviewed every month, with a starting figure and KPIs tracked'],
+        { help: 'Not scored. Copilot Analytics shows how much Copilot is used and compares Copilot users with non-users. It is how you prove value after go-live.', short: 'Copilot Analytics' }),
+      { section: 'Part 3 · Context', qs: [{ id: 'cx_ready', type: 'multi', label: 'Have you already done any of these?', help: 'Not scored. Tick all that apply.', short: 'Completed engagements', cols: false, exclusive: ['None of these yet'],
+        opts: ['M365 Copilot Readiness assessment', 'Oversharing or data security review (SharePoint, Purview)', 'Copilot Masterclass or structured training', 'None of these yet'] }] },
+      { section: 'Part 3 · Context', qs: [{ id: 'ce_goals', type: 'multi', label: 'What do you most want Copilot to help with?', help: 'Not scored. Tick all that apply: it helps us choose which benefits matter most to you.', short: 'Goals', cols: false,
+        opts: ['Productivity and time back', 'Lower operating costs', 'Revenue growth', 'Customer experience', 'Employee experience', 'Risk and compliance'] }] },
+      { section: 'Part 3 · Context', qs: [{ id: 'ce_notes', type: 'textarea', opt: true, label: 'Anything else we should know before the review session?', help: 'Optional. For example a works council agreement, a licence renewal date, or a team that is already ahead.', short: 'Notes' }] }
+    ],
+    payload(A, H) {
+      const W = window.MAIN_WIDGETS, email = H.str('contactEmail');
+      const d = { formType: 'Copilot', questionnaire: 'Copilot Value Evaluation (single questionnaire)', projectId: H.projectId,
+        companyName: H.str('companyName'), contactName: H.str('contactName'), contactEmail: email, contactRole: H.str('contactRole'), companyDomain: H.domain(email) };
+      this.steps.forEach(s => s.qs.forEach(q => {
+        const vis = H.visible(q.id);
+        if (q.type === 'choice') {
+          d[q.id] = vis ? H.label(q.id) : ''; const i = vis ? H.index(q.id) : '';
+          d[q.id + '_index'] = i === '' || i < 0 ? '' : i;
+          const pts = scoring.points[q.id]; d[q.id + '_points'] = (pts && i !== '' && i >= 0) ? pts[i] : null;
+          if (!vis && pts) d[q.id + '_points'] = null;
+        } else if (q.type === 'multi') { d[q.id] = Array.isArray(A[q.id]) ? A[q.id].slice() : []; d[q.id + '_text'] = d[q.id].join(', '); }
+        else if (q.type === 'textarea' || q.type === 'text' || q.type === 'email') { if (!(q.id in d)) d[q.id] = H.str(q.id); }
+        else if (q.type === 'workflows') { const w = W.workflows.list(q, A); d[q.id] = w; d[q.id + '_json'] = JSON.stringify(w); }
+        else if (q.type === 'prodtable') { const P = A.pt; if (P) { d.roi_currency = W.prodtable.curCode(P); d.roi_total_users = String(P.users).trim() === '' ? '' : Number(P.users) || 0; d.roi_avg_salary = Number(P.salary) || 0; d.roi_productive_pct = Number(P.pct) || 0; const tm = W.prodtable.toMin, R = P.roles.map(r => Object.assign({}, r, { meetMinutes: tm(r.meetMin), searchMinutes: tm(r.searchMin), createMinutes: tm(r.createMin), savedMinutesPerDay: tm((Number(r.meetMin) || 0) + (Number(r.searchMin) || 0) + (Number(r.createMin) || 0)) }));
+          d.roi_time_unit = 'meetMin, searchMin, createMin in hours per day (entered in minutes); *Minutes fields in minutes'; d.roi_prod_roles = R; d.roi_prod_roles_json = JSON.stringify(R); d.roi_prod_total = Math.round(W.prodtable.total(q, A)); } }
+        else if (q.type === 'kpitable') { if (Array.isArray(A.kt)) { const k = A.kt.map(r => ({ kpi: r.kpi || 'Custom KPI', dept: r.dept, custom: !!r.custom, stage: r.stage, include: r.include, factors: r.factors.map(f => ({ label: f.label, value: f.value, pct: f.pct })), riskPct: r.risk, value: Math.round(W.kpitable.value(r)) })); d.roi_kpis = k; d.roi_kpis_json = JSON.stringify(k); d.roi_kpis_selected = k.filter(r => r.include).map(r => r.kpi).join(', '); d.roi_kpis_total = Math.round(W.kpitable.total(q, A)); } }
+      }));
+      /* Q5 fallback: if the customer doesn't know, usage is taken from Lynx (weekly active users). */
+      d.ce9_source = H.index('ce9') === 0 ? 'Lynx (weekly active users)' : (d.ce9 ? 'Customer' : '');
+      d.ce_tasks_points = Math.round((Array.isArray(A.ce_tasks) ? A.ce_tasks.length : 0) / 7 * 4 * 10) / 10;
+      d.scoring = scoring;
+      d.submittedAt = H.now();
+      return d;
+    }
+  };
+})();
+
+</script>
+<script>
+/* Microsoft AI Accelerator · questionnaire engine (shared by every track)
+   Each page defines, before this script:
+     POWER_AUTOMATE_URL (flow URL string)  // empty = answers are downloaded as a file instead
+     EMBEDDED_PROJECT_ID (empty string)     // set by the questionnaire-links page for project copies
+     window.CFG = { key, mode:'questions'|'sections', steps:[...], payload(A,H), fileName(A), ... }
+   Answers live in A (one object), are saved in this browser as you go, and are turned into the
+   exact JSON each Power Automate flow expects by CFG.payload. */
+(function () {
+  'use strict';
+  const CFG = window.CFG;
+  const $ = (s, r) => (r || document).querySelector(s);
+  const $$ = (s, r) => Array.from((r || document).querySelectorAll(s));
+  const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[A-Za-z]{2,}$/;
+  const isEmail = v => EMAIL_RE.test(String(v || '').trim());
+  const PARAMS = (() => { try { return new URLSearchParams(location.search); } catch (e) { return new URLSearchParams(''); } })();
+
+  /* ---------- project tracking (?project=<id>, or the id embedded by the questionnaire-links page) ---------- */
+  function readProjectId() {
+    try { if (typeof EMBEDDED_PROJECT_ID !== 'undefined' && EMBEDDED_PROJECT_ID) return EMBEDDED_PROJECT_ID; } catch (e) {}
+    try {
+      let v = PARAMS.get('project') || PARAMS.get('projectId') || '';
+      if (!v && location.hash) { const h = new URLSearchParams(location.hash.slice(1)); v = h.get('project') || ''; }
+      return v.trim().slice(0, 120);
+    } catch (e) { return ''; }
+  }
+  const PROJECT_ID = readProjectId();
+  const FLOW_URL = (typeof POWER_AUTOMATE_URL !== 'undefined' && POWER_AUTOMATE_URL) ? POWER_AUTOMATE_URL : '';
+
+  /* ---------- state ---------- */
+  let A = {};
+  const STORE = 'main.v1.' + CFG.key + (PROJECT_ID ? '.' + PROJECT_ID : '');
+  function save() { try { localStorage.setItem(STORE, JSON.stringify({ A, at: new Date().toISOString() })); } catch (e) {} }
+  function loadSaved() { try { const x = JSON.parse(localStorage.getItem(STORE) || 'null'); return x && x.A ? x : null; } catch (e) { return null; } }
+  function clearSaved() { try { localStorage.removeItem(STORE); } catch (e) {} }
+
+  /* ---------- questions ---------- */
+  const STEPS = CFG.steps.map((s, i) => Object.assign({ key: 's' + i }, s));
+  const Q = {};
+  STEPS.forEach(s => s.qs.forEach(q => {
+    q.opts = (q.opts || []).map(o => (o !== null && typeof o === 'object') ? o : { v: o, l: o });
+    Q[q.id] = q; q._step = s;
+  }));
+  const OTHER = q => q.otherValue || 'Other';
+  const qVisible = q => !q.show || !!q.show(A);
+  const stepVisible = s => !s.show || !!s.show(A);
+  const visSteps = () => STEPS.filter(stepVisible);
+  const optOf = (q, v) => q.opts.find(o => String(o.v) === String(v));
+
+  /* ---------- helpers handed to CFG.payload / CFG.recap ---------- */
+  const H = {
+    A: () => A, q: id => Q[id], projectId: PROJECT_ID, params: PARAMS, visible: id => Q[id] ? (qVisible(Q[id]) && stepVisible(Q[id]._step)) : true,
+    val: id => A[id] == null ? '' : A[id],
+    str: id => String(A[id] == null ? '' : A[id]).trim(),
+    label: id => { const q = Q[id], v = A[id]; if (!q || v == null || v === '') return ''; const o = optOf(q, v); return o ? o.l : String(v); },
+    labels: (id, sep) => { const q = Q[id], v = A[id]; if (!q || !Array.isArray(v) || !v.length) return ''; return v.map(x => (optOf(q, x) || { l: x }).l).join(sep == null ? ', ' : sep); },
+    values: (id, sep) => { const v = A[id]; return Array.isArray(v) ? v.join(sep == null ? ', ' : sep) : ''; },
+    other: id => String(A[id + '__other'] || '').trim(),
+    index: id => { const q = Q[id], v = A[id]; if (!q || v == null || v === '') return ''; return q.opts.findIndex(o => String(o.v) === String(v)); },
+    domain: email => { email = String(email || ''); return email.includes('@') ? email.split('@')[1].toLowerCase().trim() : ''; },
+    num: v => { const n = parseFloat(String(v == null ? '' : v).replace(/[^0-9.,-]/g, '').replace(/,/g, '')); return isNaN(n) ? 0 : n; },
+    now: () => new Date().toISOString()
+  };
+  window.MAIN_H = H;
+
+  /* ---------- table widgets (registered by pages) ---------- */
+  const W = Object.assign({}, window.MAIN_WIDGETS || {});
+
+  /* ---------- rendering ---------- */
+  let cur = 0, submitted = false, lastPayload = null, flagged = new Set();
+  const host = () => $('#stepHost');
+
+  function suggestion(q) { return CFG.suggestFor ? CFG.suggestFor(q, A) : q.suggest; }
+  function fmtSuggest(q, v) {
+    if (v == null || v === '' || (Array.isArray(v) && !v.length)) return '';
+    if (q.type === 'choice' && q.levels) { const o = optOf(q, v); return o ? 'L' + o.v + ' · ' + o.l : ''; }
+    if (Array.isArray(v)) return v.join(' · ');
+    if (q.type === 'currency') return (CFG.currencyOf ? CFG.currencyOf(A) + ' ' : '') + Number(v).toLocaleString('en-US');
+    return String(v) + (q.unit ? ' ' + q.unit : '');
+  }
+
+  function qHtml(q, single) {
+    const v = A[q.id], miss = flagged.has(q.id);
+    let body = '';
+    const otherBox = (show, ph) => `<div class="other ${show ? 'show' : ''}"><input type="text" data-other="${esc(q.id)}" value="${esc(A[q.id + '__other'] || '')}" placeholder="${esc(ph || q.otherPh || 'Please specify')}" aria-label="Please specify"></div>`;
+    switch (q.type) {
+      case 'text': case 'email':
+        body = `<input type="${q.type}" data-q="${esc(q.id)}" value="${esc(v || '')}" placeholder="${esc(q.ph || '')}" ${q.ac ? `autocomplete="${q.ac}"` : ''} aria-label="${esc(q.label)}">` +
+          (q.type === 'email' ? `<div class="ferr" id="err_${esc(q.id)}" role="alert">Enter a valid work email address, for example name@company.com.</div>` : ''); break;
+      case 'textarea': body = `<textarea data-q="${esc(q.id)}" placeholder="${esc(q.ph || 'Your answer here…')}" aria-label="${esc(q.label)}">${esc(v || '')}</textarea>`; break;
+      case 'month': body = `<input type="month" data-q="${esc(q.id)}" value="${esc(v || '')}" style="max-width:220px" aria-label="${esc(q.label)}">`; break;
+      case 'number': case 'currency':
+        body = `<div class="unit">${q.type === 'currency' && CFG.currencyOf ? `<span>${esc(CFG.currencyOf(A))}</span>` : ''}<input type="number" inputmode="decimal" data-q="${esc(q.id)}" value="${esc(v == null ? '' : v)}" ${q.min != null ? `min="${q.min}"` : ''} ${q.max != null ? `max="${q.max}"` : ''} step="${q.step || 'any'}" placeholder="${esc(q.ph || '')}" aria-label="${esc(q.label)}">${q.unit ? `<span>${esc(q.unit)}</span>` : ''}</div>`; break;
+      case 'choice': {
+        const otherOn = v != null && String(v) === OTHER(q);
+        body = `<div class="opts ${q.cols ? 'cols' : ''}" role="radiogroup" aria-label="${esc(q.label)}">` + q.opts.map((o, i) =>
+          `<label class="opt ${String(v) === String(o.v) && v !== '' && v != null ? 'on' : ''}"><input type="radio" name="${esc(q.id)}" data-choice="${esc(q.id)}" data-i="${i}" ${String(v) === String(o.v) && v != null && v !== '' ? 'checked' : ''}><span class="ck"></span>${q.levels ? `<span class="lv">L${esc(o.v)}</span>` : ''}<span>${esc(o.l)}${o.d ? `<span class="od">${esc(o.d)}</span>` : ''}</span></label>`).join('') + `</div>` +
+          (q.other ? otherBox(otherOn) : ''); break;
+      }
+      case 'multi': {
+        const arr = Array.isArray(v) ? v : [];
+        const otherOn = arr.map(String).includes(String(OTHER(q)));
+        body = `<div class="opts ${q.cols !== false && q.opts.length > 5 ? 'cols' : ''}" aria-label="${esc(q.label)}">` + q.opts.map((o, i) =>
+          `<label class="opt multi ${arr.map(String).includes(String(o.v)) ? 'on' : ''}"><input type="checkbox" data-multi="${esc(q.id)}" data-i="${i}" ${arr.map(String).includes(String(o.v)) ? 'checked' : ''}><span class="ck"></span><span>${esc(o.l)}${o.d ? `<span class="od">${esc(o.d)}</span>` : ''}</span></label>`).join('') + `</div>` +
+          (q.max ? `<p class="limit" data-limit="${esc(q.id)}">Up to ${q.max}.</p>` : '') + (q.other ? otherBox(otherOn) : ''); break;
+      }
+      case 'consent':
+        body = `<label class="consent ${v === true ? 'on' : ''}"><input type="checkbox" data-consent="${esc(q.id)}" ${v === true ? 'checked' : ''}><span>${q.labelHtml || esc(q.label)}</span></label>`; break;
+      default:
+        if (W[q.type]) body = W[q.type].html(q, A, H); else body = '';
+    }
+    const sug = q.suggest !== undefined && q.type !== 'consent' ? fmtSuggest(q, suggestion(q)) : '';
+    const sugHtml = (sug || q.example) ? `<div class="sug">${sug ? `<button type="button" class="use" data-use="${esc(q.id)}">Use suggested answer: ${esc(sug)}</button>` : ''}${q.example ? `<span class="ex">Example: <b>${esc(q.example)}</b></span>` : ''}</div>` : '';
+    const req = isRequired(q) && q.type !== 'consent' && !single ? '<span class="req" aria-hidden="true">*</span>' : '';
+    const head = single ? '' : `<p class="ql">${q.type === 'consent' ? 'Your agreement' : esc(q.label)}${req}${isRequired(q) ? '' : '<span class="opt-tag">OPTIONAL</span>'}</p>${q.help ? `<p class="qh">${esc(q.help)}</p>` : ''}`;
+    return `<div class="q ${miss ? 'missing' : ''}" id="q_${esc(q.id)}" data-qwrap="${esc(q.id)}" ${qVisible(q) ? '' : 'hidden'}>${head}${body}${sugHtml}</div>`;
+  }
+
+  function isRequired(q) { if (q.req === false || q.opt) return false; if (q._step && q._step.optional) return false; if (CFG.requiredByDefault === false) return !!q.req; return true; }
+
+  function render() {
+    const vs = visSteps();
+    if (cur >= vs.length) cur = vs.length; // review
+    const h = host();
+    if (cur === vs.length) { renderReview(); return; }
+    const s = vs[cur];
+    const single = s.qs.length === 1;
+    const q0 = s.qs[0];
+    const title = s.title || q0.label;
+    const ctx = s.title ? s.ctx : (q0.help || s.ctx);
+    const optional = s.optional || (single && !isRequired(q0));
+    h.innerHTML = `<div class="step" data-step="${esc(s.key)}">
+      <div class="q-eyebrow">${esc(s.section || '')}${optional ? '<span class="opt-tag">OPTIONAL</span>' : ''}</div>
+      <h1 class="q-title">${esc(title)}</h1>
+      ${ctx ? `<div class="${single ? 'q-ctx' : 'sec-intro'}">${esc(ctx)}</div>` : ''}
+      ${s.qs.map(q => qHtml(q, single)).join('')}
+    </div>`;
+    $('.stage').classList.toggle('wide', !!(s.wide || s.qs.some(q => W[q.type] && W[q.type].wide)));
+    s.qs.forEach(q => { if (W[q.type] && W[q.type].mount) W[q.type].mount(q, A, H, onWidgetChange); });
+    nav(); progress();
+  }
+
+  function onWidgetChange() { save(); progress(); }
+
+  function nav() {
+    const vs = visSteps(), atReview = cur >= vs.length;
+    $('#backBtn').disabled = cur === 0;
+    $('#nextBtn').style.display = atReview ? 'none' : '';
+    $('#nextBtn').textContent = cur === vs.length - 1 ? 'Review answers →' : 'Continue →';
+  }
+
+  function stepDone(s) { const vq = s.qs.filter(qVisible); return vq.every(q => !isRequired(q) || answered(q)) && vq.some(q => answered(q)); }
+  function progress() {
+    const vs = visSteps(), n = vs.length, i = Math.min(cur, n);
+    $('#barFill').style.width = (i / n * 100) + '%';
+    $('#progLabel').innerHTML = i >= n ? '<strong>Review and submit</strong>' : (CFG.mode === 'sections' ? 'Section' : 'Question') + ` <strong>${i + 1}</strong> of <strong>${n}</strong>`;
+    const d = $('#dots');
+    if (CFG.mode === 'sections') {
+      d.className = 'secnav';
+      d.innerHTML = vs.map((s, k) => `<button type="button" data-go="${k}" class="${k === i ? 'cur' : stepDone(s) ? 'done' : ''}" title="${esc(s.title || s.section)}">${esc(s.nav || s.section)}</button>`).join('') +
+        `<button type="button" data-go="${n}" class="${i === n ? 'cur' : ''}">Review</button>`;
+    } else {
+      d.className = 'dots';
+      d.innerHTML = vs.map((s, k) => `<button type="button" data-go="${k}" class="${k === i ? 'cur' : stepDone(s) ? 'done' : ''}" title="${esc(s.qs[0].short || s.title || s.qs[0].label)}" aria-label="Question ${k + 1}">${k + 1}</button>`).join('');
+    }
+  }
+
+  /* ---------- validation ---------- */
+  function answered(q) {
+    const v = A[q.id];
+    if (W[q.type]) return W[q.type].valid ? W[q.type].valid(q, A, H) : true;
+    if (q.type === 'multi') return Array.isArray(v) && v.length > 0;
+    if (q.type === 'consent') return v === true;
+    if (q.type === 'email') return isEmail(v);
+    if (q.type === 'number' || q.type === 'currency') return v !== '' && v != null && !isNaN(Number(v));
+    return v != null && String(v).trim() !== '';
+  }
+  function otherOk(q) {
+    if (!q.other || q.otherOptional) return true;
+    const v = A[q.id], on = q.type === 'multi' ? (Array.isArray(v) && v.map(String).includes(String(OTHER(q)))) : String(v) === String(OTHER(q));
+    return !on || String(A[q.id + '__other'] || '').trim().length > 0;
+  }
+  function missingIn(s) {
+    return s.qs.filter(q => qVisible(q) && ((isRequired(q) && !answered(q)) || (answered(q) && !otherOk(q)) || (q.type === 'email' && A[q.id] && !isEmail(A[q.id]))));
+  }
+  function check(s) {
+    const miss = missingIn(s);
+    flagged = new Set(miss.map(q => q.id));
+    $$('[data-qwrap]').forEach(el => el.classList.toggle('missing', flagged.has(el.dataset.qwrap)));
+    miss.forEach(q => { if (q.type === 'email') { const e = document.getElementById('err_' + q.id); if (e) e.classList.add('show'); } });
+    if (miss.length) {
+      const st = $('.step'); st.classList.remove('shake'); void st.offsetWidth; st.classList.add('shake');
+      const first = document.getElementById('q_' + miss[0].id); if (first && s.qs.length > 1) first.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      toast(miss.length === 1 ? 'Please answer the highlighted question.' : 'Please answer the ' + miss.length + ' highlighted questions.');
+      return false;
+    }
+    return true;
+  }
+
+  function go(k) {
+    const vs = visSteps();
+    cur = Math.max(0, Math.min(k, vs.length)); flagged = new Set(); render();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  /* ---------- review & submit ---------- */
+  function fmt(q) {
+    const v = A[q.id];
+    if (W[q.type]) return W[q.type].recap ? W[q.type].recap(q, A, H) : '';
+    if (q.type === 'consent') return v === true ? 'Agreed' : '';
+    if (q.type === 'multi') { let t = H.labels(q.id); const o = H.other(q.id); if (o) t += ': ' + o; return t; }
+    if (q.type === 'choice') { let t = H.label(q.id); if (q.levels && t) t = 'L' + v + ' · ' + t; const o = H.other(q.id); if (o && String(v) === String(OTHER(q))) t += ': ' + o; return t; }
+    if (v == null || v === '') return '';
+    if (q.type === 'currency') return (CFG.currencyOf ? CFG.currencyOf(A) + ' ' : '') + Number(v).toLocaleString('en-US');
+    return String(v) + (q.unit ? ' ' + q.unit : '');
+  }
+  function renderReview() {
+    const vs = visSteps();
+    let lastSec = null, html = '';
+    vs.forEach((s, k) => {
+      if (s.noRecap) return;
+      const sec = s.section || '';
+      if (sec !== lastSec) { html += `<h3>${esc(sec)}</h3>`; lastSec = sec; }
+      s.qs.forEach(q => {
+        if (!qVisible(q) || q.noRecap) return;
+        const a = fmt(q);
+        html += `<div class="rr"><div class="rq">${esc(q.short || q.label)}</div><div class="ra ${a ? '' : 'na'}">${a ? esc(a) : (isRequired(q) ? 'Not answered yet' : 'Not answered')}</div><button type="button" data-go="${k}">Edit</button></div>`;
+      });
+    });
+    const missingSteps = vs.map((s, k) => missingIn(s).length ? k : -1).filter(k => k >= 0);
+    host().innerHTML = `<div class="step">
+      <div class="q-eyebrow">Last step</div>
+      <h1 class="q-title">Check your answers, then submit</h1>
+      <div class="q-ctx">${FLOW_URL ? 'When you submit, your answers go securely to your Microsoft AI Accelerator consultant.' : 'When you submit, a copy of your answers is saved to your device as a file. Please send it to your consultant.'} ${CFG.reviewNote || ''}</div>
+      ${missingSteps.length ? `<div class="warn-box">Some required questions still need an answer. <button type="button" class="btn btn-o" style="padding:6px 12px;font-size:13px;margin-left:6px" data-go="${missingSteps[0]}">Go to the first one</button></div>` : ''}
+      <div class="recap">${html}</div>
+      <p class="terms-note">Answering is voluntary. By submitting, you agree to our <a href="terms.html" target="_blank" rel="noopener">Terms of Use &amp; Privacy Statement</a>, including Microsoft’s access to your completed report.</p>
+      <div class="btn-row" style="margin-top:16px"><button type="button" class="btn btn-p" id="submitBtn" ${missingSteps.length ? 'disabled' : ''}>Submit answers</button><button type="button" class="btn btn-o" id="dlBtn">Download a copy</button></div>
+      <div id="submitMsg"></div>
+    </div>`;
+    $('.stage').classList.remove('wide');
+    nav(); progress();
+  }
+
+  function download(obj) {
+    try {
+      const blob = new Blob([JSON.stringify(obj, null, 2)], { type: 'application/json' });
+      const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
+      a.download = (CFG.fileName ? CFG.fileName(A) : 'answers') .replace(/[^A-Za-z0-9._-]+/g, '_') + '.json';
+      document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 1500);
+    } catch (e) { toast('Your browser blocked the download.'); }
+  }
+
+  async function submit() {
+    const vs = visSteps();
+    for (let k = 0; k < vs.length; k++) if (missingIn(vs[k]).length) { go(k); setTimeout(() => check(visSteps()[cur]), 50); return; }
+    const btn = $('#submitBtn'); btn.disabled = true; btn.textContent = 'Submitting…';
+    const body = CFG.payload(A, H); lastPayload = body;
+    try {
+      if (FLOW_URL) {
+        const r = await fetch(FLOW_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+        if (!r.ok) { const t = await r.text().catch(() => ''); throw new Error('the server answered ' + r.status + (t ? ': ' + t.slice(0, 160) : '')); }
+      } else {
+        download(body);
+      }
+      submitted = true; clearSaved(); renderDone();
+    } catch (err) {
+      btn.disabled = false; btn.textContent = 'Try again';
+      $('#submitMsg').innerHTML = `<div class="warn-box">We couldn’t send your answers (${esc(err.message)}). Your answers are still saved in this browser. Please try again, or <a href="#" id="dlFallback">download a copy</a> and send it to your consultant.</div>`;
+      const f = $('#dlFallback'); if (f) f.addEventListener('click', e => { e.preventDefault(); download(body); });
+    }
+  }
+
+  function renderDone() {
+    const company = CFG.companyOf ? CFG.companyOf(A) : '';
+    host().innerHTML = `<div class="step">
+      <div class="q-eyebrow">${esc(CFG.formLabel || '')}</div>
+      <h1 class="q-title">Thank you${company ? ', ' + esc(company) : ''}</h1>
+      <div class="done-badge">✓ ${esc(CFG.formLabel || 'Questionnaire')} ${FLOW_URL ? 'submitted' : 'complete'}</div>
+      <div class="q-ctx">${FLOW_URL ? esc(CFG.doneText || 'Your answers are with your consultant, who will review them with you.') : 'A copy of your answers has been saved to your device. Please send the file to your Microsoft AI Accelerator consultant. ' + esc(CFG.doneText || '')}</div>
+      ${CFG.nextHtml ? CFG.nextHtml(A) : ''}
+      <div class="btn-row" style="margin-top:8px"><button type="button" class="btn btn-o" id="dlBtn">${FLOW_URL ? 'Download a copy of my answers' : 'Download my answers again'}</button><a class="btn btn-g" href="questionnaires.html${location.search}">Back to all evaluations</a></div>
+    </div>`;
+    $('#prog').style.display = 'none'; $('#dots').style.display = 'none'; $('#navRow').style.display = 'none'; $('#saveHint').style.display = 'none';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  /* ---------- events ---------- */
+  let toastT;
+  function toast(m) { const t = $('#toast'); if (!t) return; t.textContent = m; t.style.display = 'block'; clearTimeout(toastT); toastT = setTimeout(() => t.style.display = 'none', 2600); }
+
+  function companyStrip() {
+    if (!CFG.companyOf) return;
+    const n = (CFG.companyOf(A) || '').trim(), s = $('#companyStrip'); if (!s) return;
+    s.classList.toggle('show', n.length > 1);
+    $('#companyStripName').textContent = n;
+    $('#companyBadge').textContent = n.split(/\s+/).slice(0, 2).map(w => w[0] ? w[0].toUpperCase() : '').join('');
+  }
+
+  function refreshVisibility() {
+    const s = visSteps()[cur]; if (!s) return;
+    s.qs.forEach(q => { const el = document.getElementById('q_' + q.id); if (el) el.hidden = !qVisible(q); });
+  }
+
+  document.addEventListener('click', e => {
+    const t = e.target.closest('[data-go],[data-use],#nextBtn,#backBtn,#submitBtn,#dlBtn,#startBtn,#resumeBtn,#restartBtn');
+    if (!t) return;
+    if (t.dataset.go != null && t.hasAttribute('data-go')) { go(+t.dataset.go); return; }
+    if (t.dataset.use) { const q = Q[t.dataset.use]; const s = suggestion(q); A[q.id] = JSON.parse(JSON.stringify(s)); save(); render(); return; }
+    switch (t.id) {
+      case 'nextBtn': { const s = visSteps()[cur]; if (!check(s)) return; go(cur + 1); return; }
+      case 'backBtn': go(cur - 1); return;
+      case 'submitBtn': submit(); return;
+      case 'dlBtn': download(lastPayload || CFG.payload(A, H)); return;
+      case 'startBtn': case 'resumeBtn': start(); return;
+      case 'restartBtn': A = {}; prefill(); clearSaved(); start(); return;
+    }
+  });
+
+  document.addEventListener('change', e => {
+    const t = e.target;
+    if (t.dataset.choice) {
+      const q = Q[t.dataset.choice], o = q.opts[+t.dataset.i]; A[q.id] = o.v; save();
+      const wrap = t.closest('.opts'); $$('.opt', wrap).forEach(l => l.classList.toggle('on', l.querySelector('input').checked));
+      flagged.delete(q.id); const w = document.getElementById('q_' + q.id); if (w) w.classList.remove('missing');
+      const ob = w && w.querySelector('.other'); if (ob) { ob.classList.toggle('show', String(o.v) === String(OTHER(q))); if (String(o.v) === String(OTHER(q))) { const i = ob.querySelector('input'); i && i.focus(); } }
+      refreshVisibility(); progress(); companyStrip();
+      const s = visSteps()[cur];
+      if (s && s.qs.length === 1 && !s.title && CFG.autoAdvance !== false && String(o.v) !== String(OTHER(q)) && !(q.other && false)) setTimeout(() => { if (visSteps()[cur] === s && !submitted) { if (check(s)) go(cur + 1); } }, 240);
+      return;
+    }
+    if (t.dataset.multi) {
+      const q = Q[t.dataset.multi], o = q.opts[+t.dataset.i];
+      let arr = Array.isArray(A[q.id]) ? A[q.id].slice() : [];
+      if (t.checked) {
+        if (q.max && arr.length >= q.max) {
+          t.checked = false; const l = t.closest('.opt'); l.classList.remove('blocked'); void l.offsetWidth; l.classList.add('blocked');
+          const lim = document.querySelector(`[data-limit="${CSS.escape(q.id)}"]`); if (lim) { lim.textContent = 'You can choose up to ' + q.max + ': deselect one first.'; lim.classList.add('hit'); setTimeout(() => { lim.textContent = 'Up to ' + q.max + '.'; lim.classList.remove('hit'); }, 2200); }
+          return;
+        }
+        if (q.exclusive && q.exclusive.includes(o.v)) arr = []; else if (q.exclusive) arr = arr.filter(x => !q.exclusive.includes(x));
+        arr.push(o.v);
+      } else arr = arr.filter(x => String(x) !== String(o.v));
+      // keep option order
+      A[q.id] = q.opts.map(x => x.v).filter(v => arr.map(String).includes(String(v)));
+      save();
+      const w = document.getElementById('q_' + q.id);
+      $$('.opt', w).forEach((l, i) => { const on = A[q.id].map(String).includes(String(q.opts[i].v)); l.classList.toggle('on', on); l.querySelector('input').checked = on; });
+      const ob = w && w.querySelector('.other'); if (ob) ob.classList.toggle('show', A[q.id].map(String).includes(String(OTHER(q))));
+      flagged.delete(q.id); if (w) w.classList.remove('missing');
+      refreshVisibility(); progress();
+      return;
+    }
+    if (t.dataset.consent) { A[t.dataset.consent] = t.checked; save(); t.closest('.consent').classList.toggle('on', t.checked); progress(); return; }
+  });
+
+  document.addEventListener('input', e => {
+    const t = e.target;
+    if (t.dataset.q) {
+      const q = Q[t.dataset.q];
+      A[q.id] = (q.type === 'number' || q.type === 'currency') ? (t.value === '' ? '' : Number(t.value)) : t.value;
+      save(); companyStrip();
+      if (q.type === 'email') { const er = document.getElementById('err_' + q.id); if (er && isEmail(t.value)) er.classList.remove('show'); }
+      if (flagged.has(q.id) && answered(q)) { flagged.delete(q.id); const w = document.getElementById('q_' + q.id); if (w) w.classList.remove('missing'); }
+      refreshVisibility(); progress(); return;
+    }
+    if (t.dataset.other) { A[t.dataset.other + '__other'] = t.value; save(); return; }
+  });
+  document.addEventListener('focusout', e => {
+    const t = e.target;
+    if (t.dataset && t.dataset.q && Q[t.dataset.q] && Q[t.dataset.q].type === 'email' && t.value.trim()) { const er = document.getElementById('err_' + t.dataset.q); if (er) er.classList.toggle('show', !isEmail(t.value)); }
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Enter' && e.target.tagName === 'INPUT' && ['text', 'email', 'number', 'month'].includes(e.target.type) && $('#formShell').classList.contains('show')) {
+      const s = visSteps()[cur]; if (s && s.qs.length === 1) { e.preventDefault(); $('#nextBtn').click(); }
+    }
+  });
+
+  function prefill() { if (CFG.prefill) CFG.prefill(A, H); }
+
+  function start() {
+    $('#landing').style.display = 'none';
+    $('#formShell').classList.add('show');
+    cur = 0; render(); companyStrip(); window.scrollTo({ top: 0 });
+  }
+
+  /* ---------- boot ---------- */
+  const saved = loadSaved();
+  if (saved && Object.keys(saved.A).some(k => { const v = saved.A[k]; return v !== '' && v != null && !(Array.isArray(v) && !v.length); })) {
+    A = saved.A;
+    const r = $('#resumeBox');
+    if (r) { r.classList.add('show'); const when = new Date(saved.at); $('#resumeWhen').textContent = isNaN(when) ? '' : ' (last saved ' + when.toLocaleString() + ')'; $('#startBtn').style.display = 'none'; }
+  }
+  prefill();
+  if (!FLOW_URL) { const h = $('#saveHint'); if (h) h.textContent = 'Your answers are saved in this browser as you go. At the end, you download them as a file for your consultant.'; }
+  window.MAIN_DEBUG = { A: () => A, payload: () => CFG.payload(A, H), go, start, steps: visSteps, set: (k, v) => { A[k] = v; save(); }, render };
+})();
+
+</script>
+<script>
+/* carry the invitation parameters (?project=…, ?invite=…, ?company=…, ?domain=…) to the next page */
+(function(){try{var q=location.search;if(!q)return;document.querySelectorAll('a[data-keep]').forEach(function(a){var h=a.getAttribute('href');if(!h||h.indexOf('?')>=0||h.indexOf('#')===0)return;var i=h.indexOf('#');a.setAttribute('href',i<0?h+q:h.slice(0,i)+q+h.slice(i));});}catch(e){}})();
+</script>
+<script>
+/* the design opens straight on the questions (the track page is the introduction); progress sits in the coloured band */
+(function(){try{var b=document.getElementById('qband-prog');['prog','dots'].forEach(function(id){var e=document.getElementById(id);if(e&&b)b.appendChild(e);});
+if(window.MAIN_DEBUG&&MAIN_DEBUG.start)MAIN_DEBUG.start();}catch(e){}})();
+</script>
+</body>
+</html>
