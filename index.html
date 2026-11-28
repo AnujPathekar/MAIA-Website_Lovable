@@ -121,8 +121,9 @@ h1,h2,h3{margin:0;font-family:'Familjen Grotesk',system-ui,sans-serif;font-weigh
 </div>
 </section>
 
-<section class="space" aria-labelledby="tracks-title" data-palette="frontier,copilot,security" style="--accent-a:#2B4CFF;--accent-b:#12B5CB">
-<div class="space-bg" aria-hidden="true"><canvas></canvas><div class="veil-soft"></div><div class="grain"></div></div>
+</main>
+<div class="space joined" data-palette="frontier,copilot,security" style="--accent-a:#2B4CFF;--accent-b:#12B5CB"><div class="space-bg" aria-hidden="true"><canvas></canvas><div class="veil-soft"></div><div class="grain"></div></div>
+<section class="joined-part" aria-labelledby="tracks-title">
 <div class="wrap" style="padding-top:clamp(96px,10vw,160px);padding-bottom:clamp(96px,10vw,160px)">
 <div class="thead" data-reveal>
 <h2 id="tracks-title" style="font-size:clamp(36px,3vw + 16px,64px);color:#fff;letter-spacing:-.035em">Frontier, Copilot or Security</h2>
@@ -135,15 +136,14 @@ h1,h2,h3{margin:0;font-family:'Familjen Grotesk',system-ui,sans-serif;font-weigh
 </ul>
 </div>
 </section>
-</main>
-<footer class="space foot" data-palette="security,frontier,copilot"><div class="space-bg" aria-hidden="true"><canvas></canvas><div class="veil-soft"></div><div class="grain"></div></div><div class="wrap" style="padding-top:96px;padding-bottom:64px">
-<p style="font:600 clamp(32px,3.4vw,56px)/1 'Familjen Grotesk',system-ui,sans-serif;letter-spacing:-.028em;margin:0 0 40px">Microsoft AI Accelerator</p>
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px 32px;padding-top:24px;border-top:1px solid oklch(90% .009 252);font-size:14px;color:oklch(50% .018 258)">
-<p>Delivered by SCC in partnership with Microsoft</p>
-<p><a href="terms.html" data-keep style="color:oklch(36% .022 260);font-weight:500">Terms of Use &amp; Privacy Statement</a></p>
-<p>Questions? <a href="mailto:hello@sourcecodecontrol.com" style="color:oklch(36% .022 260);font-weight:500">hello@sourcecodecontrol.com</a></p>
+<footer class="foot">
+<div class="wrap foot-in">
+<div class="partner"><p class="p1">Delivered by SCC</p><p class="p2">in partnership with</p><p class="p3" aria-label="Microsoft"><span class="mslogo" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="msword" aria-hidden="true">Microsoft</span></p></div>
+<div class="foot-brand"><span class="logo" aria-hidden="true">MAIA</span><p class="wm"><span class="ms">Microsoft</span> AI Accelerator</p></div>
+<div class="foot-bar"><a class="fa" href="terms.html" data-keep>Terms of Use &amp; Privacy Statement <span aria-hidden="true">→</span></a><span class="q">Questions? <a class="fa" href="mailto:hello@sourcecodecontrol.com">hello@sourcecodecontrol.com <span aria-hidden="true">→</span></a></span></div>
 </div>
-</div></footer>
+</footer>
+</div>
 </div>
 <script>
 /* earlier links to this page: ?track= opens that track; invitation links and old #sections open the right page */
