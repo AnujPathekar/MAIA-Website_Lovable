@@ -58,16 +58,18 @@ h1,h2,h3{margin:0;font-family:'Familjen Grotesk',system-ui,sans-serif;font-weigh
 @keyframes draw{to{stroke-dashoffset:0}}
 .hl .a:first-child{color:#fff}
 .glass .go{align-self:flex-end}
-.appr2{padding:clamp(56px,7vw,104px) 0}
-.appr2-in{display:grid;grid-template-columns:minmax(0,3.2fr) minmax(0,8.8fr);gap:48px;align-items:center}
-.appr2 h2{display:grid;font-size:clamp(32px,2.4vw + 16px,54px);line-height:1.02;letter-spacing:-.035em}.appr2 h2 .lite2{color:oklch(55% .02 260)}
+.appr2{padding:clamp(28px,3.5vw,48px) 0}
+.appr2-in{display:grid;grid-template-columns:minmax(0,2.4fr) minmax(0,9.6fr);gap:48px;align-items:center}
+.appr2 h2{display:grid;font-size:clamp(26px,1.6vw + 14px,40px);line-height:1.02;letter-spacing:-.035em}.appr2 h2 .lite2{color:oklch(55% .02 260)}
 .outs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:0;padding:0;list-style:none}
-.outs li{position:relative;display:grid;gap:8px;align-content:start;padding:24px 24px 26px;border-radius:20px;background:#fff;border:1px solid oklch(90% .009 252);overflow:hidden}
+.outs li{position:relative;display:grid;grid-template-columns:auto 1fr;column-gap:16px;row-gap:2px;align-items:center;padding:16px 20px;border-radius:20px;background:#fff;border:1px solid oklch(90% .009 252);overflow:hidden}
 .outs li::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:var(--c)}
-.outs .num{font:600 clamp(48px,3vw + 20px,72px)/.9 'Familjen Grotesk',system-ui,sans-serif;letter-spacing:-.05em;color:var(--c)}
+.outs .num{grid-row:span 2;font:600 clamp(40px,2vw + 20px,56px)/.9 'Familjen Grotesk',system-ui,sans-serif;letter-spacing:-.05em;color:var(--c)}
 .outs h3{font-size:clamp(18px,.5vw + 14px,22px);line-height:1.2;letter-spacing:-.015em}
-.outs p{color:oklch(40% .02 260);font-size:15.5px}
+.outs p{color:oklch(40% .02 260);font-size:14.5px;margin:0}.outs h3{margin:0}
 @media(max-width:960px){.appr2-in,.outs{grid-template-columns:minmax(0,1fr)}.outs li{grid-template-columns:auto 1fr;column-gap:18px}.outs .num{grid-row:span 2}}
+.tw{background-clip:text;-webkit-background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+.tw-f{background-image:linear-gradient(100deg,#F3E8FF,#DDBBFD)}.tw-c{background-image:linear-gradient(100deg,#E3FAFC,#B5ECF4)}.tw-s{background-image:linear-gradient(100deg,#E6EFFF,#BCD3FD)}
 .startgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin:0;padding:0;list-style:none}@media(max-width:960px){.startgrid{grid-template-columns:minmax(0,1fr)}}
 .door2{height:100%;display:flex!important;flex-direction:column;gap:14px;padding:32px;background:#fff!important}
 .door2 .n{font:500 13px/1 'JetBrains Mono',monospace;color:oklch(50% .018 258);letter-spacing:.08em}
@@ -123,28 +125,26 @@ h1,h2,h3{margin:0;font-family:'Familjen Grotesk',system-ui,sans-serif;font-weigh
 </main>
 <div class="space joined" data-palette="frontier,copilot,security" style="--accent-a:#2B4CFF;--accent-b:#12B5CB"><div class="space-bg" aria-hidden="true"><canvas></canvas><div class="veil-soft"></div><div class="grain"></div></div>
 <section class="joined-part" aria-labelledby="tracks-title">
-<div class="wrap" style="padding-top:clamp(96px,10vw,160px);padding-bottom:clamp(32px,4vw,56px)">
+<div class="wrap" style="padding-top:clamp(56px,6vw,88px);padding-bottom:clamp(24px,3vw,40px)">
 <div class="thead" data-reveal>
-<h2 id="tracks-title" style="font-size:clamp(36px,3vw + 16px,64px);color:#fff;letter-spacing:-.035em">Frontier, Copilot or Security</h2>
+<h2 id="tracks-title" style="font-size:clamp(36px,3vw + 16px,64px);color:#fff;letter-spacing:-.035em"><span class="tw tw-f">Frontier</span>, <span class="tw tw-c">Copilot</span> or <span class="tw tw-s">Security</span></h2>
 <p style="font-size:clamp(18px,.35vw + 16px,22px);line-height:1.45">Pick the evaluation you were invited to. Each opens its own questionnaire page, and your answers save as you go.</p>
 </div>
 <ul class="tracks" data-reveal>
-<li style="--c:var(--frontier);--cl:var(--frontier-l)"><a href="frontier.html" data-keep class="trow"><span class="tname">Frontier</span><span class="tmeta"><span class="tprod">Microsoft 365 E7 · the Frontier Suite</span><span class="tdesc">Readiness for AI and agents at scale, agent governance and the E7 business case.</span><span class="ttime">2 questionnaires · executive and technical</span></span><span class="key p tf">Questionnaire <span aria-hidden="true">→</span></span></a></li>
-<li style="--c:var(--copilot);--cl:var(--copilot-l)"><a href="copilot.html" data-keep class="trow"><span class="tname">Copilot</span><span class="tmeta"><span class="tprod">Microsoft 365 Copilot</span><span class="tdesc">Everyday use, work handed to agents, and spend matched to value.</span><span class="ttime">1 questionnaire · AI transformation lead</span></span><span class="key p tc">Questionnaire <span aria-hidden="true">→</span></span></a></li>
-<li style="--c:var(--security);--cl:var(--security-l)"><a href="security.html" data-keep class="trow"><span class="tname">Security</span><span class="tmeta"><span class="tprod">Microsoft 365 E5 · Sentinel · Defender · Entra</span><span class="tdesc">Where your security stands today, what you’re exposed to, and the case for the board.</span><span class="ttime">2 questionnaires · executive and technical</span></span><span class="key p ts">Questionnaire <span aria-hidden="true">→</span></span></a></li>
+<li style="--c:var(--frontier);--cl:var(--frontier-l)"><a href="frontier.html" data-keep class="trow"><span class="tname">Frontier</span><span class="tmeta"><span class="tprod">Microsoft 365 E7 · the Frontier Suite</span><span class="tdesc">Readiness for AI and agents at scale, agent governance and the E7 business case.</span><span class="ttime">2 Questionnaires · Executive &amp; Technical</span></span><span class="key p tf">Questionnaire <span aria-hidden="true">→</span></span></a></li>
+<li style="--c:var(--copilot);--cl:var(--copilot-l)"><a href="copilot.html" data-keep class="trow"><span class="tname">Copilot</span><span class="tmeta"><span class="tprod">Microsoft 365 Copilot</span><span class="tdesc">Everyday use, work handed to agents, and spend matched to value.</span><span class="ttime">1 Questionnaire · AI Transformation Lead</span></span><span class="key p tc">Questionnaire <span aria-hidden="true">→</span></span></a></li>
+<li style="--c:var(--security);--cl:var(--security-l)"><a href="security.html" data-keep class="trow"><span class="tname">Security</span><span class="tmeta"><span class="tprod">Microsoft 365 E5 · Sentinel · Defender · Entra</span><span class="tdesc">Where your security stands today, what you’re exposed to, and the case for the board.</span><span class="ttime">2 Questionnaires · Executive &amp; Technical</span></span><span class="key p ts">Questionnaire <span aria-hidden="true">→</span></span></a></li>
 </ul>
 </div>
 </section>
 <footer class="foot">
 <div class="wrap foot-in">
-<div class="foot-left">
-<p class="pl">Delivered by SCC</p>
-<p class="pl muted">in partnership with</p>
-<p class="pl ms-line"><span class="mslogo" aria-hidden="true"><i></i><i></i><i></i><i></i></span>Microsoft</p>
-<p class="pl gap"><a class="fa" href="terms.html" data-keep>Terms of Use &amp; Privacy Statement <span aria-hidden="true">→</span></a></p>
-<p class="pl"><span class="muted">Questions?</span> <a class="fa" href="mailto:hello@sourcecodecontrol.com">hello@sourcecodecontrol.com <span aria-hidden="true">→</span></a></p>
-</div>
+<a class="fa f-terms" href="terms.html" data-keep>Terms of Use &amp; Privacy Statement <span aria-hidden="true">→</span></a>
+<p class="f-help"><span class="muted">Help?</span> <a class="fa" href="mailto:hello@sourcecodecontrol.com">hello@sourcecodecontrol.com <span aria-hidden="true">→</span></a></p>
+<div class="f-brand">
 <div class="foot-brand"><span class="logo" aria-hidden="true">MAIA</span><p class="wm">Microsoft AI Accelerator</p></div>
+<div class="partner-box" aria-label="Delivered by SCC in partnership with Microsoft"><span class="pb1">Delivered by SCC</span><span class="pb2">in partnership with</span><span class="pb3"><span class="mslogo" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="msw">Microsoft</span></span></div>
+</div>
 </div>
 </footer>
 </div>

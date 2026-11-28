@@ -136,3 +136,17 @@ a.fa:hover{background-size:100% 1px}a.fa:hover span{transform:translateX(5px);op
 @media(max-width:860px){.foot-brand{order:-1}}
 .space .foot-left .pl.gap,.foot-left .pl.gap{margin-top:14px}
 @media(max-width:860px){.foot-in{grid-template-columns:minmax(0,1fr)!important}}
+/* footer v4: Terms | Help | brand with the partner rectangle beneath */
+.foot-in{grid-template-columns:1fr auto 1fr!important;align-items:end!important;gap:20px 32px!important;padding-top:32px!important;padding-bottom:32px!important}
+.f-terms{justify-self:start}
+.f-help{margin:0;justify-self:center;display:inline-flex;gap:6px;font-size:14px;color:rgb(236 240 248/.9)}
+.f-help .muted{color:rgb(226 232 245/.55)}
+.f-brand{justify-self:end;display:grid;justify-items:end;gap:12px}
+.partner-box{display:inline-grid;grid-template-columns:max-content;row-gap:5px;color:#fff}
+.partner-box .pb1{font:600 15px/1 'Familjen Grotesk',system-ui,sans-serif;letter-spacing:-.005em;white-space:nowrap}
+.partner-box .pb2{display:block;font:500 9.5px/1 'JetBrains Mono',ui-monospace,monospace;text-transform:uppercase;color:rgb(226 232 245/.55);text-align:justify;text-align-last:justify;white-space:nowrap;letter-spacing:.06em}
+.partner-box .pb3{display:flex;align-items:center;justify-content:space-between;gap:.35em;font:600 15px/1 'Segoe UI','Familjen Grotesk',system-ui,sans-serif;white-space:nowrap}
+.partner-box .mslogo{display:grid;grid-template-columns:repeat(2,.44em);grid-auto-rows:.44em;gap:.07em}
+.partner-box .msw{flex:1;text-align:justify;text-align-last:justify}
+@media(max-width:860px){.foot-in{grid-template-columns:minmax(0,1fr)!important;align-items:start!important}.f-brand{justify-self:start;justify-items:start;order:-1}.f-help{justify-self:start}}
+.partner-box{justify-items:start}.partner-box .pb2,.partner-box .pb3{justify-self:stretch}

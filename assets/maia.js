@@ -96,6 +96,18 @@
       document.addEventListener('click', function (e) { if (!h.contains(e.target)) setOpen(false); });
       document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { setOpen(false); hb.focus(); } });
     }
+
+    /* partner rectangle: the Microsoft line is sized to match "Delivered by SCC" exactly */
+    function fitPartner() {
+      [].slice.call(document.querySelectorAll('.partner-box')).forEach(function (b) {
+        var a = b.querySelector('.pb1'), c = b.querySelector('.pb3'); if (!a || !c) return;
+        c.style.fontSize = '15px'; c.style.width = 'max-content';
+        var w1 = a.getBoundingClientRect().width, w3 = c.getBoundingClientRect().width;
+        if (w1 && w3) c.style.fontSize = (15 * w1 / w3).toFixed(2) + 'px';
+        c.style.width = '';
+      });
+    }
+    fitPartner(); if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitPartner);
     if (document.querySelector('main > section.space:first-child')) document.body.classList.add('has-space-hero');
 
     /* headline words rise in, one after another */
