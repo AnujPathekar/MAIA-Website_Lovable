@@ -48,10 +48,10 @@ h1,h2,h3{margin:0;font-family:'Familjen Grotesk',system-ui,sans-serif;font-weigh
 .space a.glass{color:inherit!important}
 @media(max-width:520px){.hl{font-size:8.6vw}}
 @media(max-width:960px){.hero-doors{grid-template-columns:minmax(0,1fr)}.hero3{min-height:0;padding-top:72px}}
-#hero-title .grad{background:linear-gradient(100deg,#8AB4F8 0%,#A78BFA 28%,#C58AF9 50%,#78D9EC 78%,#8AB4F8 100%);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent!important;-webkit-text-fill-color:transparent;animation:wordIn 1.1s var(--ease) forwards,gradShift 14s ease-in-out infinite alternate;animation-delay:var(--d,0s),0s}
+#hero-title .grad{background:linear-gradient(100deg,#8FEDE4 0%,#3CCFC4 45%,#1FB3AE 70%,#8FEDE4 100%);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent!important;-webkit-text-fill-color:transparent;animation:wordIn 1.1s var(--ease) forwards,gradShift 14s ease-in-out infinite alternate;animation-delay:var(--d,0s),0s}
 @keyframes gradShift{from{background-position:0% 50%}to{background-position:100% 50%}}
 #hero-title>span.b.grad,#hero-title .grad.lite{color:transparent!important}
-#hero-title .grad.lite{opacity:.62;animation:gradShift 14s ease-in-out infinite alternate}
+#hero-title .to-w{color:#fff}
 #hero-title .to{display:inline-flex;align-items:flex-start;gap:.08em}
 .arrow{width:.62em;height:.62em;margin-top:-.08em;overflow:visible}
 .arrow path{stroke-dasharray:90;stroke-dashoffset:90;animation:draw 1.2s var(--ease) .9s forwards}
@@ -98,8 +98,7 @@ h1,h2,h3{margin:0;font-family:'Familjen Grotesk',system-ui,sans-serif;font-weigh
 <div class="space-bg" aria-hidden="true"><canvas></canvas><div class="veil"></div><div class="grain"></div><div class="fade"></div></div>
 <div class="wrap hero3">
 <div class="hero3-copy">
-<p class="eb rv-self" style="letter-spacing:.14em">Microsoft AI Accelerator</p>
-<h1 id="hero-title" class="hl"><span class="a word" style="--d:.1s">From</span><span class="b word grad" style="--d:.22s">AI Ambition</span><span class="a word to" style="--d:.42s"><svg class="arrow" viewBox="0 0 60 60" aria-hidden="true"><defs><linearGradient id="arrG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8AB4F8"/><stop offset=".55" stop-color="#C58AF9"/><stop offset="1" stop-color="#78D9EC"/></linearGradient></defs><path d="M14 4 C14 30 22 44 50 46" fill="none" stroke="url(#arrG)" stroke-width="3.2" stroke-linecap="round"/><path d="M41 37 L51 46 L40 54" fill="none" stroke="url(#arrG)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="grad lite">to</span></span><span class="b word grad" style="--d:.54s">Business Outcomes</span></h1>
+<h1 id="hero-title" class="hl"><span class="a word" style="--d:.1s">From</span><span class="b word grad" style="--d:.22s">AI Ambition</span><span class="a word to" style="--d:.42s"><svg class="arrow" viewBox="0 0 60 60" aria-hidden="true"><defs><linearGradient id="arrG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9BEFE6"/><stop offset="1" stop-color="#2CC5BD"/></linearGradient></defs><path d="M14 4 C14 30 22 44 50 46" fill="none" stroke="url(#arrG)" stroke-width="5" stroke-linecap="round"/><path d="M41 37 L51 46 L40 54" fill="none" stroke="url(#arrG)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="to-w">To</span></span><span class="b word grad" style="--d:.54s">Business Outcomes</span></h1>
 <p class="rv-self" style="--d:.55s;font-size:clamp(17px,.5vw + 14px,22px);line-height:1.45;max-width:46ch">Find out what Microsoft AI is worth to your organisation, how ready you are to capture it, and the plan to get there.</p>
 </div>
 <ol class="hero-doors" data-reveal>
@@ -124,7 +123,7 @@ h1,h2,h3{margin:0;font-family:'Familjen Grotesk',system-ui,sans-serif;font-weigh
 </main>
 <div class="space joined" data-palette="frontier,copilot,security" style="--accent-a:#2B4CFF;--accent-b:#12B5CB"><div class="space-bg" aria-hidden="true"><canvas></canvas><div class="veil-soft"></div><div class="grain"></div></div>
 <section class="joined-part" aria-labelledby="tracks-title">
-<div class="wrap" style="padding-top:clamp(96px,10vw,160px);padding-bottom:clamp(96px,10vw,160px)">
+<div class="wrap" style="padding-top:clamp(96px,10vw,160px);padding-bottom:clamp(32px,4vw,56px)">
 <div class="thead" data-reveal>
 <h2 id="tracks-title" style="font-size:clamp(36px,3vw + 16px,64px);color:#fff;letter-spacing:-.035em">Frontier, Copilot or Security</h2>
 <p style="font-size:clamp(18px,.35vw + 16px,22px);line-height:1.45">Pick the evaluation you were invited to. Each opens its own questionnaire page, and your answers save as you go.</p>
@@ -138,9 +137,14 @@ h1,h2,h3{margin:0;font-family:'Familjen Grotesk',system-ui,sans-serif;font-weigh
 </section>
 <footer class="foot">
 <div class="wrap foot-in">
-<div class="partner"><p class="p1">Delivered by SCC</p><p class="p2">in partnership with</p><p class="p3" aria-label="Microsoft"><span class="mslogo" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="msword" aria-hidden="true">Microsoft</span></p></div>
-<div class="foot-brand"><span class="logo" aria-hidden="true">MAIA</span><p class="wm"><span class="ms">Microsoft</span> AI Accelerator</p></div>
-<div class="foot-bar"><a class="fa" href="terms.html" data-keep>Terms of Use &amp; Privacy Statement <span aria-hidden="true">→</span></a><span class="q">Questions? <a class="fa" href="mailto:hello@sourcecodecontrol.com">hello@sourcecodecontrol.com <span aria-hidden="true">→</span></a></span></div>
+<div class="foot-left">
+<p class="pl">Delivered by SCC</p>
+<p class="pl muted">in partnership with</p>
+<p class="pl ms-line"><span class="mslogo" aria-hidden="true"><i></i><i></i><i></i><i></i></span>Microsoft</p>
+<p class="pl gap"><a class="fa" href="terms.html" data-keep>Terms of Use &amp; Privacy Statement <span aria-hidden="true">→</span></a></p>
+<p class="pl"><span class="muted">Questions?</span> <a class="fa" href="mailto:hello@sourcecodecontrol.com">hello@sourcecodecontrol.com <span aria-hidden="true">→</span></a></p>
+</div>
+<div class="foot-brand"><span class="logo" aria-hidden="true">MAIA</span><p class="wm">Microsoft AI Accelerator</p></div>
 </div>
 </footer>
 </div>

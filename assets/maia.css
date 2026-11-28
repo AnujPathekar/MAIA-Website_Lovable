@@ -121,3 +121,18 @@ a.fa:hover{background-size:100% 1px}a.fa:hover span{transform:translateX(5px);op
 .foot-bar{grid-column:1/-1;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 32px;padding-top:22px;border-top:1px solid rgb(255 255 255/.1);font-size:14px;color:rgb(226 232 245/.6)}
 .foot-bar .q{display:inline-flex;gap:6px;flex-wrap:wrap}
 .foot-bar a.fa{font-size:14px}
+/* footer v3: compact, one aligned column on the left, brand on one line at right */
+.foot-in{grid-template-columns:minmax(0,1fr) auto!important;align-items:start!important;gap:28px 48px!important;padding-top:40px!important;padding-bottom:36px!important}
+.foot-left{display:grid;gap:6px;justify-items:start}
+.foot-left .pl,.space .foot-left .pl{margin:0;font:400 14px/1.5 'IBM Plex Sans',system-ui,sans-serif;color:rgb(236 240 248/.9)!important}
+.foot-left .muted,.space .foot-left .muted{color:rgb(226 232 245/.55)!important}
+.foot-left .gap{margin-top:14px}
+.foot-left .ms-line{display:inline-flex;align-items:center;gap:8px;font-weight:600!important}
+.foot-left .mslogo{grid-template-columns:repeat(2,7px);grid-auto-rows:7px;gap:1px}
+.foot-left a.fa{font-size:14px}
+.foot-brand{display:flex!important;align-items:center;gap:12px;justify-items:initial}
+.foot-brand .logo{height:28px;padding:0 9px;font-size:13px;border-radius:7px 2px}
+.foot-brand .wm,.space .foot-brand .wm{font:600 20px/1 'Familjen Grotesk',system-ui,sans-serif!important;letter-spacing:-.015em;white-space:nowrap}
+@media(max-width:860px){.foot-brand{order:-1}}
+.space .foot-left .pl.gap,.foot-left .pl.gap{margin-top:14px}
+@media(max-width:860px){.foot-in{grid-template-columns:minmax(0,1fr)!important}}
