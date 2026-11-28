@@ -9,9 +9,24 @@
 }
 html{scroll-behavior:smooth}
 
-/* header: light acrylic, sticky */
-body>div>header{position:sticky!important;top:0;z-index:50!important;background:rgb(248 250 253/.72)!important;backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);transition:box-shadow .3s var(--ease)}
-body.scrolled>div>header{box-shadow:0 1px 0 rgb(11 15 26/.06),0 8px 24px -12px rgb(11 15 26/.18)}
+/* header: transparent over the space hero, dark acrylic once scrolled, same look on every page */
+header.site-hdr{position:sticky!important;top:0;z-index:50!important;max-width:none!important;background:transparent!important;border-bottom:1px solid rgb(255 255 255/0)!important;transition:background .4s var(--ease),border-color .4s var(--ease),backdrop-filter .4s}
+body.has-space-hero header.site-hdr{margin-bottom:-73px}
+body:not(.has-space-hero) header.site-hdr,body.scrolled header.site-hdr{background:rgb(4 6 13/.9)!important;backdrop-filter:saturate(160%) blur(18px);-webkit-backdrop-filter:saturate(160%) blur(18px);border-bottom-color:rgb(255 255 255/.08)!important}
+header.site-hdr a,header.site-hdr p{color:rgb(232 236 245/.82)!important}
+header.site-hdr a:hover{color:#fff!important}
+header.site-hdr>a>span:first-child{background:#fff!important;color:var(--ink)!important}
+header.site-hdr>a>span:last-child{color:#fff!important}
+header.site-hdr nav a[style*="underline"]{color:#fff!important;text-decoration-color:var(--g-blue)!important}
+body.has-space-hero main>section.space:first-child{padding-top:72px}
+/* help "?" beside Questionnaires */
+.help{position:relative;display:inline-flex}
+.help>button{width:28px;height:28px;display:grid;place-items:center;border-radius:50%;border:1px solid rgb(255 255 255/.28);background:rgb(255 255 255/.06);color:#fff;font:600 14px/1 'Familjen Grotesk',system-ui,sans-serif;cursor:pointer;transition:background .25s,border-color .25s,transform .35s var(--ease)}
+.help>button:hover,.help>button[aria-expanded="true"]{background:rgb(255 255 255/.16);border-color:rgb(255 255 255/.5);transform:scale(1.06)}
+.help .pop{position:absolute;top:calc(100% + 12px);right:-8px;width:max-content;max-width:min(320px,calc(100vw - 32px));padding:14px 16px;border-radius:14px;background:rgb(16 21 38/.92);border:1px solid rgb(255 255 255/.12);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);box-shadow:0 18px 40px -16px rgb(0 0 0/.6);color:rgb(226 232 245/.85);font:14px/1.45 'IBM Plex Sans',system-ui,sans-serif;opacity:0;transform:translateY(-6px) scale(.98);transform-origin:top right;pointer-events:none;transition:opacity .25s var(--ease),transform .35s var(--ease)}
+.help .pop.open{opacity:1;transform:none;pointer-events:auto}
+.help .pop a{color:#fff!important;font-weight:500;text-decoration:underline;text-underline-offset:.18em}
+#motionBtn{display:none!important}
 
 /* buttons: pills, ink primary (Apple), track colours (Google) */
 .key{border-radius:999px!important;box-shadow:0 1px 2px rgb(11 15 26/.08)!important;transition:transform .35s var(--ease),box-shadow .35s var(--ease),background .25s!important;padding:0 20px!important}
@@ -69,3 +84,4 @@ a.card:hover{transform:translateY(-4px);box-shadow:0 24px 48px -24px rgb(11 15 2
 .space p[style*="Familjen"]{color:#fff!important}
 section[style*="oklch(21% .024 262)"] .key.p{background:#fff!important;border-color:#fff!important;color:var(--ink)!important}
 section[style*="oklch(21% .024 262)"] .key:not(.p){background:rgb(255 255 255/.08)!important;border-color:rgb(255 255 255/.2)!important;color:#fff!important}
+body:not(.has-space-hero) header.site-hdr{background:var(--space)!important}

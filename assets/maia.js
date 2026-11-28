@@ -3,7 +3,7 @@
 (function () {
   'use strict';
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var GLYPHS = 'アイウエオカキクケコサシスセソタチツテトナニヌネノ0123456789ABCDEFMAIA<>/{}[]=+*#';
+  var GLYPHS = '$€£¥₹¢₩₿%0123456789012345678901234567890123456789.,+';
   var HEX = { frontier: [161, 66, 244], copilot: [18, 181, 203], security: [66, 133, 244], white: [214, 226, 255] };
 
   function Space(host) {
@@ -67,8 +67,8 @@
   function start() {
     var spaces = [].slice.call(document.querySelectorAll('.space-bg')).map(function (b) { var s = Space(b); return s; }).filter(Boolean);
     var btn = document.getElementById('motionBtn');
-    var paused = function () { return btn && btn.getAttribute('aria-pressed') === 'true'; };
-    if (btn && !btn.onclick) btn.addEventListener('click', function () { var p = !paused(); btn.setAttribute('aria-pressed', String(p)); btn.textContent = p ? 'Play motion' : 'Pause motion'; });
+    var paused = function () { return false; }; /* motion is always on */
+    if (false) btn.addEventListener('click', function () { var p = !paused(); btn.setAttribute('aria-pressed', String(p)); btn.textContent = p ? 'Play motion' : 'Pause motion'; });
     function resize() { spaces.forEach(function (s) { s.resize(); s.draw(4, 0); }); }
     resize(); window.addEventListener('resize', resize);
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(resize);
@@ -80,6 +80,23 @@
         requestAnimationFrame(frame);
       })(last);
     }
+
+
+    /* "?" beside Questionnaires: a small pop-up with the contact address */
+    var nav = document.querySelector('header nav[aria-label="Site"]');
+    if (nav) nav.closest('header').classList.add('site-hdr');
+    if (nav && !nav.querySelector('.help')) {
+      var h = document.createElement('span'); h.className = 'help';
+      h.innerHTML = '<button type="button" aria-label="Questions? Contact us" aria-expanded="false" aria-controls="helpPop">?</button>' +
+        '<span class="pop" id="helpPop" role="dialog" aria-label="Contact">Questions? <a href="mailto:hello@sourcecodecontrol.com">hello@sourcecodecontrol.com</a></span>';
+      nav.appendChild(h);
+      var hb = h.querySelector('button'), pop = h.querySelector('.pop');
+      var setOpen = function (o) { pop.classList.toggle('open', o); hb.setAttribute('aria-expanded', String(o)); };
+      hb.addEventListener('click', function (e) { e.stopPropagation(); setOpen(!pop.classList.contains('open')); });
+      document.addEventListener('click', function (e) { if (!h.contains(e.target)) setOpen(false); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { setOpen(false); hb.focus(); } });
+    }
+    if (document.querySelector('main > section.space:first-child')) document.body.classList.add('has-space-hero');
 
     /* headline words rise in, one after another */
     [].slice.call(document.querySelectorAll('[data-words]')).forEach(function (el) {
