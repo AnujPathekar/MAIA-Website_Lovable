@@ -48,6 +48,26 @@ h1,h2,h3{margin:0;font-family:'Familjen Grotesk',system-ui,sans-serif;font-weigh
 .space a.glass{color:inherit!important}
 @media(max-width:520px){.hl{font-size:8.6vw}}
 @media(max-width:960px){.hero-doors{grid-template-columns:minmax(0,1fr)}.hero3{min-height:0;padding-top:72px}}
+#hero-title .grad{background:linear-gradient(100deg,#8AB4F8 0%,#A78BFA 28%,#C58AF9 50%,#78D9EC 78%,#8AB4F8 100%);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent!important;-webkit-text-fill-color:transparent;animation:wordIn 1.1s var(--ease) forwards,gradShift 14s ease-in-out infinite alternate;animation-delay:var(--d,0s),0s}
+@keyframes gradShift{from{background-position:0% 50%}to{background-position:100% 50%}}
+#hero-title>span.b.grad,#hero-title .grad.lite{color:transparent!important}
+#hero-title .grad.lite{opacity:.62;animation:gradShift 14s ease-in-out infinite alternate}
+#hero-title .to{display:inline-flex;align-items:flex-start;gap:.08em}
+.arrow{width:.62em;height:.62em;margin-top:-.08em;overflow:visible}
+.arrow path{stroke-dasharray:90;stroke-dashoffset:90;animation:draw 1.2s var(--ease) .9s forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.hl .a:first-child{color:#fff}
+.glass .go{align-self:flex-end}
+.appr2{padding:clamp(56px,7vw,104px) 0}
+.appr2-in{display:grid;grid-template-columns:minmax(0,3.2fr) minmax(0,8.8fr);gap:48px;align-items:center}
+.appr2 h2{display:grid;font-size:clamp(32px,2.4vw + 16px,54px);line-height:1.02;letter-spacing:-.035em}.appr2 h2 .lite2{color:oklch(55% .02 260)}
+.outs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:0;padding:0;list-style:none}
+.outs li{position:relative;display:grid;gap:8px;align-content:start;padding:24px 24px 26px;border-radius:20px;background:#fff;border:1px solid oklch(90% .009 252);overflow:hidden}
+.outs li::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:var(--c)}
+.outs .num{font:600 clamp(48px,3vw + 20px,72px)/.9 'Familjen Grotesk',system-ui,sans-serif;letter-spacing:-.05em;color:var(--c)}
+.outs h3{font-size:clamp(18px,.5vw + 14px,22px);line-height:1.2;letter-spacing:-.015em}
+.outs p{color:oklch(40% .02 260);font-size:15.5px}
+@media(max-width:960px){.appr2-in,.outs{grid-template-columns:minmax(0,1fr)}.outs li{grid-template-columns:auto 1fr;column-gap:18px}.outs .num{grid-row:span 2}}
 .startgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin:0;padding:0;list-style:none}@media(max-width:960px){.startgrid{grid-template-columns:minmax(0,1fr)}}
 .door2{height:100%;display:flex!important;flex-direction:column;gap:14px;padding:32px;background:#fff!important}
 .door2 .n{font:500 13px/1 'JetBrains Mono',monospace;color:oklch(50% .018 258);letter-spacing:.08em}
@@ -79,24 +99,24 @@ h1,h2,h3{margin:0;font-family:'Familjen Grotesk',system-ui,sans-serif;font-weigh
 <div class="wrap hero3">
 <div class="hero3-copy">
 <p class="eb rv-self" style="letter-spacing:.14em">Microsoft AI Accelerator</p>
-<h1 id="hero-title" class="hl" data-words><span class="a">From</span><span class="b">AI Ambition</span><span class="a">to</span><span class="b grad-src">Business Outcomes</span></h1>
+<h1 id="hero-title" class="hl"><span class="a word" style="--d:.1s">From</span><span class="b word grad" style="--d:.22s">AI Ambition</span><span class="a word to" style="--d:.42s"><svg class="arrow" viewBox="0 0 60 60" aria-hidden="true"><defs><linearGradient id="arrG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8AB4F8"/><stop offset=".55" stop-color="#C58AF9"/><stop offset="1" stop-color="#78D9EC"/></linearGradient></defs><path d="M14 4 C14 30 22 44 50 46" fill="none" stroke="url(#arrG)" stroke-width="3.2" stroke-linecap="round"/><path d="M41 37 L51 46 L40 54" fill="none" stroke="url(#arrG)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="grad lite">to</span></span><span class="b word grad" style="--d:.54s">Business Outcomes</span></h1>
 <p class="rv-self" style="--d:.55s;font-size:clamp(17px,.5vw + 14px,22px);line-height:1.45;max-width:46ch">Find out what Microsoft AI is worth to your organisation, how ready you are to capture it, and the plan to get there.</p>
 </div>
 <ol class="hero-doors" data-reveal>
-<li><a class="glass" href="about.html" data-keep><span class="n">01</span><span class="t">About the programme</span><span class="d">How Microsoft AI Accelerator works, what each evaluation covers, and what you receive at the end.</span><span class="go">Read the overview <span aria-hidden="true">→</span></span></a></li>
-<li><a class="glass" href="nominate.html" data-keep><span class="n">02</span><span class="t">Nominate an account</span><span class="d">Put an organisation forward for an evaluation. It takes a few minutes: the account details and today’s licences.</span><span class="go">Start a nomination <span aria-hidden="true">→</span></span></a></li>
-<li><a class="glass" href="questionnaires.html" data-keep><span class="n">03</span><span class="t">Complete the questionnaires</span><span class="d">Invited to an evaluation? Choose Frontier, Copilot or Security and answer at your own pace. Your answers save as you go.</span><span class="go">Choose a track <span aria-hidden="true">→</span></span></a></li>
+<li><a class="glass" href="about.html" data-keep><span class="n">01</span><span class="t">About The Programme</span><span class="d">How Microsoft AI Accelerator works, what each evaluation covers, and what you receive at the end.</span><span class="go">Read the overview <span aria-hidden="true">→</span></span></a></li>
+<li><a class="glass" href="nominate.html" data-keep><span class="n">02</span><span class="t">Nominate An Account</span><span class="d">Put an organisation forward for an evaluation. It takes a few minutes: the account details and today’s licences.</span><span class="go">Start a nomination <span aria-hidden="true">→</span></span></a></li>
+<li><a class="glass" href="questionnaires.html" data-keep><span class="n">03</span><span class="t">Complete The Questionnaires</span><span class="d">Invited to an evaluation? Choose Frontier, Copilot or Security and answer at your own pace. Your answers save as you go.</span><span class="go">Choose a track <span aria-hidden="true">→</span></span></a></li>
 </ol>
 </div>
 </section>
 
-<section aria-labelledby="approach-title" style="padding:clamp(40px,6vw,96px) 0 clamp(96px,11vw,176px)">
-<div class="wrap appr">
-<div data-reveal><h2 id="approach-title" style="font-size:clamp(32px,2.5vw + 16px,56px);max-width:12ch;letter-spacing:-.035em">One approach, three outputs</h2></div>
-<ol data-reveal style="margin:0;padding:0;list-style:none;border-bottom:1px solid oklch(90% .009 252)">
-<li class="row3" style="border-top-color:oklch(21% .028 262)"><span class="num" style="color:var(--g-blue)">1</span><h3 style="font-size:clamp(20px,.75vw + 14px,26px);line-height:1.2">Your ROI Insights report</h3><p style="font-size:clamp(18px,.35vw + 16px,22px);line-height:1.45;color:oklch(36% .022 260)">Shows what the investment is worth.</p></li>
-<li class="row3"><span class="num" style="color:var(--frontier)">2</span><h3 style="font-size:clamp(20px,.75vw + 14px,26px);line-height:1.2">A short questionnaire</h3><p style="font-size:clamp(18px,.35vw + 16px,22px);line-height:1.45;color:oklch(36% .022 260)">Shows how ready you are to capture it.</p></li>
-<li class="row3"><span class="num" style="color:var(--copilot)">3</span><h3 style="font-size:clamp(20px,.75vw + 14px,26px);line-height:1.2">Your evaluation report</h3><p style="font-size:clamp(18px,.35vw + 16px,22px);line-height:1.45;color:oklch(36% .022 260)">Turns both into a clear plan.</p></li>
+<section aria-labelledby="approach-title" class="appr2">
+<div class="wrap appr2-in">
+<div data-reveal><h2 id="approach-title"><span>One Approach</span><span class="lite2">Three Outputs</span></h2></div>
+<ol class="outs" data-reveal>
+<li style="--c:var(--g-blue)"><span class="num">1</span><h3>Your ROI Insights Report</h3><p>Shows what the investment is worth.</p></li>
+<li style="--c:var(--frontier)"><span class="num">2</span><h3>A Short Questionnaire</h3><p>Shows how ready you are to capture it.</p></li>
+<li style="--c:var(--copilot)"><span class="num">3</span><h3>Your Evaluation Report</h3><p>Turns both into a clear plan.</p></li>
 </ol>
 </div>
 </section>
@@ -116,14 +136,14 @@ h1,h2,h3{margin:0;font-family:'Familjen Grotesk',system-ui,sans-serif;font-weigh
 </div>
 </section>
 </main>
-<footer class="wrap" style="padding-top:96px;padding-bottom:64px">
+<footer class="space foot" data-palette="security,frontier,copilot"><div class="space-bg" aria-hidden="true"><canvas></canvas><div class="veil-soft"></div><div class="grain"></div></div><div class="wrap" style="padding-top:96px;padding-bottom:64px">
 <p style="font:600 clamp(32px,3.4vw,56px)/1 'Familjen Grotesk',system-ui,sans-serif;letter-spacing:-.028em;margin:0 0 40px">Microsoft AI Accelerator</p>
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px 32px;padding-top:24px;border-top:1px solid oklch(90% .009 252);font-size:14px;color:oklch(50% .018 258)">
 <p>Delivered by SCC in partnership with Microsoft</p>
 <p><a href="terms.html" data-keep style="color:oklch(36% .022 260);font-weight:500">Terms of Use &amp; Privacy Statement</a></p>
 <p>Questions? <a href="mailto:hello@sourcecodecontrol.com" style="color:oklch(36% .022 260);font-weight:500">hello@sourcecodecontrol.com</a></p>
 </div>
-</footer>
+</div></footer>
 </div>
 <script>
 /* earlier links to this page: ?track= opens that track; invitation links and old #sections open the right page */

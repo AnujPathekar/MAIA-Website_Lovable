@@ -85,3 +85,10 @@ a.card:hover{transform:translateY(-4px);box-shadow:0 24px 48px -24px rgb(11 15 2
 section[style*="oklch(21% .024 262)"] .key.p{background:#fff!important;border-color:#fff!important;color:var(--ink)!important}
 section[style*="oklch(21% .024 262)"] .key:not(.p){background:rgb(255 255 255/.08)!important;border-color:rgb(255 255 255/.2)!important;color:#fff!important}
 body:not(.has-space-hero) header.site-hdr{background:var(--space)!important}
+/* footer: the matrix closes the page */
+footer.space.foot{max-width:none!important;padding:0!important;margin:0}
+footer.space.foot>.wrap{position:relative;z-index:2}
+footer.space.foot [style*="border-top"]{border-top-color:rgb(255 255 255/.1)!important}
+footer.space.foot p{color:rgb(226 232 245/.62)!important}
+footer.space.foot p[style*="Familjen"]{color:#fff!important}
+footer.space.foot a{color:#fff!important}
